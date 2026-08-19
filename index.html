@@ -3,25 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine erste Webseite</title>
+    <title>Meine Webseite</title>
     <style>
+        /* Allgemeine Stile */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f8ff;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
             color: #333;
         }
-        p {
-            color: #555;
-            font-size: 18px;
+
+        /* Header mit Logo */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px 30px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Logo */
+        .logo {
+            height: 60px;
+            width: auto;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+            margin-right: 20px;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Text (optional) */
+        .logo-text {
+            color: white;
+            font-weight: 600;
+            font-size: 1.3em;
         }
     </style>
 </head>
 <body>
-    <h1>Willkommen auf meiner Webseite!</h1>
-    <p>Das ist meine erste eigene Website – ganz einfach mit HTML und CSS.</p>
+
+    <!-- Header mit Logo -->
+    <header>
+        <a href="index.html">
+            <img src="images/logo.png" alt="Mein Logo" class="logo">
+        </a>
+        <span class="logo-text">Meine Webseite</span>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <div style="padding: 50px; text-align: center;">
+        <h1>Willkommen auf meiner Webseite!</h1>
+        <p>Das ist meine erste eigene Website – ganz einfach mit HTML und CSS.</p>
+    </div>
+
 </body>
 </html>
