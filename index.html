@@ -14,45 +14,99 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: white; /* Alles weiß */
+            background-color: white;
             color: #333;
-            height: 100vh; /* Vollbildhöhe */
+            height: 200vh; /* Mehr Scroll-Höhe für Test */
+        }
+
+        /* Header (obere Leiste) */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 15px 20px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: top 0.3s ease;
         }
 
-        /* Logo in der Mitte */
-        .logo {
-            height: 100px;
+        /* Logo im Header */
+        .logo-header {
+            height: 50px;
             width: auto;
-            border-radius: 12px;
+            border-radius: 10px;
             transition: transform 0.3s ease;
-            margin-bottom: 30px;
         }
 
-        .logo:hover {
+        .logo-header:hover {
             transform: scale(1.05);
         }
 
-        /* Text (optional) */
-        .logo-text {
-            color: #333;
-            font-weight: 600;
-            font-size: 1.3em;
-            margin-top: 10px;
+        /* Hauptinhalt (Logo in der Mitte) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+
+        .logo-hero {
+            height: 200px;
+            width: auto;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-hero:hover {
+            transform: scale(1.05);
+        }
+
+        /* Scroll-Animation */
+        .scrolled header {
+            top: -100px; /* Versteckt den Header */
+        }
+
+        .scrolled header {
+            top: 0; /* Zeigt den Header wieder an */
         }
     </style>
 </head>
 <body>
 
-    <!-- Logo in der Mitte -->
-    <a href="index.html">
-        <img src="logo.png" alt="Mein Logo" class="logo">
-    </a>
-    <p class="logo-text">Meine Webseite</p>
+    <!-- Header (obere Leiste) -->
+    <header>
+        <img src="logo.png" alt="Mein Logo" class="logo-header">
+    </header>
+
+    <!-- Hauptinhalt (Logo in der Mitte) -->
+    <section class="hero">
+        <img src="logo.png" alt="Mein Logo" class="logo-hero">
+    </section>
+
+    <script>
+        // Scroll-Animation: Header verschwindet beim Scrollen
+        let header = document.querySelector('header');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', function() {
+            let st = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (st > lastScrollTop && st > 100) {
+                // Scroll nach unten → Header verschwindet
+                header.classList.add('scrolled');
+            } else {
+                // Scroll nach oben → Header erscheint
+                header.classList.remove('scrolled');
+            }
+            lastScrollTop = st;
+        });
+    </script>
 
 </body>
 </html>
