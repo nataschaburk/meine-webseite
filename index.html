@@ -14,30 +14,23 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
+            background-color: white; /* Alles weiß */
             color: #333;
-        }
-
-        /* Header mit Logo */
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px 30px;
+            height: 100vh; /* Vollbildhöhe */
             display: flex;
-            justify-content: flex-start;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
         }
 
-        /* Logo */
+        /* Logo in der Mitte */
         .logo {
-            height: 60px;
+            height: 100px;
             width: auto;
             border-radius: 12px;
             transition: transform 0.3s ease;
-            margin-right: 20px;
+            margin-bottom: 30px;
         }
 
         .logo:hover {
@@ -46,27 +39,20 @@
 
         /* Text (optional) */
         .logo-text {
-            color: white;
+            color: #333;
             font-weight: 600;
             font-size: 1.3em;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header mit Logo -->
-    <header>
-        <a href="index.html">
-            <img src="images/logo.png" alt="Mein Logo" class="logo">
-        </a>
-        <span class="logo-text">Meine Webseite</span>
-    </header>
-
-    <!-- Hauptinhalt -->
-    <div style="padding: 50px; text-align: center;">
-        <h1>Willkommen auf meiner Webseite!</h1>
-        <p>Das ist meine erste eigene Website – ganz einfach mit HTML und CSS.</p>
-    </div>
+    <!-- Logo in der Mitte -->
+    <a href="index.html">
+        <img src="images/logo.png" alt="Mein Logo" class="logo">
+    </a>
+    <p class="logo-text">Meine Webseite</p>
 
 </body>
 </html>
