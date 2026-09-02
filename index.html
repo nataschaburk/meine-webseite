@@ -88,17 +88,14 @@
             will-change: opacity;
         }
 
-
         .navigation a {
             display: block;
             line-height: 0;
         }
 
-
         .navigation img {
             height: 24px;
             width: auto;
-
             display: block;
         }
 
@@ -123,11 +120,9 @@
             will-change: opacity;
         }
 
-
         .instagram img {
             width: 36px;
             height: auto;
-
             display: block;
         }
 
@@ -142,54 +137,50 @@
 
 
         /* =========================================
-           MOBILE VERSION
-           bis 700px Bildschirmbreite
+           MOBILE
         ========================================= */
 
         @media (max-width: 700px) {
 
-            /* Namenslogo */
+            /*
+               Das große Startlogo darf auf dem Handy
+               weiterhin schön präsent sein.
+            */
 
             #logo {
                 width: 68%;
             }
 
 
-            /* Navigation links */
-
-            .navigation {
-                left: 5%;
-                top: 12%;
-
-                /* kleinerer Abstand auf dem Handy */
-                gap: 3px;
-            }
-
-
             /*
-               WORK
-               TEACHING
-               ABOUT
-               CONTACT
-
-               Auf dem Handy bewusst kleiner.
+               Navigation etwas weiter vom Rand
+               und deutlich feiner als vorher.
             */
 
+            .navigation {
+                left: 6%;
+                top: 11.5%;
+
+                gap: 2.5px;
+            }
+
             .navigation img {
-                height: 15px;
+                height: 13px;
                 width: auto;
             }
 
 
-            /* Instagram */
+            /*
+               Instagram ebenfalls deutlich kleiner.
+            */
 
             .instagram {
-                right: 5%;
+                right: 6%;
+                top: 62px;
             }
 
-
             .instagram img {
-                width: 29px;
+                width: 24px;
             }
 
         }
@@ -213,56 +204,41 @@
     >
 
 
-
     <!-- =========================================
          NAVIGATION
     ========================================= -->
 
     <nav class="navigation">
 
-
         <a href="#work">
-
             <img
                 src="images/work.png"
                 alt="Work"
             >
-
         </a>
 
-
         <a href="#teaching">
-
             <img
                 src="images/teaching.png"
                 alt="Teaching"
             >
-
         </a>
 
-
         <a href="#about">
-
             <img
                 src="images/about.png"
                 alt="About"
             >
-
         </a>
 
-
         <a href="#contact">
-
             <img
                 src="images/contact.png"
                 alt="Contact"
             >
-
         </a>
 
-
     </nav>
-
 
 
     <!-- =========================================
@@ -284,7 +260,6 @@
     </a>
 
 
-
     <!-- =========================================
          STARTSEITE
     ========================================= -->
@@ -292,44 +267,29 @@
     <section class="intro"></section>
 
 
-
     <!-- =========================================
-         SPÄTERER INHALT
+         INHALT
     ========================================= -->
 
     <main class="content">
 
-
         <section id="work">
-
-            <!-- WORK kommt später hier hin -->
-
+            <!-- WORK kommt später -->
         </section>
-
 
         <section id="teaching">
-
-            <!-- TEACHING kommt später hier hin -->
-
+            <!-- TEACHING kommt später -->
         </section>
-
 
         <section id="about">
-
-            <!-- ABOUT kommt später hier hin -->
-
+            <!-- ABOUT kommt später -->
         </section>
-
 
         <section id="contact">
-
-            <!-- CONTACT kommt später hier hin -->
-
+            <!-- CONTACT kommt später -->
         </section>
 
-
     </main>
-
 
 
     <!-- =========================================
@@ -338,49 +298,74 @@
 
     <script>
 
-
         const logo =
             document.getElementById("logo");
 
-
         const navigation =
             document.querySelector(".navigation");
-
 
         const instagram =
             document.querySelector(".instagram");
 
 
-
-        /* =========================================
-           ANIMATIONS-EINSTELLUNGEN
-        ========================================= */
-
-        const animationDistance = 500;
-
-        const startScale = 1;
-
-        const endScale = 0.55;
-
-        const endTop = 75;
-
-
-
-        /* =========================================
-           ANIMATION
-        ========================================= */
-
         function updatePage() {
 
+            /*
+               Prüfen, ob wir uns auf einem
+               kleinen Bildschirm befinden.
+            */
+
+            const isMobile =
+                window.innerWidth <= 700;
+
+
+            /*
+               Desktop und Mobile bekommen
+               leicht unterschiedliche Werte.
+            */
+
+            const animationDistance =
+                isMobile ? 420 : 500;
+
+
+            /*
+               Startgröße bleibt immer 1.
+            */
+
+            const startScale = 1;
+
+
+            /*
+               Auf dem Handy wird das Logo
+               am Ende deutlich kleiner.
+
+               Desktop: 0.55
+               Mobile:  0.38
+            */
+
+            const endScale =
+                isMobile ? 0.38 : 0.55;
+
+
+            /*
+               Endposition des Logos.
+
+               Desktop: 75px
+               Mobile:  62px
+            */
+
+            const endTop =
+                isMobile ? 62 : 75;
+
+
+
+            /* =====================================
+               SCROLL-FORTSCHRITT
+            ===================================== */
 
             const scrollY =
                 window.scrollY;
 
-
-            /*
-               0 = Start
-               1 = Animation abgeschlossen
-            */
 
             let progress =
                 scrollY / animationDistance;
@@ -394,7 +379,9 @@
 
 
 
-            /* Logo-Größe */
+            /* =====================================
+               LOGO-GRÖSSE
+            ===================================== */
 
             const scale =
                 startScale +
@@ -403,7 +390,9 @@
 
 
 
-            /* Logo-Position */
+            /* =====================================
+               LOGO-POSITION
+            ===================================== */
 
             const startTop =
                 window.innerHeight / 2;
@@ -416,8 +405,6 @@
 
 
 
-            /* Logo aktualisieren */
-
             logo.style.top =
                 `${top}px`;
 
@@ -427,7 +414,9 @@
 
 
 
-            /* Navigation einblenden */
+            /* =====================================
+               NAVIGATION EINBLENDEN
+            ===================================== */
 
             const navProgress =
                 Math.max(
@@ -448,7 +437,9 @@
 
 
 
-            /* Links aktivieren */
+            /* =====================================
+               LINKS AKTIVIEREN
+            ===================================== */
 
             if (navProgress > 0) {
 
@@ -492,9 +483,7 @@
 
         updatePage();
 
-
     </script>
-
 
 </body>
 
