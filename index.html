@@ -27,7 +27,9 @@
         }
 
 
-        /* STARTBEREICH */
+        /* =========================================
+           STARTBEREICH
+        ========================================= */
 
         .intro {
             width: 100%;
@@ -35,7 +37,9 @@
         }
 
 
-        /* NAMENSLOGO - DESKTOP */
+        /* =========================================
+           NAMENSLOGO - DESKTOP
+        ========================================= */
 
         #logo {
             position: fixed;
@@ -56,7 +60,9 @@
         }
 
 
-        /* NAVIGATION - DESKTOP */
+        /* =========================================
+           NAVIGATION - DESKTOP
+        ========================================= */
 
         .navigation {
             position: fixed;
@@ -92,7 +98,9 @@
         }
 
 
-        /* INSTAGRAM - DESKTOP */
+        /* =========================================
+           INSTAGRAM - DESKTOP
+        ========================================= */
 
         .instagram {
             position: fixed;
@@ -118,10 +126,46 @@
         }
 
 
-        /* INHALT */
+        /* =========================================
+           INHALT
+        ========================================= */
 
         .content {
             min-height: 200vh;
+        }
+
+
+        /* =========================================
+           PRIVACY POLICY
+        ========================================= */
+
+        .privacy {
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding-top: 80px;
+            padding-bottom: 35px;
+        }
+
+
+        .privacy a {
+            display: inline-block;
+            line-height: 0;
+        }
+
+
+        .privacy img {
+            /*
+               Bewusst sehr klein und dezent
+            */
+
+            height: 10px;
+            width: auto;
+
+            display: block;
         }
 
 
@@ -182,6 +226,20 @@
                 height: auto;
             }
 
+
+            /* PRIVACY POLICY */
+
+            .privacy {
+                padding-top: 60px;
+                padding-bottom: 25px;
+            }
+
+
+            .privacy img {
+                height: 8px;
+                width: auto;
+            }
+
         }
 
     </style>
@@ -192,7 +250,9 @@
 <body>
 
 
-    <!-- NAMENSLOGO -->
+    <!-- =========================================
+         NAMENSLOGO
+    ========================================= -->
 
     <img
         id="logo"
@@ -201,7 +261,9 @@
     >
 
 
-    <!-- NAVIGATION -->
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
 
     <nav class="navigation">
 
@@ -236,7 +298,9 @@
     </nav>
 
 
-    <!-- INSTAGRAM -->
+    <!-- =========================================
+         INSTAGRAM
+    ========================================= -->
 
     <a
         class="instagram"
@@ -254,12 +318,16 @@
     </a>
 
 
-    <!-- STARTSEITE -->
+    <!-- =========================================
+         STARTSEITE
+    ========================================= -->
 
     <section class="intro"></section>
 
 
-    <!-- SPÄTERER INHALT -->
+    <!-- =========================================
+         INHALT
+    ========================================= -->
 
     <main class="content">
 
@@ -282,7 +350,30 @@
     </main>
 
 
-    <!-- SCROLL-ANIMATION -->
+    <!-- =========================================
+         PRIVACY POLICY
+    ========================================= -->
+
+    <footer class="privacy">
+
+        <a
+            href="#privacy"
+            aria-label="Privacy Policy"
+        >
+
+            <img
+                src="images/privacy_policy.png"
+                alt="Privacy Policy"
+            >
+
+        </a>
+
+    </footer>
+
+
+    <!-- =========================================
+         SCROLL-ANIMATION
+    ========================================= -->
 
     <script>
 
@@ -336,7 +427,7 @@
                 );
 
 
-            /* LOGO-GRÖSSE BERECHNEN */
+            /* LOGO-GRÖSSE */
 
             const scale =
                 startScale +
@@ -344,7 +435,7 @@
                 * progress;
 
 
-            /* LOGO-POSITION BERECHNEN */
+            /* LOGO-POSITION */
 
             const startTop =
                 window.innerHeight / 2;
@@ -411,7 +502,9 @@
         }
 
 
-        /* EVENTS */
+        /* =========================================
+           EVENTS
+        ========================================= */
 
         window.addEventListener(
             "scroll",
