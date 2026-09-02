@@ -42,7 +42,7 @@
 
 
         /* =========================================
-           LOGO
+           NAMENSLOGO
         ========================================= */
 
         #logo {
@@ -51,8 +51,17 @@
             left: 50%;
             top: 50%;
 
-            width: 52%;
-            max-width: 820px;
+            /*
+               Vorher: 52%
+               Jetzt etwas kleiner
+            */
+            width: 44%;
+
+            /*
+               Vorher: 820px
+            */
+            max-width: 700px;
+
             height: auto;
 
             transform: translate(-50%, -50%) scale(1);
@@ -71,6 +80,9 @@
         .navigation {
             position: fixed;
 
+            /*
+               Position bleibt unverändert
+            */
             left: 6.2%;
             top: 12%;
 
@@ -78,7 +90,11 @@
             flex-direction: column;
             align-items: flex-start;
 
-            gap: 5px;
+            /*
+               Abstand ebenfalls etwas kleiner,
+               damit die Proportionen stimmen
+            */
+            gap: 4px;
 
             z-index: 90;
 
@@ -95,14 +111,15 @@
         }
 
 
-        /*
-           Alle Wörter haben dieselbe Höhe.
-           Dadurch bleibt die Schriftgröße
-           optisch gleich.
-        */
-
         .navigation img {
-            height: 28px;
+
+            /*
+               Vorher: 28px
+               Jetzt: 24px
+            */
+
+            height: 24px;
+
             width: auto;
 
             display: block;
@@ -116,13 +133,10 @@
         .instagram {
             position: fixed;
 
-            right: 5.8%;
-
             /*
-               Gleiche vertikale Mitte
-               wie das kleine Namenslogo.
+               Position bleibt unverändert
             */
-
+            right: 5.8%;
             top: 75px;
 
             transform: translateY(-50%);
@@ -137,7 +151,14 @@
 
 
         .instagram img {
-            width: 42px;
+
+            /*
+               Vorher: 42px
+               Jetzt: 36px
+            */
+
+            width: 36px;
+
             height: auto;
 
             display: block;
@@ -160,7 +181,12 @@
         @media (max-width: 700px) {
 
             #logo {
-                width: 80%;
+
+                /*
+                   Vorher: 80%
+                */
+
+                width: 68%;
             }
 
 
@@ -171,7 +197,12 @@
 
 
             .navigation img {
-                height: 22px;
+
+                /*
+                   Vorher: 22px
+                */
+
+                height: 19px;
             }
 
 
@@ -181,7 +212,12 @@
 
 
             .instagram img {
-                width: 34px;
+
+                /*
+                   Vorher: 34px
+                */
+
+                width: 29px;
             }
 
         }
@@ -331,13 +367,13 @@
     <script>
 
 
-        /* Elemente auswählen */
-
         const logo =
             document.getElementById("logo");
 
+
         const navigation =
             document.querySelector(".navigation");
+
 
         const instagram =
             document.querySelector(".instagram");
@@ -350,8 +386,7 @@
 
 
         /*
-           Wie weit gescrollt werden muss,
-           bis die Animation abgeschlossen ist.
+           Scroll-Distanz der Animation
         */
 
         const animationDistance = 500;
@@ -359,23 +394,28 @@
 
 
         /*
-           Größe des Logos
-
-           1    = große Startgröße
-           0.55 = kleine Endgröße
+           Startgröße des Logos
         */
 
         const startScale = 1;
+
+
+
+        /*
+           Endgröße des Logos
+
+           Das Verhältnis zwischen großem und
+           kleinem Logo bleibt gleich.
+        */
 
         const endScale = 0.55;
 
 
 
         /*
-           Vertikale Endposition.
+           Position des kleinen Logos oben.
 
-           Die Mitte des kleinen Namenslogos
-           befindet sich bei 75px.
+           Bleibt unverändert.
         */
 
         const endTop = 75;
@@ -395,21 +435,16 @@
 
 
             /*
-               Fortschritt berechnen.
+               Fortschritt:
 
                0 = Start
-               1 = Animation abgeschlossen
+               1 = Animation fertig
             */
 
             let progress =
                 scrollY / animationDistance;
 
 
-
-            /*
-               Fortschritt zwischen
-               0 und 1 begrenzen.
-            */
 
             progress =
                 Math.max(
@@ -459,7 +494,7 @@
 
 
             /* =====================================
-               MENÜ EINBLENDEN
+               NAVIGATION + INSTAGRAM EINBLENDEN
             ===================================== */
 
             const navProgress =
@@ -470,7 +505,6 @@
                         (progress - 0.35) / 0.4
                     )
                 );
-
 
 
             navigation.style.opacity =
@@ -510,7 +544,9 @@
 
 
 
-        /* Bei Scrollbewegung aktualisieren */
+        /* =========================================
+           EVENTS
+        ========================================= */
 
         window.addEventListener(
             "scroll",
@@ -518,17 +554,11 @@
         );
 
 
-
-        /* Bei Änderung der Fenstergröße */
-
         window.addEventListener(
             "resize",
             updatePage
         );
 
-
-
-        /* Beim Laden einmal ausführen */
 
         updatePage();
 
