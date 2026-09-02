@@ -42,7 +42,7 @@
 
 
         /* =========================================
-           NAMENSLOGO
+           NAMENSLOGO - DESKTOP
         ========================================= */
 
         #logo {
@@ -65,7 +65,7 @@
 
 
         /* =========================================
-           NAVIGATION
+           NAVIGATION - DESKTOP
         ========================================= */
 
         .navigation {
@@ -88,12 +88,10 @@
             will-change: opacity;
         }
 
-
         .navigation a {
             display: block;
             line-height: 0;
         }
-
 
         .navigation img {
             height: 24px;
@@ -103,7 +101,7 @@
 
 
         /* =========================================
-           INSTAGRAM
+           INSTAGRAM - DESKTOP
         ========================================= */
 
         .instagram {
@@ -122,7 +120,6 @@
             will-change: opacity;
         }
 
-
         .instagram img {
             width: 36px;
             height: auto;
@@ -139,21 +136,20 @@
         }
 
 
-
         /* =========================================
            MOBILE VERSION
+           
+           WICHTIG:
+           Alles hier verändert NUR die
+           Handy-Version.
         ========================================= */
 
         @media (max-width: 700px) {
 
 
-            /* -------------------------------------
-               NAMENSLOGO
-
-               Das große Startlogo bleibt gut
-               sichtbar. Die kleinere Endgröße
-               regeln wir weiter unten per JS.
-            ------------------------------------- */
+            /* =====================================
+               NAMENSLOGO MOBILE
+            ===================================== */
 
             #logo {
                 width: 72%;
@@ -161,46 +157,63 @@
             }
 
 
-
-            /* -------------------------------------
-               NAVIGATION
-
-               Deutlich kleiner und kompakter
-               als vorher.
-            ------------------------------------- */
+            /* =====================================
+               NAVIGATION MOBILE
+            ===================================== */
 
             .navigation {
-                left: 6%;
 
                 /*
-                   Fester Wert statt 12%.
-                   Dadurch ähnelt die Anordnung
-                   stärker der Desktop-Version.
+                   Links etwas Abstand zum Rand
                 */
 
-                top: 95px;
+                left: 6%;
+
+
+                /*
+                   Der Block beginnt bewusst
+                   UNTER dem Namenslogo.
+                */
+
+                top: 92px;
+
+
+                /*
+                   Sehr kompakter Abstand
+                   zwischen den vier Wörtern.
+                */
 
                 gap: 2px;
             }
 
 
             .navigation img {
-                height: 12px;
+
+                /*
+                   Deutlich kleiner als vorher.
+
+                   Vorher: 12px
+                   Jetzt: 9px
+                */
+
+                height: 9px;
+
                 width: auto;
             }
 
 
-
-            /* -------------------------------------
-               INSTAGRAM
-            ------------------------------------- */
+            /* =====================================
+               INSTAGRAM MOBILE
+            ===================================== */
 
             .instagram {
+
                 right: 6%;
 
+
                 /*
-                   Wird mit dem kleinen Namenslogo
-                   ausgerichtet.
+                   Gleiche vertikale Mittelachse
+                   wie das kleine Namenslogo.
                 */
 
                 top: 55px;
@@ -208,7 +221,14 @@
 
 
             .instagram img {
-                width: 24px;
+
+                /*
+                   Noch kleiner und feiner.
+                */
+
+                width: 18px;
+
+                height: auto;
             }
 
         }
@@ -232,56 +252,41 @@
     >
 
 
-
     <!-- =========================================
          NAVIGATION
     ========================================= -->
 
     <nav class="navigation">
 
-
         <a href="#work">
-
             <img
                 src="images/work.png"
                 alt="Work"
             >
-
         </a>
 
-
         <a href="#teaching">
-
             <img
                 src="images/teaching.png"
                 alt="Teaching"
             >
-
         </a>
 
-
         <a href="#about">
-
             <img
                 src="images/about.png"
                 alt="About"
             >
-
         </a>
 
-
         <a href="#contact">
-
             <img
                 src="images/contact.png"
                 alt="Contact"
             >
-
         </a>
 
-
     </nav>
-
 
 
     <!-- =========================================
@@ -303,13 +308,11 @@
     </a>
 
 
-
     <!-- =========================================
          STARTSEITE
     ========================================= -->
 
     <section class="intro"></section>
-
 
 
     <!-- =========================================
@@ -318,29 +321,23 @@
 
     <main class="content">
 
-
         <section id="work">
             <!-- WORK -->
         </section>
-
 
         <section id="teaching">
             <!-- TEACHING -->
         </section>
 
-
         <section id="about">
             <!-- ABOUT -->
         </section>
-
 
         <section id="contact">
             <!-- CONTACT -->
         </section>
 
-
     </main>
-
 
 
     <!-- =========================================
@@ -349,88 +346,76 @@
 
     <script>
 
-
         const logo =
             document.getElementById("logo");
-
 
         const navigation =
             document.querySelector(".navigation");
 
-
         const instagram =
             document.querySelector(".instagram");
 
+
+        /* =========================================
+           SCROLL-DISTANZ
+        ========================================= */
+
+        const animationDistance = 500;
 
 
         /* =========================================
            ANIMATION
         ========================================= */
 
-
-        const animationDistance = 500;
-
-
-
         function updatePage() {
-
 
             const scrollY =
                 window.scrollY;
 
 
-
             /*
-               Prüfen, ob wir uns auf
-               einem kleinen Bildschirm befinden.
+               Prüfen, ob Handy oder Desktop
             */
 
             const isMobile =
                 window.innerWidth <= 700;
 
 
-
             /* =====================================
-               UNTERSCHIEDLICHE WERTE
-               FÜR DESKTOP UND MOBILE
+               LOGO-GRÖSSEN
             ===================================== */
-
 
             const startScale = 1;
 
 
             /*
-               Desktop:
-               kleines Logo = 55 %
+               Desktop bleibt bei 0.55.
 
-               Mobile:
-               kleines Logo = 43 %
-
-               Dadurch wird das Namenslogo
-               oben auf dem Handy deutlich feiner.
+               Mobile wird kleiner,
+               damit oben mehr Platz entsteht.
             */
 
             const endScale =
-                isMobile ? 0.43 : 0.55;
+                isMobile ? 0.40 : 0.55;
 
 
+            /* =====================================
+               LOGO-ENDPOSITION
+            ===================================== */
 
             /*
-               Position des kleinen Logos.
-
                Desktop: 75px
-               Mobile:  55px
+
+               Mobile: 55px
             */
 
             const endTop =
                 isMobile ? 55 : 75;
 
 
-
             /* =====================================
                FORTSCHRITT
             ===================================== */
-
 
             let progress =
                 scrollY / animationDistance;
@@ -443,11 +428,9 @@
                 );
 
 
-
             /* =====================================
-               LOGO GRÖSSE
+               LOGO-GRÖSSE BERECHNEN
             ===================================== */
-
 
             const scale =
                 startScale +
@@ -455,11 +438,9 @@
                 * progress;
 
 
-
             /* =====================================
-               LOGO POSITION
+               LOGO-POSITION BERECHNEN
             ===================================== */
-
 
             const startTop =
                 window.innerHeight / 2;
@@ -471,11 +452,9 @@
                 * progress;
 
 
-
             /* =====================================
-               LOGO ANWENDEN
+               LOGO AKTUALISIEREN
             ===================================== */
-
 
             logo.style.top =
                 `${top}px`;
@@ -485,12 +464,9 @@
                 `translate(-50%, -50%) scale(${scale})`;
 
 
-
             /* =====================================
-               NAVIGATION + INSTAGRAM
-               EINBLENDEN
+               NAVIGATION + INSTAGRAM EINBLENDEN
             ===================================== */
-
 
             const navProgress =
                 Math.max(
@@ -510,11 +486,9 @@
                 navProgress;
 
 
-
             /* =====================================
                LINKS AKTIVIEREN
             ===================================== */
-
 
             if (navProgress > 0) {
 
@@ -539,11 +513,9 @@
         }
 
 
-
         /* =========================================
            EVENTS
         ========================================= */
-
 
         window.addEventListener(
             "scroll",
@@ -559,7 +531,6 @@
 
 
         updatePage();
-
 
     </script>
 
