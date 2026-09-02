@@ -51,17 +51,8 @@
             left: 50%;
             top: 50%;
 
-            /*
-               Vorher: 52%
-               Jetzt etwas kleiner
-            */
             width: 44%;
-
-            /*
-               Vorher: 820px
-            */
             max-width: 700px;
-
             height: auto;
 
             transform: translate(-50%, -50%) scale(1);
@@ -80,9 +71,6 @@
         .navigation {
             position: fixed;
 
-            /*
-               Position bleibt unverändert
-            */
             left: 6.2%;
             top: 12%;
 
@@ -90,10 +78,6 @@
             flex-direction: column;
             align-items: flex-start;
 
-            /*
-               Abstand ebenfalls etwas kleiner,
-               damit die Proportionen stimmen
-            */
             gap: 4px;
 
             z-index: 90;
@@ -112,14 +96,7 @@
 
 
         .navigation img {
-
-            /*
-               Vorher: 28px
-               Jetzt: 24px
-            */
-
             height: 24px;
-
             width: auto;
 
             display: block;
@@ -133,9 +110,6 @@
         .instagram {
             position: fixed;
 
-            /*
-               Position bleibt unverändert
-            */
             right: 5.8%;
             top: 75px;
 
@@ -151,14 +125,7 @@
 
 
         .instagram img {
-
-            /*
-               Vorher: 42px
-               Jetzt: 36px
-            */
-
             width: 36px;
-
             height: auto;
 
             display: block;
@@ -175,36 +142,46 @@
 
 
         /* =========================================
-           HANDY
+           MOBILE VERSION
+           bis 700px Bildschirmbreite
         ========================================= */
 
         @media (max-width: 700px) {
 
+            /* Namenslogo */
+
             #logo {
-
-                /*
-                   Vorher: 80%
-                */
-
                 width: 68%;
             }
 
 
+            /* Navigation links */
+
             .navigation {
                 left: 5%;
                 top: 12%;
+
+                /* kleinerer Abstand auf dem Handy */
+                gap: 3px;
             }
 
+
+            /*
+               WORK
+               TEACHING
+               ABOUT
+               CONTACT
+
+               Auf dem Handy bewusst kleiner.
+            */
 
             .navigation img {
-
-                /*
-                   Vorher: 22px
-                */
-
-                height: 19px;
+                height: 15px;
+                width: auto;
             }
 
+
+            /* Instagram */
 
             .instagram {
                 right: 5%;
@@ -212,11 +189,6 @@
 
 
             .instagram img {
-
-                /*
-                   Vorher: 34px
-                */
-
                 width: 29px;
             }
 
@@ -384,39 +356,11 @@
            ANIMATIONS-EINSTELLUNGEN
         ========================================= */
 
-
-        /*
-           Scroll-Distanz der Animation
-        */
-
         const animationDistance = 500;
-
-
-
-        /*
-           Startgröße des Logos
-        */
 
         const startScale = 1;
 
-
-
-        /*
-           Endgröße des Logos
-
-           Das Verhältnis zwischen großem und
-           kleinem Logo bleibt gleich.
-        */
-
         const endScale = 0.55;
-
-
-
-        /*
-           Position des kleinen Logos oben.
-
-           Bleibt unverändert.
-        */
 
         const endTop = 75;
 
@@ -433,17 +377,13 @@
                 window.scrollY;
 
 
-
             /*
-               Fortschritt:
-
                0 = Start
-               1 = Animation fertig
+               1 = Animation abgeschlossen
             */
 
             let progress =
                 scrollY / animationDistance;
-
 
 
             progress =
@@ -454,9 +394,7 @@
 
 
 
-            /* =====================================
-               LOGO-GRÖSSE
-            ===================================== */
+            /* Logo-Größe */
 
             const scale =
                 startScale +
@@ -465,9 +403,7 @@
 
 
 
-            /* =====================================
-               LOGO-POSITION
-            ===================================== */
+            /* Logo-Position */
 
             const startTop =
                 window.innerHeight / 2;
@@ -480,9 +416,7 @@
 
 
 
-            /* =====================================
-               LOGO ANWENDEN
-            ===================================== */
+            /* Logo aktualisieren */
 
             logo.style.top =
                 `${top}px`;
@@ -493,9 +427,7 @@
 
 
 
-            /* =====================================
-               NAVIGATION + INSTAGRAM EINBLENDEN
-            ===================================== */
+            /* Navigation einblenden */
 
             const navProgress =
                 Math.max(
@@ -516,9 +448,7 @@
 
 
 
-            /* =====================================
-               LINKS AKTIVIEREN
-            ===================================== */
+            /* Links aktivieren */
 
             if (navProgress > 0) {
 
