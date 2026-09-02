@@ -19,92 +19,128 @@
             height: 200vh; /* Mehr Scroll-Höhe für Test */
         }
 
-        /* Header (obere Leiste) */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: top 0.3s ease;
-        }
-
-        /* Logo im Header */
-        .logo-header {
-            height: 50px;
-            width: auto;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-header:hover {
-            transform: scale(1.05);
-        }
-
-        /* Hauptinhalt (Logo in der Mitte) */
+        /* Hauptinhalt (großes Logo in der Mitte) */
         .hero {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: white;
+            position: relative;
         }
 
-        .logo-hero {
+        /* Großes Logo (Start) */
+        .logo-large {
             height: 200px;
             width: auto;
             border-radius: 12px;
             transition: transform 0.3s ease;
+            z-index: 1;
         }
 
-        .logo-hero:hover {
+        .logo-large:hover {
             transform: scale(1.05);
         }
 
-        /* Scroll-Animation */
-        .scrolled header {
-            top: -100px; /* Versteckt den Header */
+        /* Kleines Logo (fixiert oben) */
+        .logo-small {
+            height: 50px;
+            width: auto;
+            border-radius: 10px;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            opacity: 0;
         }
 
-        .scrolled header {
-            top: 0; /* Zeigt den Header wieder an */
+        .logo-small.visible {
+            opacity: 1;
+        }
+
+        .logo-small:hover {
+            transform: scale(1.05);
+        }
+
+        /* Fixierte Elemente (oben) */
+        .fixed-elements {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 20px 0;
+            z-index: 999;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .fixed-elements.visible {
+            opacity: 1;
+        }
+
+        /* Inhalt der Seite */
+        .content {
+            padding: 100px 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header (obere Leiste) -->
-    <header>
-        <img src="logo.png" alt="Mein Logo" class="logo-header">
-    </header>
-
-    <!-- Hauptinhalt (Logo in der Mitte) -->
+    <!-- Hauptinhalt (großes Logo in der Mitte) -->
     <section class="hero">
-        <img src="logo.png" alt="Mein Logo" class="logo-hero">
+        <img src="logo.png" alt="Mein Logo" class="logo-large">
     </section>
 
+    <!-- Kleines Logo (fixiert oben) -->
+    <img src="logo.png" alt="Mein Logo" class="logo-small">
+
+    <!-- Fixierte Elemente (oben) -->
+    <div class="fixed-elements">
+        <h2>Meine Webseite</h2>
+        <p>Navigation: Work | Teaching | About</p>
+    </div>
+
+    <!-- Inhalt der Seite -->
+    <div class="content">
+        <h1>Willkommen auf meiner Webseite!</h1>
+        <p>Dies ist der Inhalt der Seite. Du kannst jetzt durch die Seite scrollen.</p>
+        <p>Die oberen Elemente bleiben immer oben fixiert.</p>
+    </div>
+
     <script>
-        // Scroll-Animation: Header verschwindet beim Scrollen
-        let header = document.querySelector('header');
-        let lastScrollTop = 0;
+        const logoLarge = document.querySelector('.logo-large');
+        const logoSmall = document.querySelector('.logo-small');
+        const fixedElements = document.querySelector('.fixed-elements');
 
+        // Scroll-Event
         window.addEventListener('scroll', function() {
-            let st = window.pageYOffset || document.documentElement.scrollTop;
+            let scrollY = window.pageYOffset;
 
-            if (st > lastScrollTop && st > 100) {
-                // Scroll nach unten → Header verschwindet
-                header.classList.add('scrolled');
-            } else {
-                // Scroll nach oben → Header erscheint
-                header.classList.remove('scrolled');
+            // Wenn man scrollt, verkleinert sich das große Logo
+            if (scrollY > 100) {
+                logoLarge.style.transform = 'scale(0.7)';
+                logoLarge.style.opacity = '0';
             }
-            lastScrollTop = st;
+
+            // Wenn man weiter scrollt, wird das kleine Logo sichtbar
+            if (scrollY > 200) {
+                logoSmall.classList.add('visible');
+            } else {
+                logoSmall.classList.remove('visible');
+            }
+
+            // Wenn man weiter scrollt, werden die fixierten Elemente sichtbar
+            if (scrollY > 300) {
+                fixedElements.classList.add('visible');
+            } else {
+                fixedElements.classList.remove('visible');
+            }
         });
     </script>
 
