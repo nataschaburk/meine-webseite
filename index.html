@@ -1,41 +1,426 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Webseite</title>
+
+    <title>Natasha Burk</title>
+
     <style>
-        /* Allgemeine Stile */
+
+        /* ========================================
+           GRUNDLAGEN
+        ======================================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: white;
-            color: #333;
-            height: 200vh; /* Mehr Scroll-Höhe für Test */
+            background: white;
+            overflow-x: hidden;
         }
 
-        /* Hauptinhalt (großes Logo in der Mitte) */
-        .hero {
+
+        /* ========================================
+           INTRO
+        ======================================== */
+
+        .intro {
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: white;
-            position: relative;
+            width: 100%;
         }
 
-        /* Großes Logo (Start) */
-        .logo-large {
-            height: 300px;
-            width: auto;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-            z-index: 1;
-            max-width: 90vw;
-            max-height: 90vh;
-            object-fit
+
+        /* ========================================
+           LOGO
+        ======================================== */
+
+        #logo {
+            position: fixed;
+
+            left: 50%;
+            top: 50%;
+
+            width: 52%;
+            max-width: 820px;
+
+            height: auto;
+
+            transform: translate(-50%, -50%) scale(1);
+
+            z-index: 100;
+
+            will-change: transform, top;
+        }
+
+
+        /* ========================================
+           NAVIGATION LINKS
+        ======================================== */
+
+        .navigation {
+            position: fixed;
+
+            left: 6.2%;
+            top: 12%;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 7px;
+
+            z-index: 90;
+
+            opacity: 0;
+            pointer-events: none;
+
+            will-change: opacity;
+        }
+
+        .navigation a {
+            display: block;
+            line-height: 0;
+        }
+
+        .navigation img {
+            width: 125px;
+            height: auto;
+            display: block;
+        }
+
+
+        /* ========================================
+           INSTAGRAM
+        ======================================== */
+
+        .instagram {
+            position: fixed;
+
+            right: 5.8%;
+            top: 6%;
+
+            z-index: 90;
+
+            opacity: 0;
+            pointer-events: none;
+
+            will-change: opacity;
+        }
+
+        .instagram img {
+            width: 60px;
+            height: auto;
+            display: block;
+        }
+
+
+        /* ========================================
+           SEITENINHALT
+        ======================================== */
+
+        .content {
+            min-height: 200vh;
+            padding-top: 150px;
+        }
+
+
+        /* ========================================
+           MOBILE
+        ======================================== */
+
+        @media (max-width: 700px) {
+
+            #logo {
+                width: 80%;
+            }
+
+            .navigation {
+                left: 5%;
+                top: 12%;
+            }
+
+            .navigation img {
+                width: 90px;
+            }
+
+            .instagram {
+                right: 5%;
+                top: 5%;
+            }
+
+            .instagram img {
+                width: 42px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         LOGO
+    ======================================== -->
+
+    <img
+        id="logo"
+        src="images/logo_name.png"
+        alt="Natasha Burk"
+    >
+
+
+    <!-- ========================================
+         NAVIGATION
+    ======================================== -->
+
+    <nav class="navigation">
+
+        <a href="#work">
+            <img
+                src="images/work.png"
+                alt="Work"
+            >
+        </a>
+
+        <a href="#teaching">
+            <img
+                src="images/teaching.png"
+                alt="Teaching"
+            >
+        </a>
+
+        <a href="#about">
+            <img
+                src="images/about.png"
+                alt="About"
+            >
+        </a>
+
+        <a href="#contact">
+            <img
+                src="images/contact.png"
+                alt="Contact"
+            >
+        </a>
+
+    </nav>
+
+
+    <!-- ========================================
+         INSTAGRAM
+    ======================================== -->
+
+    <a
+        class="instagram"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+
+        <img
+            src="images/instagarm.png"
+            alt="Instagram"
+        >
+
+    </a>
+
+
+    <!-- ========================================
+         STARTSEITE
+    ======================================== -->
+
+    <section class="intro"></section>
+
+
+    <!-- ========================================
+         INHALT
+    ======================================== -->
+
+    <main class="content">
+
+        <section id="work">
+            <!-- WORK kommt später hier hin -->
+        </section>
+
+        <section id="teaching">
+            <!-- TEACHING kommt später hier hin -->
+        </section>
+
+        <section id="about">
+            <!-- ABOUT kommt später hier hin -->
+        </section>
+
+        <section id="contact">
+            <!-- CONTACT kommt später hier hin -->
+        </section>
+
+    </main>
+
+
+    <!-- ========================================
+         SCROLL-ANIMATION
+    ======================================== -->
+
+    <script>
+
+        const logo = document.getElementById("logo");
+        const navigation = document.querySelector(".navigation");
+        const instagram = document.querySelector(".instagram");
+
+
+        /*
+         * Distanz, über die die Animation läuft.
+         *
+         * 0 px = großes Logo in der Mitte
+         * 500 px = kleines Logo oben
+         */
+        const animationDistance = 500;
+
+
+        /*
+         * LOGO
+         *
+         * Startgröße
+         */
+        const startScale = 1;
+
+
+        /*
+         * Endgröße
+         *
+         * 0.35 = 35 % der ursprünglichen Größe
+         */
+        const endScale = 0.35;
+
+
+        /*
+         * Startposition:
+         * Mitte des Bildschirms
+         */
+        const startTop = 50;
+
+
+        /*
+         * Endposition:
+         * ungefähr oben auf der Seite
+         */
+        const endTop = 7;
+
+
+        function updatePage() {
+
+            const scrollY = window.scrollY;
+
+
+            /*
+             * Fortschritt der Animation
+             *
+             * 0 = ganz am Anfang
+             * 1 = Animation fertig
+             */
+            let progress = scrollY / animationDistance;
+
+
+            /*
+             * Wert auf 0 - 1 begrenzen
+             */
+            progress = Math.max(0, Math.min(1, progress));
+
+
+            /* --------------------------------
+               LOGO GRÖSSE
+            -------------------------------- */
+
+            const scale =
+                startScale +
+                (endScale - startScale) * progress;
+
+
+            /* --------------------------------
+               LOGO POSITION
+            -------------------------------- */
+
+            const top =
+                startTop +
+                (endTop - startTop) * progress;
+
+
+            /*
+             * Logo bewegen
+             */
+            logo.style.top = `${top}%`;
+
+            logo.style.transform =
+                `translate(-50%, -50%) scale(${scale})`;
+
+
+            /* --------------------------------
+               NAVIGATION EINBLENDEN
+            -------------------------------- */
+
+            /*
+             * Die Navigation erscheint
+             * etwas nach Beginn des Scrollens.
+             */
+            const navProgress = Math.max(
+                0,
+                Math.min(1, (progress - 0.35) / 0.4)
+            );
+
+            navigation.style.opacity = navProgress;
+
+
+            if (navProgress > 0) {
+                navigation.style.pointerEvents = "auto";
+            } else {
+                navigation.style.pointerEvents = "none";
+            }
+
+
+            /* --------------------------------
+               INSTAGRAM EINBLENDEN
+            -------------------------------- */
+
+            const instagramProgress = Math.max(
+                0,
+                Math.min(1, (progress - 0.35) / 0.4)
+            );
+
+            instagram.style.opacity = instagramProgress;
+
+
+            if (instagramProgress > 0) {
+                instagram.style.pointerEvents = "auto";
+            } else {
+                instagram.style.pointerEvents = "none";
+            }
+
+        }
+
+
+        /*
+         * Bei jedem Scrollen aktualisieren
+         */
+        window.addEventListener("scroll", updatePage);
+
+
+        /*
+         * Direkt beim Laden einmal ausführen
+         */
+        updatePage();
+
+    </script>
+
+</body>
+
+</html>
