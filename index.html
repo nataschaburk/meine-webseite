@@ -141,15 +141,12 @@
 
         /* =========================================
            MOBILE VERSION
-           Desktop wird hier NICHT verändert
         ========================================= */
 
         @media (max-width: 700px) {
 
 
-            /* -------------------------------------
-               NAMENSLOGO
-            ------------------------------------- */
+            /* NAMENSLOGO */
 
             #logo {
                 width: 72%;
@@ -157,47 +154,27 @@
             }
 
 
-            /* -------------------------------------
-               NAVIGATION
-            ------------------------------------- */
+            /* NAVIGATION */
 
             .navigation {
                 left: 6%;
                 top: 92px;
-
-                /*
-                   Kein zusätzlicher Flex-Abstand.
-
-                   Den Abstand erzeugen wir über
-                   die größeren Touch-Flächen.
-                */
 
                 gap: 0;
             }
 
 
             /*
-               WICHTIG FÜR TOUCH:
-
-               Das sichtbare Wort bleibt klein,
-               aber jeder Link bekommt deutlich
-               mehr Platz zum Antippen.
+               Die Touch-Fläche bleibt 30px hoch.
+               Dadurch bleiben die Abstände
+               genauso wie vorher.
             */
 
             .navigation a {
                 display: flex;
                 align-items: center;
 
-                /*
-                   Größere Touch-Fläche
-                */
-
                 min-height: 30px;
-
-                /*
-                   Etwas zusätzliche Fläche rechts
-                   vom eigentlichen Wort.
-                */
 
                 padding-right: 20px;
 
@@ -206,20 +183,21 @@
 
 
             /*
-               Die sichtbaren Wörter bleiben
-               bewusst klein.
+               Nur die sichtbare Schrift
+               wird etwas größer.
+
+               Vorher: 9px
+               Jetzt: 11px
             */
 
             .navigation img {
-                height: 9px;
+                height: 11px;
                 width: auto;
                 display: block;
             }
 
 
-            /* -------------------------------------
-               INSTAGRAM
-            ------------------------------------- */
+            /* INSTAGRAM */
 
             .instagram {
                 right: 6%;
@@ -242,9 +220,7 @@
 <body>
 
 
-    <!-- =========================================
-         NAMENSLOGO
-    ========================================= -->
+    <!-- NAMENSLOGO -->
 
     <img
         id="logo"
@@ -253,9 +229,7 @@
     >
 
 
-    <!-- =========================================
-         NAVIGATION
-    ========================================= -->
+    <!-- NAVIGATION -->
 
     <nav class="navigation">
 
@@ -290,9 +264,7 @@
     </nav>
 
 
-    <!-- =========================================
-         INSTAGRAM
-    ========================================= -->
+    <!-- INSTAGRAM -->
 
     <a
         class="instagram"
@@ -309,16 +281,12 @@
     </a>
 
 
-    <!-- =========================================
-         STARTSEITE
-    ========================================= -->
+    <!-- STARTSEITE -->
 
     <section class="intro"></section>
 
 
-    <!-- =========================================
-         SPÄTERER INHALT
-    ========================================= -->
+    <!-- SPÄTERER INHALT -->
 
     <main class="content">
 
@@ -341,9 +309,7 @@
     </main>
 
 
-    <!-- =========================================
-         SCROLL-ANIMATION
-    ========================================= -->
+    <!-- SCROLL-ANIMATION -->
 
     <script>
 
@@ -357,16 +323,8 @@
             document.querySelector(".instagram");
 
 
-        /* =========================================
-           SCROLL-DISTANZ
-        ========================================= */
-
         const animationDistance = 500;
 
-
-        /* =========================================
-           ANIMATION
-        ========================================= */
 
         function updatePage() {
 
@@ -378,34 +336,21 @@
                 window.innerWidth <= 700;
 
 
-            /* =====================================
-               LOGO-GRÖSSE
-            ===================================== */
+            /* LOGO-GRÖSSE */
 
             const startScale = 1;
-
-
-            /*
-               Desktop bleibt unverändert.
-
-               Mobile ist etwas kleiner.
-            */
 
             const endScale =
                 isMobile ? 0.40 : 0.55;
 
 
-            /* =====================================
-               LOGO-ENDPOSITION
-            ===================================== */
+            /* LOGO-ENDPOSITION */
 
             const endTop =
                 isMobile ? 55 : 75;
 
 
-            /* =====================================
-               FORTSCHRITT
-            ===================================== */
+            /* FORTSCHRITT */
 
             let progress =
                 scrollY / animationDistance;
@@ -418,9 +363,7 @@
                 );
 
 
-            /* =====================================
-               LOGO-GRÖSSE BERECHNEN
-            ===================================== */
+            /* LOGO-GRÖSSE BERECHNEN */
 
             const scale =
                 startScale +
@@ -428,9 +371,7 @@
                 * progress;
 
 
-            /* =====================================
-               LOGO-POSITION
-            ===================================== */
+            /* LOGO-POSITION BERECHNEN */
 
             const startTop =
                 window.innerHeight / 2;
@@ -442,9 +383,7 @@
                 * progress;
 
 
-            /* =====================================
-               LOGO AKTUALISIEREN
-            ===================================== */
+            /* LOGO AKTUALISIEREN */
 
             logo.style.top =
                 `${top}px`;
@@ -454,9 +393,7 @@
                 `translate(-50%, -50%) scale(${scale})`;
 
 
-            /* =====================================
-               NAVIGATION + INSTAGRAM EINBLENDEN
-            ===================================== */
+            /* NAVIGATION + INSTAGRAM EINBLENDEN */
 
             const navProgress =
                 Math.max(
@@ -476,9 +413,7 @@
                 navProgress;
 
 
-            /* =====================================
-               LINKS AKTIVIEREN
-            ===================================== */
+            /* LINKS AKTIVIEREN */
 
             if (navProgress > 0) {
 
@@ -503,9 +438,7 @@
         }
 
 
-        /* =========================================
-           EVENTS
-        ========================================= */
+        /* EVENTS */
 
         window.addEventListener(
             "scroll",
