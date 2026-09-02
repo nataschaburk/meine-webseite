@@ -153,4 +153,20 @@
             }
 
             // Wenn man weiter scrollt, wird das kleine Logo sichtbar
-            if (scr
+            if (scrollY > 200) {
+                logoSmall.classList.add('visible');
+            } else {
+                logoSmall.classList.remove('visible');
+            }
+
+            // Wenn man weiter scrollt, werden die fixierten Elemente sichtbar
+            if (scrollY > 300) {
+                fixedElements.classList.add('visible');
+            } else {
+                fixedElements.classList.remove('visible');
+            }
+        });
+    </script>
+
+</body>
+</html>
