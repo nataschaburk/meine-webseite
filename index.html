@@ -8,6 +8,11 @@
     <title>Natascha Burk</title>
 
     <style>
+
+        /* =========================================
+           GRUNDEINSTELLUNGEN
+        ========================================= */
+
         * {
             margin: 0;
             padding: 0;
@@ -25,14 +30,20 @@
             overflow-x: hidden;
         }
 
-        /* STARTBEREICH */
+
+        /* =========================================
+           STARTBEREICH
+        ========================================= */
 
         .intro {
             width: 100%;
             height: 100vh;
         }
 
-        /* LOGO */
+
+        /* =========================================
+           LOGO
+        ========================================= */
 
         #logo {
             position: fixed;
@@ -52,7 +63,10 @@
             will-change: transform, top;
         }
 
-        /* NAVIGATION */
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
 
         .navigation {
             position: fixed;
@@ -74,24 +88,44 @@
             will-change: opacity;
         }
 
+
         .navigation a {
             display: block;
             line-height: 0;
         }
 
+
+        /*
+           Alle Wörter haben dieselbe Höhe.
+           Dadurch bleibt die Schriftgröße
+           optisch gleich.
+        */
+
         .navigation img {
             height: 28px;
             width: auto;
+
             display: block;
         }
 
-        /* INSTAGRAM */
+
+        /* =========================================
+           INSTAGRAM
+        ========================================= */
 
         .instagram {
             position: fixed;
 
             right: 5.8%;
-            top: 6%;
+
+            /*
+               Gleiche vertikale Mitte
+               wie das kleine Namenslogo.
+            */
+
+            top: 75px;
+
+            transform: translateY(-50%);
 
             z-index: 90;
 
@@ -101,19 +135,27 @@
             will-change: opacity;
         }
 
+
         .instagram img {
-            width: 60px;
+            width: 42px;
             height: auto;
+
             display: block;
         }
 
-        /* INHALT */
+
+        /* =========================================
+           INHALT
+        ========================================= */
 
         .content {
             min-height: 200vh;
         }
 
-        /* MOBILE */
+
+        /* =========================================
+           HANDY
+        ========================================= */
 
         @media (max-width: 700px) {
 
@@ -121,30 +163,40 @@
                 width: 80%;
             }
 
+
             .navigation {
                 left: 5%;
                 top: 12%;
             }
 
+
             .navigation img {
                 height: 22px;
             }
 
+
             .instagram {
                 right: 5%;
-                top: 5%;
             }
 
+
             .instagram img {
-                width: 42px;
+                width: 34px;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- LOGO -->
+
+    <!-- =========================================
+         NAMENSLOGO
+    ========================================= -->
 
     <img
         id="logo"
@@ -152,29 +204,62 @@
         alt="Natascha Burk"
     >
 
-    <!-- NAVIGATION -->
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================= -->
 
     <nav class="navigation">
 
+
         <a href="#work">
-            <img src="images/work.png" alt="Work">
+
+            <img
+                src="images/work.png"
+                alt="Work"
+            >
+
         </a>
+
 
         <a href="#teaching">
-            <img src="images/teaching.png" alt="Teaching">
+
+            <img
+                src="images/teaching.png"
+                alt="Teaching"
+            >
+
         </a>
+
 
         <a href="#about">
-            <img src="images/about.png" alt="About">
+
+            <img
+                src="images/about.png"
+                alt="About"
+            >
+
         </a>
 
+
         <a href="#contact">
-            <img src="images/contact.png" alt="Contact">
+
+            <img
+                src="images/contact.png"
+                alt="Contact"
+            >
+
         </a>
+
 
     </nav>
 
-    <!-- INSTAGRAM -->
+
+
+    <!-- =========================================
+         INSTAGRAM
+    ========================================= -->
 
     <a
         class="instagram"
@@ -182,103 +267,201 @@
         target="_blank"
         rel="noopener noreferrer"
     >
+
         <img
             src="images/instagram.png"
             alt="Instagram"
         >
+
     </a>
 
-    <!-- STARTSEITE -->
+
+
+    <!-- =========================================
+         STARTSEITE
+    ========================================= -->
 
     <section class="intro"></section>
 
-    <!-- INHALT -->
+
+
+    <!-- =========================================
+         SPÄTERER INHALT
+    ========================================= -->
 
     <main class="content">
 
+
         <section id="work">
+
             <!-- WORK kommt später hier hin -->
+
         </section>
+
 
         <section id="teaching">
+
             <!-- TEACHING kommt später hier hin -->
+
         </section>
+
 
         <section id="about">
+
             <!-- ABOUT kommt später hier hin -->
+
         </section>
 
+
         <section id="contact">
+
             <!-- CONTACT kommt später hier hin -->
+
         </section>
+
 
     </main>
 
+
+
+    <!-- =========================================
+         SCROLL-ANIMATION
+    ========================================= -->
+
     <script>
-        const logo = document.getElementById("logo");
-        const navigation = document.querySelector(".navigation");
-        const instagram = document.querySelector(".instagram");
+
+
+        /* Elemente auswählen */
+
+        const logo =
+            document.getElementById("logo");
+
+        const navigation =
+            document.querySelector(".navigation");
+
+        const instagram =
+            document.querySelector(".instagram");
+
+
+
+        /* =========================================
+           ANIMATIONS-EINSTELLUNGEN
+        ========================================= */
+
 
         /*
-           Scroll-Distanz der Animation
+           Wie weit gescrollt werden muss,
+           bis die Animation abgeschlossen ist.
         */
+
         const animationDistance = 500;
 
-        /*
-           Logo-Größe
-        */
-        const startScale = 1;
-        const endScale = 0.55;
+
 
         /*
-           Endposition des Logos oben
-           Wert bezieht sich auf die Mitte des Logos
+           Größe des Logos
+
+           1    = große Startgröße
+           0.55 = kleine Endgröße
         */
+
+        const startScale = 1;
+
+        const endScale = 0.55;
+
+
+
+        /*
+           Vertikale Endposition.
+
+           Die Mitte des kleinen Namenslogos
+           befindet sich bei 75px.
+        */
+
         const endTop = 75;
+
+
+
+        /* =========================================
+           ANIMATION
+        ========================================= */
 
         function updatePage() {
 
-            const scrollY = window.scrollY;
+
+            const scrollY =
+                window.scrollY;
+
+
 
             /*
-               Fortschritt:
+               Fortschritt berechnen.
+
                0 = Start
-               1 = Animation fertig
+               1 = Animation abgeschlossen
             */
-            let progress = scrollY / animationDistance;
 
-            progress = Math.max(
-                0,
-                Math.min(1, progress)
-            );
+            let progress =
+                scrollY / animationDistance;
+
+
 
             /*
-               Logo-Größe berechnen
+               Fortschritt zwischen
+               0 und 1 begrenzen.
             */
+
+            progress =
+                Math.max(
+                    0,
+                    Math.min(1, progress)
+                );
+
+
+
+            /* =====================================
+               LOGO-GRÖSSE
+            ===================================== */
+
             const scale =
                 startScale +
-                (endScale - startScale) * progress;
+                (endScale - startScale)
+                * progress;
 
-            /*
-               Logo-Position berechnen
-            */
-            const startTop = window.innerHeight / 2;
+
+
+            /* =====================================
+               LOGO-POSITION
+            ===================================== */
+
+            const startTop =
+                window.innerHeight / 2;
+
 
             const top =
                 startTop +
-                (endTop - startTop) * progress;
+                (endTop - startTop)
+                * progress;
 
-            /*
-               Logo anwenden
-            */
-            logo.style.top = `${top}px`;
+
+
+            /* =====================================
+               LOGO ANWENDEN
+            ===================================== */
+
+            logo.style.top =
+                `${top}px`;
+
 
             logo.style.transform =
                 `translate(-50%, -50%) scale(${scale})`;
 
-            /*
-               Navigation und Instagram einblenden
-            */
+
+
+            /* =====================================
+               MENÜ EINBLENDEN
+            ===================================== */
+
             const navProgress =
                 Math.max(
                     0,
@@ -288,27 +471,70 @@
                     )
                 );
 
-            navigation.style.opacity = navProgress;
-            instagram.style.opacity = navProgress;
 
-            /*
-               Links erst aktivieren,
-               sobald sie sichtbar sind
-            */
+
+            navigation.style.opacity =
+                navProgress;
+
+
+            instagram.style.opacity =
+                navProgress;
+
+
+
+            /* =====================================
+               LINKS AKTIVIEREN
+            ===================================== */
+
             if (navProgress > 0) {
-                navigation.style.pointerEvents = "auto";
-                instagram.style.pointerEvents = "auto";
-            } else {
-                navigation.style.pointerEvents = "none";
-                instagram.style.pointerEvents = "none";
+
+                navigation.style.pointerEvents =
+                    "auto";
+
+                instagram.style.pointerEvents =
+                    "auto";
+
             }
+
+            else {
+
+                navigation.style.pointerEvents =
+                    "none";
+
+                instagram.style.pointerEvents =
+                    "none";
+
+            }
+
         }
 
-        window.addEventListener("scroll", updatePage);
-        window.addEventListener("resize", updatePage);
+
+
+        /* Bei Scrollbewegung aktualisieren */
+
+        window.addEventListener(
+            "scroll",
+            updatePage
+        );
+
+
+
+        /* Bei Änderung der Fenstergröße */
+
+        window.addEventListener(
+            "resize",
+            updatePage
+        );
+
+
+
+        /* Beim Laden einmal ausführen */
 
         updatePage();
+
+
     </script>
+
 
 </body>
 
