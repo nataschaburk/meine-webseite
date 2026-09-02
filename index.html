@@ -88,10 +88,12 @@
             will-change: opacity;
         }
 
+
         .navigation a {
             display: block;
             line-height: 0;
         }
+
 
         .navigation img {
             height: 24px;
@@ -120,6 +122,7 @@
             will-change: opacity;
         }
 
+
         .instagram img {
             width: 36px;
             height: auto;
@@ -138,18 +141,15 @@
 
         /* =========================================
            MOBILE VERSION
-           
-           WICHTIG:
-           Alles hier verändert NUR die
-           Handy-Version.
+           Desktop wird hier NICHT verändert
         ========================================= */
 
         @media (max-width: 700px) {
 
 
-            /* =====================================
-               NAMENSLOGO MOBILE
-            ===================================== */
+            /* -------------------------------------
+               NAMENSLOGO
+            ------------------------------------- */
 
             #logo {
                 width: 72%;
@@ -157,77 +157,78 @@
             }
 
 
-            /* =====================================
-               NAVIGATION MOBILE
-            ===================================== */
+            /* -------------------------------------
+               NAVIGATION
+            ------------------------------------- */
 
             .navigation {
-
-                /*
-                   Links etwas Abstand zum Rand
-                */
-
                 left: 6%;
-
-
-                /*
-                   Der Block beginnt bewusst
-                   UNTER dem Namenslogo.
-                */
-
                 top: 92px;
 
-
                 /*
-                   Sehr kompakter Abstand
-                   zwischen den vier Wörtern.
+                   Kein zusätzlicher Flex-Abstand.
+
+                   Den Abstand erzeugen wir über
+                   die größeren Touch-Flächen.
                 */
 
-                gap: 2px;
+                gap: 0;
             }
 
+
+            /*
+               WICHTIG FÜR TOUCH:
+
+               Das sichtbare Wort bleibt klein,
+               aber jeder Link bekommt deutlich
+               mehr Platz zum Antippen.
+            */
+
+            .navigation a {
+                display: flex;
+                align-items: center;
+
+                /*
+                   Größere Touch-Fläche
+                */
+
+                min-height: 30px;
+
+                /*
+                   Etwas zusätzliche Fläche rechts
+                   vom eigentlichen Wort.
+                */
+
+                padding-right: 20px;
+
+                line-height: 0;
+            }
+
+
+            /*
+               Die sichtbaren Wörter bleiben
+               bewusst klein.
+            */
 
             .navigation img {
-
-                /*
-                   Deutlich kleiner als vorher.
-
-                   Vorher: 12px
-                   Jetzt: 9px
-                */
-
                 height: 9px;
-
                 width: auto;
+                display: block;
             }
 
 
-            /* =====================================
-               INSTAGRAM MOBILE
-            ===================================== */
+            /* -------------------------------------
+               INSTAGRAM
+            ------------------------------------- */
 
             .instagram {
-
                 right: 6%;
-
-
-                /*
-                   Gleiche vertikale Mittelachse
-                   wie das kleine Namenslogo.
-                */
-
                 top: 55px;
             }
 
 
             .instagram img {
-
-                /*
-                   Noch kleiner und feiner.
-                */
-
                 width: 18px;
-
                 height: auto;
             }
 
@@ -373,26 +374,21 @@
                 window.scrollY;
 
 
-            /*
-               Prüfen, ob Handy oder Desktop
-            */
-
             const isMobile =
                 window.innerWidth <= 700;
 
 
             /* =====================================
-               LOGO-GRÖSSEN
+               LOGO-GRÖSSE
             ===================================== */
 
             const startScale = 1;
 
 
             /*
-               Desktop bleibt bei 0.55.
+               Desktop bleibt unverändert.
 
-               Mobile wird kleiner,
-               damit oben mehr Platz entsteht.
+               Mobile ist etwas kleiner.
             */
 
             const endScale =
@@ -402,12 +398,6 @@
             /* =====================================
                LOGO-ENDPOSITION
             ===================================== */
-
-            /*
-               Desktop: 75px
-
-               Mobile: 55px
-            */
 
             const endTop =
                 isMobile ? 55 : 75;
@@ -439,7 +429,7 @@
 
 
             /* =====================================
-               LOGO-POSITION BERECHNEN
+               LOGO-POSITION
             ===================================== */
 
             const startTop =
