@@ -144,8 +144,12 @@
             margin: 0;
         }
 
-        .desktop-break {
+        .desktop-text {
             display: block;
+        }
+
+        .mobile-text {
+            display: none;
         }
 
         .about-image {
@@ -242,11 +246,15 @@
                 line-height: 1.2;
             }
 
-            .desktop-break {
+            .desktop-text {
                 display: none;
             }
 
-            .about-text p + p {
+            .mobile-text {
+                display: block;
+            }
+
+            .mobile-text p + p {
                 margin-top: 1.2em;
             }
 
@@ -330,23 +338,48 @@
 
                 <div class="about-text">
 
-                    <p>
-                        Natascha Burk is a product designer based in Kassel,
-                        Germany. Her practice combines industrial design with
-                        experimental approaches to form. Her work spans
-                        <span class="desktop-break"></span>
-                        self-initiated furniture and object projects that
-                        investigate processes, technologies, and materials in
-                        unconventional contexts, as well as industrial design
-                        collaborations with institutions and companies.
-                    </p>
+                    <div class="desktop-text">
 
-                    <p>
-                        She has been teaching design since 2022 and currently
-                        works as an artistic associate at Kunsthochschule Kassel.
-                        She has also held teaching appointments at other
-                        universities and institutions.
-                    </p>
+                        <p>
+                            Natascha Burk is a product designer based<br>
+                            in Kassel, Germany. Her practice combines<br>
+                            industrial design with experimental<br>
+                            approaches to form. Her work spans<br>
+                            self-initiated furniture and object projects<br>
+                            that investigate processes, technologies,<br>
+                            and materials in unconventional contexts,<br>
+                            as well as industrial design collaborations<br>
+                            with institutions and companies.<br>
+                            She has been teaching design since 2022<br>
+                            and currently works as an artistic associate<br>
+                            at Kunsthochschule Kassel. She has also<br>
+                            held lectureships at other universities and<br>
+                            institutions.
+                        </p>
+
+                    </div>
+
+
+                    <div class="mobile-text">
+
+                        <p>
+                            Natascha Burk is a product designer based in Kassel,
+                            Germany. Her practice combines industrial design with
+                            experimental approaches to form. Her work spans
+                            self-initiated furniture and object projects that
+                            investigate processes, technologies, and materials in
+                            unconventional contexts, as well as industrial design
+                            collaborations with institutions and companies.
+                        </p>
+
+                        <p>
+                            She has been teaching design since 2022 and currently
+                            works as an artistic associate at Kunsthochschule Kassel.
+                            She has also held lectureships at other universities and
+                            institutions.
+                        </p>
+
+                    </div>
 
                 </div>
 
