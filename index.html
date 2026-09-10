@@ -9,6 +9,14 @@
 
     <style>
 
+        @font-face {
+            font-family: "Barlow";
+            src: url("fonts/Barlow-Regular.ttf") format("truetype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -21,75 +29,51 @@
             min-height: 100%;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background: white;
             overflow-x: hidden;
         }
-
-
-        /* =========================================
-           STARTBEREICH
-        ========================================= */
 
         .intro {
             width: 100%;
             height: 100vh;
         }
 
-
-        /* =========================================
-           NAMENSLOGO - DESKTOP
-        ========================================= */
-
         #logo {
             position: fixed;
-
             left: 50%;
             top: 50%;
-
             width: 44%;
             max-width: 700px;
             height: auto;
-
             transform: translate(-50%, -50%);
             transform-origin: center center;
-
             z-index: 100;
-
             will-change: transform, top;
         }
 
-
-        /* =========================================
-           NAVIGATION - DESKTOP
-        ========================================= */
-
         .navigation {
             position: fixed;
-
             left: 6.2%;
             top: 12%;
-
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-
             gap: 4px;
-
             z-index: 90;
-
             opacity: 0;
             pointer-events: none;
-
             will-change: opacity;
         }
-
 
         .navigation a {
             display: block;
             line-height: 0;
         }
-
 
         .navigation img {
             height: 24px;
@@ -97,27 +81,16 @@
             display: block;
         }
 
-
-        /* =========================================
-           INSTAGRAM - DESKTOP
-        ========================================= */
-
         .instagram {
             position: fixed;
-
             right: 5.8%;
             top: 75px;
-
             transform: translateY(-50%);
-
             z-index: 90;
-
             opacity: 0;
             pointer-events: none;
-
             will-change: opacity;
         }
-
 
         .instagram img {
             width: 36px;
@@ -125,86 +98,103 @@
             display: block;
         }
 
-
-        /* =========================================
-           INHALT
-        ========================================= */
-
         .content {
             min-height: 200vh;
         }
 
 
-        /* =========================================
-           PRIVACY POLICY
-        ========================================= */
+        /* ABOUT */
 
-        .privacy {
+        .about-section {
             width: 100%;
+            min-height: 100vh;
 
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
 
+            padding-top: 11vh;
+            padding-bottom: 18vh;
+
+            scroll-margin-top: 120px;
+        }
+
+        .about-inner {
+            width: 59.5%;
+            max-width: 950px;
+
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            column-gap: 52px;
+
+            align-items: start;
+        }
+
+        .about-text {
+            font-family: "Barlow", sans-serif;
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.17;
+            letter-spacing: 0;
+            color: #000;
+        }
+
+        .about-text p + p {
+            margin-top: 0;
+        }
+
+        .about-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+
+        /* PRIVACY */
+
+        .privacy {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding-top: 80px;
             padding-bottom: 35px;
         }
-
 
         .privacy a {
             display: inline-block;
             line-height: 0;
         }
 
-
         .privacy img {
-            /*
-               Bewusst sehr klein und dezent
-            */
-
             height: 10px;
             width: auto;
-
             display: block;
         }
 
 
-        /* =========================================
-           MOBILE VERSION
-        ========================================= */
+        /* MOBILE */
 
         @media (max-width: 700px) {
-
-
-            /* NAMENSLOGO */
 
             #logo {
                 width: 72%;
                 max-width: none;
             }
 
-
-            /* NAVIGATION */
-
             .navigation {
                 left: 6%;
                 top: 92px;
-
                 gap: 0;
             }
-
 
             .navigation a {
                 display: flex;
                 align-items: center;
-
                 min-height: 30px;
-
                 padding-right: 20px;
-
                 line-height: 0;
             }
-
 
             .navigation img {
                 height: 11px;
@@ -212,14 +202,10 @@
                 display: block;
             }
 
-
-            /* INSTAGRAM */
-
             .instagram {
                 right: 6%;
                 top: 55px;
             }
-
 
             .instagram img {
                 width: 18px;
@@ -227,80 +213,77 @@
             }
 
 
-            /* PRIVACY POLICY */
+            /* ABOUT MOBILE */
+
+            .about-section {
+                min-height: auto;
+                padding-top: 150px;
+                padding-bottom: 120px;
+            }
+
+            .about-inner {
+                width: 88%;
+                max-width: none;
+
+                display: flex;
+                flex-direction: column;
+
+                gap: 38px;
+            }
+
+            .about-text {
+                width: 100%;
+                font-size: 20px;
+                line-height: 1.2;
+            }
+
+            .about-image {
+                width: 100%;
+                height: auto;
+            }
+
+
+            /* PRIVACY MOBILE */
 
             .privacy {
                 padding-top: 60px;
                 padding-bottom: 25px;
             }
 
-
             .privacy img {
                 height: 8px;
                 width: auto;
             }
-
         }
 
     </style>
-
 </head>
-
 
 <body>
 
+    <img id="logo" src="images/logo_name.png" alt="Natascha Burk">
 
-    <!-- =========================================
-         NAMENSLOGO
-    ========================================= -->
-
-    <img
-        id="logo"
-        src="images/logo_name.png"
-        alt="Natascha Burk"
-    >
-
-
-    <!-- =========================================
-         NAVIGATION
-    ========================================= -->
 
     <nav class="navigation">
 
         <a href="#work">
-            <img
-                src="images/work.png"
-                alt="Work"
-            >
+            <img src="images/work.png" alt="Work">
         </a>
 
         <a href="#teaching">
-            <img
-                src="images/teaching.png"
-                alt="Teaching"
-            >
+            <img src="images/teaching.png" alt="Teaching">
         </a>
 
         <a href="#about">
-            <img
-                src="images/about.png"
-                alt="About"
-            >
+            <img src="images/about.png" alt="About">
         </a>
 
         <a href="#contact">
-            <img
-                src="images/contact.png"
-                alt="Contact"
-            >
+            <img src="images/contact.png" alt="Contact">
         </a>
 
     </nav>
 
-
-    <!-- =========================================
-         INSTAGRAM
-    ========================================= -->
 
     <a
         class="instagram"
@@ -309,25 +292,12 @@
         rel="noopener noreferrer"
         aria-label="Instagram von Natascha Burk"
     >
-
-        <img
-            src="images/instagram.png"
-            alt="Instagram"
-        >
-
+        <img src="images/instagram.png" alt="Instagram">
     </a>
 
 
-    <!-- =========================================
-         STARTSEITE
-    ========================================= -->
-
     <section class="intro"></section>
 
-
-    <!-- =========================================
-         INHALT
-    ========================================= -->
 
     <main class="content">
 
@@ -335,13 +305,48 @@
             <!-- WORK -->
         </section>
 
+
         <section id="teaching">
             <!-- TEACHING -->
         </section>
 
-        <section id="about">
-            <!-- ABOUT -->
+
+        <section id="about" class="about-section">
+
+            <div class="about-inner">
+
+                <div class="about-text">
+
+                    <p>
+                        Natascha Burk is a product designer based in Kassel,
+                        Germany. Her practice combines industrial design with
+                        experimental approaches to form. Her work spans
+                        self-initiated furniture and object projects that
+                        investigate processes, technologies, and materials in
+                        unconventional contexts, as well as industrial design
+                        collaborations with institutions and companies.
+                    </p>
+
+                    <p>
+                        She has been teaching design since 2022 and currently
+                        works as an artistic associate at Kunsthochschule Kassel.
+                        She has also held teaching appointments at other
+                        universities and institutions.
+                    </p>
+
+                </div>
+
+
+                <img
+                    class="about-image"
+                    src="images/portrait_natascha.jpg"
+                    alt="Portrait of Natascha Burk"
+                >
+
+            </div>
+
         </section>
+
 
         <section id="contact">
             <!-- CONTACT -->
@@ -350,16 +355,9 @@
     </main>
 
 
-    <!-- =========================================
-         PRIVACY POLICY
-    ========================================= -->
-
     <footer class="privacy">
 
-        <a
-            href="#privacy"
-            aria-label="Privacy Policy"
-        >
+        <a href="#privacy" aria-label="Privacy Policy">
 
             <img
                 src="images/privacy_policy.png"
@@ -370,10 +368,6 @@
 
     </footer>
 
-
-    <!-- =========================================
-         SCROLL-ANIMATION
-    ========================================= -->
 
     <script>
 
@@ -395,47 +389,37 @@
             const scrollY =
                 window.scrollY;
 
-
             const isMobile =
                 window.innerWidth <= 700;
 
-
-            /* LOGO-GRÖSSE */
 
             const startScale = 1;
 
             const endScale =
                 isMobile ? 0.40 : 0.55;
 
-
-            /* LOGO-ENDPOSITION */
-
             const endTop =
                 isMobile ? 55 : 75;
 
 
-            /* FORTSCHRITT */
-
             let progress =
                 scrollY / animationDistance;
-
 
             progress =
                 Math.max(
                     0,
-                    Math.min(1, progress)
+                    Math.min(
+                        1,
+                        progress
+                    )
                 );
 
 
-            /* LOGO-GRÖSSE */
-
             const scale =
                 startScale +
-                (endScale - startScale)
-                * progress;
+                (endScale - startScale) *
+                progress;
 
-
-            /* LOGO-POSITION */
 
             const startTop =
                 window.innerHeight / 2;
@@ -443,11 +427,9 @@
 
             const top =
                 startTop +
-                (endTop - startTop)
-                * progress;
+                (endTop - startTop) *
+                progress;
 
-
-            /* LOGO AKTUALISIEREN */
 
             logo.style.top =
                 `${top}px`;
@@ -456,8 +438,6 @@
             logo.style.transform =
                 `translate(-50%, -50%) scale(${scale})`;
 
-
-            /* NAVIGATION + INSTAGRAM EINBLENDEN */
 
             const navProgress =
                 Math.max(
@@ -472,12 +452,9 @@
             navigation.style.opacity =
                 navProgress;
 
-
             instagram.style.opacity =
                 navProgress;
 
-
-            /* LINKS AKTIVIEREN */
 
             if (navProgress > 0) {
 
@@ -487,24 +464,16 @@
                 instagram.style.pointerEvents =
                     "auto";
 
-            }
-
-            else {
+            } else {
 
                 navigation.style.pointerEvents =
                     "none";
 
                 instagram.style.pointerEvents =
                     "none";
-
             }
-
         }
 
-
-        /* =========================================
-           EVENTS
-        ========================================= */
 
         window.addEventListener(
             "scroll",
@@ -522,7 +491,6 @@
         updatePage();
 
     </script>
-
 
 </body>
 
