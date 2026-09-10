@@ -120,17 +120,18 @@
         }
 
         .about-inner {
-            width: 59.5%;
-            max-width: 950px;
+            width: 855px;
 
             display: grid;
-            grid-template-columns: 1.35fr 1fr;
-            column-gap: 52px;
+            grid-template-columns: 470px 335px;
+            column-gap: 50px;
 
             align-items: start;
         }
 
         .about-text {
+            width: 470px;
+
             font-family: "Barlow", sans-serif;
             font-size: 28px;
             font-weight: 400;
@@ -139,12 +140,16 @@
             color: #000;
         }
 
-        .about-text p + p {
-            margin-top: 0;
+        .about-text p {
+            margin: 0;
+        }
+
+        .desktop-break {
+            display: block;
         }
 
         .about-image {
-            width: 100%;
+            width: 335px;
             height: auto;
             display: block;
         }
@@ -223,7 +228,6 @@
 
             .about-inner {
                 width: 88%;
-                max-width: none;
 
                 display: flex;
                 flex-direction: column;
@@ -233,8 +237,17 @@
 
             .about-text {
                 width: 100%;
+
                 font-size: 20px;
                 line-height: 1.2;
+            }
+
+            .desktop-break {
+                display: none;
+            }
+
+            .about-text p + p {
+                margin-top: 1.2em;
             }
 
             .about-image {
@@ -321,6 +334,7 @@
                         Natascha Burk is a product designer based in Kassel,
                         Germany. Her practice combines industrial design with
                         experimental approaches to form. Her work spans
+                        <span class="desktop-break"></span>
                         self-initiated furniture and object projects that
                         investigate processes, technologies, and materials in
                         unconventional contexts, as well as industrial design
