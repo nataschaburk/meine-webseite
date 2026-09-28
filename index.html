@@ -59,6 +59,7 @@
 
         #logo {
             position: fixed;
+
             left: 50%;
             top: 50%;
 
@@ -67,11 +68,11 @@
             height: auto;
 
             transform: translate(-50%, -50%);
-            transform-origin: center center;
+            transform-origin: left center;
 
             z-index: 100;
 
-            will-change: transform, top;
+            will-change: transform, top, left;
         }
 
 
@@ -161,8 +162,8 @@
             width: 925px;
 
             display: grid;
-
             grid-template-columns: 540px 335px;
+
             column-gap: 50px;
 
             align-items: start;
@@ -244,12 +245,11 @@
 
         @media (max-width: 700px) {
 
-
-            /* NAME */
-
             #logo {
                 width: 72%;
                 max-width: none;
+
+                transform-origin: center center;
             }
 
 
@@ -536,9 +536,6 @@
 
     <div class="legal-links">
 
-
-        <!-- PRIVACY POLICY -->
-
         <a
             href="privacy.html"
             aria-label="Privacy Policy"
@@ -552,15 +549,11 @@
         </a>
 
 
-        <!-- DIVIDER -->
-
         <span
             class="legal-divider"
             aria-hidden="true"
         ></span>
 
-
-        <!-- IMPRINT -->
 
         <a
             href="imprint.html"
@@ -573,7 +566,6 @@
             >
 
         </a>
-
 
     </div>
 
@@ -591,6 +583,9 @@
         const instagram =
             document.querySelector(".instagram");
 
+        const aboutInner =
+            document.querySelector(".about-inner");
+
         const animationDistance = 500;
 
 
@@ -601,15 +596,6 @@
 
             const isMobile =
                 window.innerWidth <= 700;
-
-
-            const startScale = 1;
-
-            const endScale =
-                isMobile ? 0.40 : 0.55;
-
-            const endTop =
-                isMobile ? 55 : 75;
 
 
             let progress =
@@ -626,29 +612,147 @@
                 );
 
 
-            const scale =
-                startScale +
-                (endScale - startScale) *
-                progress;
+            /*
+            --------------------------------
+            MOBILE
+            --------------------------------
+            */
+
+            if (isMobile) {
+
+                const startScale = 1;
+                const endScale = 0.40;
+
+                const startTop =
+                    window.innerHeight / 2;
+
+                const endTop = 55;
 
 
-            const startTop =
-                window.innerHeight / 2;
+                const scale =
+                    startScale +
+                    (endScale - startScale) *
+                    progress;
 
 
-            const top =
-                startTop +
-                (endTop - startTop) *
-                progress;
+                const top =
+                    startTop +
+                    (endTop - startTop) *
+                    progress;
 
 
-            logo.style.top =
-                `${top}px`;
+                logo.style.left =
+                    "50%";
+
+                logo.style.top =
+                    `${top}px`;
+
+                logo.style.transformOrigin =
+                    "center center";
+
+                logo.style.transform =
+                    `translate(-50%, -50%) scale(${scale})`;
+            }
 
 
-            logo.style.transform =
-                `translate(-50%, -50%) scale(${scale})`;
+            /*
+            --------------------------------
+            DESKTOP
+            --------------------------------
+            */
 
+            else {
+
+                const startScale = 1;
+                const endScale = 0.55;
+
+                const startTop =
+                    window.innerHeight / 2;
+
+                const endTop = 75;
+
+
+                /*
+                Left edge of ABOUT container.
+                This is the exact alignment
+                position for the final logo.
+                */
+
+                const aboutRect =
+                    aboutInner.getBoundingClientRect();
+
+                const finalLeft =
+                    aboutRect.left;
+
+
+                /*
+                Initial logo centre.
+                */
+
+                const startLeft =
+                    window.innerWidth / 2;
+
+
+                /*
+                Because the logo starts centered
+                but ends left-aligned, we interpolate
+                its actual left position.
+                */
+
+                const logoNaturalWidth =
+                    logo.getBoundingClientRect().width /
+                    (
+                        parseFloat(
+                            logo.dataset.currentScale || "1"
+                        )
+                    );
+
+
+                const startLogoLeftEdge =
+                    startLeft -
+                    logoNaturalWidth / 2;
+
+
+                const currentLeftEdge =
+                    startLogoLeftEdge +
+                    (finalLeft - startLogoLeftEdge) *
+                    progress;
+
+
+                const scale =
+                    startScale +
+                    (endScale - startScale) *
+                    progress;
+
+
+                const top =
+                    startTop +
+                    (endTop - startTop) *
+                    progress;
+
+
+                logo.style.left =
+                    `${currentLeftEdge}px`;
+
+                logo.style.top =
+                    `${top}px`;
+
+                logo.style.transformOrigin =
+                    "left center";
+
+                logo.style.transform =
+                    `translateY(-50%) scale(${scale})`;
+
+                logo.dataset.currentScale =
+                    scale;
+            }
+
+
+            /*
+            --------------------------------
+            NAVIGATION + INSTAGRAM
+            --------------------------------
+            */
 
             const navProgress =
                 Math.max(
