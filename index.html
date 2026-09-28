@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,14 @@
             font-family: "Barlow";
             src: url("fonts/Barlow-Regular.ttf") format("truetype");
             font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Barlow";
+            src: url("fonts/Barlow-Medium.ttf") format("truetype");
+            font-weight: 500;
             font-style: normal;
             font-display: swap;
         }
@@ -166,6 +174,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
             padding-top: 80px;
             padding-bottom: 35px;
         }
@@ -232,8 +241,10 @@
 
             .about-inner {
                 width: 88%;
+
                 display: flex;
                 flex-direction: column;
+
                 gap: 30px;
             }
 
@@ -246,6 +257,7 @@
             .about-text {
                 order: 2;
                 width: 100%;
+
                 font-size: 20px;
                 line-height: 1.2;
             }
@@ -279,9 +291,15 @@
     </style>
 </head>
 
+
 <body>
 
-    <img id="logo" src="images/logo_name.png" alt="Natascha Burk">
+
+    <img
+        id="logo"
+        src="images/logo_name.png"
+        alt="Natascha Burk"
+    >
 
 
     <nav class="navigation">
@@ -321,6 +339,7 @@
 
     <main class="content">
 
+
         <section id="work">
             <!-- WORK -->
         </section>
@@ -335,7 +354,9 @@
 
             <div class="about-inner">
 
+
                 <div class="about-text">
+
 
                     <div class="desktop-text">
 
@@ -380,6 +401,7 @@
 
                     </div>
 
+
                 </div>
 
 
@@ -388,6 +410,7 @@
                     src="images/portrait_natascha.jpg"
                     alt="Portrait of Natascha Burk"
                 >
+
 
             </div>
 
@@ -398,12 +421,16 @@
             <!-- CONTACT -->
         </section>
 
+
     </main>
 
 
     <footer class="privacy">
 
-        <a href="#privacy" aria-label="Privacy Policy">
+        <a
+            href="privacy.html"
+            aria-label="Privacy Policy"
+        >
 
             <img
                 src="images/privacy_policy.png"
@@ -535,6 +562,7 @@
         updatePage();
 
     </script>
+
 
 </body>
 
