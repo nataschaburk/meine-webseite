@@ -46,35 +46,54 @@
             overflow-x: hidden;
         }
 
+
+        /* INTRO */
+
         .intro {
             width: 100%;
             height: 100vh;
         }
 
+
+        /* NAME LOGO */
+
         #logo {
             position: fixed;
             left: 50%;
             top: 50%;
+
             width: 44%;
             max-width: 700px;
             height: auto;
+
             transform: translate(-50%, -50%);
             transform-origin: center center;
+
             z-index: 100;
+
             will-change: transform, top;
         }
 
+
+        /* NAVIGATION */
+
         .navigation {
             position: fixed;
+
             left: 6.2%;
             top: 12%;
+
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+
             gap: 4px;
+
             z-index: 90;
+
             opacity: 0;
             pointer-events: none;
+
             will-change: opacity;
         }
 
@@ -89,14 +108,22 @@
             display: block;
         }
 
+
+        /* INSTAGRAM */
+
         .instagram {
             position: fixed;
+
             right: 5.8%;
             top: 75px;
+
             transform: translateY(-50%);
+
             z-index: 90;
+
             opacity: 0;
             pointer-events: none;
+
             will-change: opacity;
         }
 
@@ -105,6 +132,9 @@
             height: auto;
             display: block;
         }
+
+
+        /* CONTENT */
 
         .content {
             min-height: 200vh;
@@ -131,6 +161,7 @@
             width: 925px;
 
             display: grid;
+
             grid-template-columns: 540px 335px;
             column-gap: 50px;
 
@@ -144,7 +175,9 @@
             font-size: 28px;
             font-weight: 400;
             line-height: 1.17;
+
             letter-spacing: 0;
+
             color: #000;
         }
 
@@ -167,9 +200,9 @@
         }
 
 
-        /* PRIVACY – FIXED AT BOTTOM */
+        /* LEGAL LINKS */
 
-        .privacy {
+        .legal-links {
             position: fixed;
 
             left: 50%;
@@ -177,20 +210,33 @@
 
             transform: translateX(-50%);
 
-            z-index: 150;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-            line-height: 0;
+            gap: 9px;
+
+            z-index: 150;
         }
 
-        .privacy a {
+        .legal-links a {
             display: block;
             line-height: 0;
         }
 
-        .privacy img {
+        .legal-links img {
             height: 10px;
             width: auto;
             display: block;
+        }
+
+        .legal-divider {
+            width: 1px;
+            height: 10px;
+
+            background: #000;
+
+            flex: 0 0 auto;
         }
 
 
@@ -198,30 +244,42 @@
 
         @media (max-width: 700px) {
 
+
+            /* NAME */
+
             #logo {
                 width: 72%;
                 max-width: none;
             }
 
+
+            /* NAVIGATION */
+
             .navigation {
                 left: 6%;
                 top: 92px;
+
                 gap: 0;
             }
 
             .navigation a {
                 display: flex;
                 align-items: center;
+
                 min-height: 30px;
+
                 padding-right: 20px;
+
                 line-height: 0;
             }
 
             .navigation img {
                 height: 11px;
                 width: auto;
-                display: block;
             }
+
+
+            /* INSTAGRAM */
 
             .instagram {
                 right: 6%;
@@ -230,14 +288,14 @@
 
             .instagram img {
                 width: 18px;
-                height: auto;
             }
 
 
-            /* ABOUT MOBILE */
+            /* ABOUT */
 
             .about-section {
                 min-height: auto;
+
                 padding-top: 150px;
                 padding-bottom: 120px;
             }
@@ -253,12 +311,14 @@
 
             .about-image {
                 order: 1;
+
                 width: 100%;
                 height: auto;
             }
 
             .about-text {
                 order: 2;
+
                 width: 100%;
 
                 font-size: 20px;
@@ -278,15 +338,20 @@
             }
 
 
-            /* PRIVACY MOBILE */
+            /* LEGAL LINKS */
 
-            .privacy {
+            .legal-links {
                 bottom: 18px;
+                gap: 7px;
             }
 
-            .privacy img {
+            .legal-links img {
                 height: 8px;
-                width: auto;
+            }
+
+            .legal-divider {
+                width: 1px;
+                height: 8px;
             }
         }
 
@@ -297,12 +362,16 @@
 <body>
 
 
+    <!-- NAME -->
+
     <img
         id="logo"
         src="images/logo_name.png"
         alt="Natascha Burk"
     >
 
+
+    <!-- NAVIGATION -->
 
     <nav class="navigation">
 
@@ -325,6 +394,8 @@
     </nav>
 
 
+    <!-- INSTAGRAM -->
+
     <a
         class="instagram"
         href="https://www.instagram.com/natascha_burk/"
@@ -332,33 +403,59 @@
         rel="noopener noreferrer"
         aria-label="Instagram von Natascha Burk"
     >
-        <img src="images/instagram.png" alt="Instagram">
+
+        <img
+            src="images/instagram.png"
+            alt="Instagram"
+        >
+
     </a>
 
+
+    <!-- INTRO -->
 
     <section class="intro"></section>
 
 
+    <!-- CONTENT -->
+
     <main class="content">
 
 
+        <!-- WORK -->
+
         <section id="work">
-            <!-- WORK -->
+
+            <!-- WORK CONTENT -->
+
         </section>
 
+
+        <!-- TEACHING -->
 
         <section id="teaching">
-            <!-- TEACHING -->
+
+            <!-- TEACHING CONTENT -->
+
         </section>
 
 
-        <section id="about" class="about-section">
+        <!-- ABOUT -->
+
+        <section
+            id="about"
+            class="about-section"
+        >
 
             <div class="about-inner">
 
 
+                <!-- ABOUT TEXT -->
+
                 <div class="about-text">
 
+
+                    <!-- DESKTOP -->
 
                     <div class="desktop-text">
 
@@ -381,6 +478,8 @@
 
                     </div>
 
+
+                    <!-- MOBILE -->
 
                     <div class="mobile-text">
 
@@ -407,6 +506,8 @@
                 </div>
 
 
+                <!-- PORTRAIT -->
+
                 <img
                     class="about-image"
                     src="images/portrait_natascha.jpg"
@@ -419,17 +520,24 @@
         </section>
 
 
+        <!-- CONTACT -->
+
         <section id="contact">
-            <!-- CONTACT -->
+
+            <!-- CONTACT CONTENT -->
+
         </section>
 
 
     </main>
 
 
-    <!-- FIXED PRIVACY POLICY -->
+    <!-- PRIVACY POLICY | IMPRINT -->
 
-    <div class="privacy">
+    <div class="legal-links">
+
+
+        <!-- PRIVACY POLICY -->
 
         <a
             href="privacy.html"
@@ -443,8 +551,34 @@
 
         </a>
 
+
+        <!-- DIVIDER -->
+
+        <span
+            class="legal-divider"
+            aria-hidden="true"
+        ></span>
+
+
+        <!-- IMPRINT -->
+
+        <a
+            href="imprint.html"
+            aria-label="Imprint"
+        >
+
+            <img
+                src="images/imprint.png"
+                alt="Imprint"
+            >
+
+        </a>
+
+
     </div>
 
+
+    <!-- SCROLL ANIMATION -->
 
     <script>
 
@@ -468,6 +602,7 @@
             const isMobile =
                 window.innerWidth <= 700;
 
+
             const startScale = 1;
 
             const endScale =
@@ -479,6 +614,7 @@
 
             let progress =
                 scrollY / animationDistance;
+
 
             progress =
                 Math.max(
