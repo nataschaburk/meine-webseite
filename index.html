@@ -138,7 +138,7 @@
         /* CONTENT */
 
         .content {
-            min-height: 200vh;
+            width: 100%;
         }
 
 
@@ -162,8 +162,8 @@
             width: 925px;
 
             display: grid;
-            grid-template-columns: 540px 335px;
 
+            grid-template-columns: 540px 335px;
             column-gap: 50px;
 
             align-items: start;
@@ -198,6 +198,54 @@
             width: 335px;
             height: auto;
             display: block;
+        }
+
+
+        /* CONTACT */
+
+        .contact-section {
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            padding-top: 11vh;
+            padding-bottom: 18vh;
+
+            scroll-margin-top: 120px;
+        }
+
+        .contact-inner {
+            width: 925px;
+
+            font-family: "Barlow", sans-serif;
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.17;
+
+            color: #000;
+        }
+
+        .contact-text {
+            margin: 0 0 34px 0;
+        }
+
+        .contact-email {
+            display: inline-block;
+
+            font-family: "Barlow", sans-serif;
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 1.17;
+
+            color: #000;
+            text-decoration: none;
+        }
+
+        .contact-email:hover {
+            text-decoration: underline;
         }
 
 
@@ -244,6 +292,9 @@
         /* MOBILE */
 
         @media (max-width: 700px) {
+
+
+            /* NAME */
 
             #logo {
                 width: 72%;
@@ -338,6 +389,32 @@
             }
 
 
+            /* CONTACT */
+
+            .contact-section {
+                min-height: 100vh;
+
+                padding-top: 150px;
+                padding-bottom: 120px;
+            }
+
+            .contact-inner {
+                width: 88%;
+
+                font-size: 20px;
+                line-height: 1.2;
+            }
+
+            .contact-text {
+                margin-bottom: 28px;
+            }
+
+            .contact-email {
+                font-size: 20px;
+                line-height: 1.2;
+            }
+
+
             /* LEGAL LINKS */
 
             .legal-links {
@@ -376,19 +453,31 @@
     <nav class="navigation">
 
         <a href="#work">
-            <img src="images/work.png" alt="Work">
+            <img
+                src="images/work.png"
+                alt="Work"
+            >
         </a>
 
         <a href="#teaching">
-            <img src="images/teaching.png" alt="Teaching">
+            <img
+                src="images/teaching.png"
+                alt="Teaching"
+            >
         </a>
 
         <a href="#about">
-            <img src="images/about.png" alt="About">
+            <img
+                src="images/about.png"
+                alt="About"
+            >
         </a>
 
         <a href="#contact">
-            <img src="images/contact.png" alt="Contact">
+            <img
+                src="images/contact.png"
+                alt="Contact"
+            >
         </a>
 
     </nav>
@@ -455,7 +544,7 @@
                 <div class="about-text">
 
 
-                    <!-- DESKTOP -->
+                    <!-- DESKTOP TEXT -->
 
                     <div class="desktop-text">
 
@@ -479,7 +568,7 @@
                     </div>
 
 
-                    <!-- MOBILE -->
+                    <!-- MOBILE TEXT -->
 
                     <div class="mobile-text">
 
@@ -522,9 +611,26 @@
 
         <!-- CONTACT -->
 
-        <section id="contact">
+        <section
+            id="contact"
+            class="contact-section"
+        >
 
-            <!-- CONTACT CONTENT -->
+            <div class="contact-inner">
+
+                <p class="contact-text">
+                    I look forward to hearing from you.<br>
+                    Please feel free to get in touch by email.
+                </p>
+
+                <a
+                    class="contact-email"
+                    href="mailto:hello@nataschaburk.com"
+                >
+                    hello@nataschaburk.com
+                </a>
+
+            </div>
 
         </section>
 
@@ -535,6 +641,9 @@
     <!-- PRIVACY POLICY | IMPRINT -->
 
     <div class="legal-links">
+
+
+        <!-- PRIVACY POLICY -->
 
         <a
             href="privacy.html"
@@ -549,11 +658,15 @@
         </a>
 
 
+        <!-- DIVIDER -->
+
         <span
             class="legal-divider"
             aria-hidden="true"
         ></span>
 
+
+        <!-- IMPRINT -->
 
         <a
             href="imprint.html"
@@ -566,6 +679,7 @@
             >
 
         </a>
+
 
     </div>
 
@@ -673,9 +787,8 @@
 
 
                 /*
-                Left edge of ABOUT container.
-                This is the exact alignment
-                position for the final logo.
+                Final position:
+                left edge of ABOUT container
                 */
 
                 const aboutRect =
@@ -686,7 +799,8 @@
 
 
                 /*
-                Initial logo centre.
+                Starting position:
+                centred on screen
                 */
 
                 const startLeft =
@@ -694,24 +808,29 @@
 
 
                 /*
-                Because the logo starts centered
-                but ends left-aligned, we interpolate
-                its actual left position.
+                Determine natural logo width
                 */
+
+                const currentScale =
+                    parseFloat(
+                        logo.dataset.currentScale || "1"
+                    );
+
 
                 const logoNaturalWidth =
                     logo.getBoundingClientRect().width /
-                    (
-                        parseFloat(
-                            logo.dataset.currentScale || "1"
-                        )
-                    );
+                    currentScale;
 
 
                 const startLogoLeftEdge =
                     startLeft -
                     logoNaturalWidth / 2;
 
+
+                /*
+                Move diagonally from centre
+                to left-aligned final position
+                */
 
                 const currentLeftEdge =
                     startLogoLeftEdge +
@@ -742,6 +861,7 @@
 
                 logo.style.transform =
                     `translateY(-50%) scale(${scale})`;
+
 
                 logo.dataset.currentScale =
                     scale;
