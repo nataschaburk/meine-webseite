@@ -167,20 +167,23 @@
         }
 
 
-        /* PRIVACY */
+        /* PRIVACY – FIXED AT BOTTOM */
 
         .privacy {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            position: fixed;
 
-            padding-top: 80px;
-            padding-bottom: 35px;
+            left: 50%;
+            bottom: 28px;
+
+            transform: translateX(-50%);
+
+            z-index: 150;
+
+            line-height: 0;
         }
 
         .privacy a {
-            display: inline-block;
+            display: block;
             line-height: 0;
         }
 
@@ -278,8 +281,7 @@
             /* PRIVACY MOBILE */
 
             .privacy {
-                padding-top: 60px;
-                padding-bottom: 25px;
+                bottom: 18px;
             }
 
             .privacy img {
@@ -425,7 +427,9 @@
     </main>
 
 
-    <footer class="privacy">
+    <!-- FIXED PRIVACY POLICY -->
+
+    <div class="privacy">
 
         <a
             href="privacy.html"
@@ -439,7 +443,7 @@
 
         </a>
 
-    </footer>
+    </div>
 
 
     <script>
