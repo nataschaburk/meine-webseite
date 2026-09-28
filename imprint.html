@@ -1,1 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Imprint – Natascha Burk</title>
+
+    <style>
+
+        @font-face {
+            font-family: "Barlow";
+            src: url("fonts/Barlow-Regular.ttf") format("truetype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Barlow";
+            src: url("fonts/Barlow-Medium.ttf") format("truetype");
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: white;
+            overflow: hidden;
+        }
+
+
+        /* NAME LOGO */
+
+        .name-logo {
+            position: fixed;
+            left: 50%;
+            top: 75px;
+
+            transform: translate(-50%, -50%);
+
+            z-index: 100;
+            line-height: 0;
+        }
+
+        .name-logo img {
+            width: 385px;
+            height: auto;
+            display: block;
+        }
+
+
+        /* NAVIGATION */
+
+        .navigation {
+            position: fixed;
+
+            left: 6.2%;
+            top: 12%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            gap: 4px;
+
+            z-index: 100;
+        }
+
+        .navigation a {
+            display: block;
+            line-height: 0;
+        }
+
+        .navigation img {
+            height: 24px;
+            width: auto;
+            display: block;
+        }
+
+
+        /* INSTAGRAM */
+
+        .instagram {
+            position: fixed;
+
+            right: 5.8%;
+            top: 75px;
+
+            transform: translateY(-50%);
+
+            z-index: 100;
+            line-height: 0;
+        }
+
+        .instagram img {
+            width: 36px;
+            height: auto;
+            display: block;
+        }
+
+
+        /* IMPRINT AREA */
+
+        .imprint-window {
+            position: fixed;
+
+            left: 50%;
+            transform: translateX(-50%);
+
+            top: 30vh;
+            bottom: 8vh;
+
+            width: 925px;
+
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            scrollbar-width: thin;
+
+            font-family: "Barlow", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.3;
+
+            color: #000;
+
+            padding-right: 18px;
+        }
+
+        .imprint-content {
+            width: 100%;
+            padding-bottom: 100px;
+        }
+
+
+        /* TITLE */
+
+        .imprint-title {
+            font-weight: 500;
+            margin: 0;
+        }
+
+
+        /* SECTIONS */
+
+        .imprint-section {
+            margin: 0;
+        }
+
+        .imprint-section h2 {
+            font-size: inherit;
+            line-height: inherit;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .imprint-section p {
+            font-size: inherit;
+            line-height: inherit;
+            font-weight: 400;
+            margin: 0;
+        }
+
+
+        /* LINKS */
+
+        .imprint-section a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .imprint-section a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* LEGAL LINKS AT BOTTOM */
+
+        .legal-links {
+            position: fixed;
+
+            left: 50%;
+            bottom: 28px;
+
+            transform: translateX(-50%);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            z-index: 150;
+        }
+
+        .legal-links a {
+            display: block;
+            line-height: 0;
+        }
+
+        .legal-links img {
+            height: 10px;
+            width: auto;
+            display: block;
+        }
+
+        .legal-divider {
+            width: 1px;
+            height: 10px;
+
+            background: #000;
+
+            flex: 0 0 auto;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+
+            /* NAME */
+
+            .name-logo {
+                top: 55px;
+            }
+
+            .name-logo img {
+                width: 160px;
+            }
+
+
+            /* NAVIGATION */
+
+            .navigation {
+                left: 6%;
+                top: 92px;
+                gap: 0;
+            }
+
+            .navigation a {
+                display: flex;
+                align-items: center;
+
+                min-height: 30px;
+
+                padding-right: 20px;
+            }
+
+            .navigation img {
+                height: 11px;
+                width: auto;
+            }
+
+
+            /* INSTAGRAM */
+
+            .instagram {
+                right: 6%;
+                top: 55px;
+            }
+
+            .instagram img {
+                width: 18px;
+            }
+
+
+            /* IMPRINT */
+
+            .imprint-window {
+                top: 220px;
+                bottom: 55px;
+
+                width: 88%;
+
+                font-size: 12px;
+                line-height: 1.35;
+
+                padding-right: 8px;
+            }
+
+            .imprint-content {
+                padding-bottom: 60px;
+            }
+
+
+            /* LEGAL LINKS */
+
+            .legal-links {
+                bottom: 18px;
+                gap: 7px;
+            }
+
+            .legal-links img {
+                height: 8px;
+            }
+
+            .legal-divider {
+                width: 1px;
+                height: 8px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- NAME / BACK TO HOMEPAGE -->
+
+    <a
+        class="name-logo"
+        href="index.html"
+        aria-label="Back to homepage"
+    >
+
+        <img
+            src="images/logo_name.png"
+            alt="Natascha Burk"
+        >
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navigation">
+
+        <a href="index.html#work">
+
+            <img
+                src="images/work.png"
+                alt="Work"
+            >
+
+        </a>
+
+
+        <a href="index.html#teaching">
+
+            <img
+                src="images/teaching.png"
+                alt="Teaching"
+            >
+
+        </a>
+
+
+        <a href="index.html#about">
+
+            <img
+                src="images/about.png"
+                alt="About"
+            >
+
+        </a>
+
+
+        <a href="index.html#contact">
+
+            <img
+                src="images/contact.png"
+                alt="Contact"
+            >
+
+        </a>
+
+    </nav>
+
+
+    <!-- INSTAGRAM -->
+
+    <a
+        class="instagram"
+        href="https://www.instagram.com/natascha_burk/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram von Natascha Burk"
+    >
+
+        <img
+            src="images/instagram.png"
+            alt="Instagram"
+        >
+
+    </a>
+
+
+    <!-- IMPRINT -->
+
+    <main class="imprint-window">
+
+        <div class="imprint-content">
+
+
+            <p class="imprint-title">
+                IMPRINT
+            </p>
+
+
+            <section class="imprint-section">
+
+                <h2>
+                    Information pursuant to Section 5 DDG
+                </h2>
+
+                <p>
+                    Natascha Burk<br>
+                    Product Designer<br>
+                    [STREET + HOUSE NUMBER]<br>
+                    [POSTCODE + CITY]<br>
+                    Germany
+                </p>
+
+            </section>
+
+
+            <section class="imprint-section">
+
+                <h2>
+                    Contact
+                </h2>
+
+                <p>
+                    Email:
+                    <a href="mailto:hello@nataschaburk.com">
+                        hello@nataschaburk.com
+                    </a>
+                </p>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- PRIVACY POLICY | IMPRINT -->
+
+    <div class="legal-links">
+
+
+        <a
+            href="privacy.html"
+            aria-label="Privacy Policy"
+        >
+
+            <img
+                src="images/privacy_policy.png"
+                alt="Privacy Policy"
+            >
+
+        </a>
+
+
+        <span
+            class="legal-divider"
+            aria-hidden="true"
+        ></span>
+
+
+        <a
+            href="imprint.html"
+            aria-label="Imprint"
+        >
+
+            <img
+                src="images/imprint.png"
+                alt="Imprint"
+            >
+
+        </a>
+
+
+    </div>
+
+
+</body>
+
+</html>
