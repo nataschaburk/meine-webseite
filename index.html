@@ -72,6 +72,8 @@
 
             z-index: 100;
 
+            cursor: pointer;
+
             will-change: transform, top, left;
         }
 
@@ -445,6 +447,9 @@
         id="logo"
         src="images/logo_name.png"
         alt="Natascha Burk"
+        role="button"
+        tabindex="0"
+        aria-label="Enter website or return to start"
     >
 
 
@@ -703,6 +708,72 @@
         const animationDistance = 500;
 
 
+        /*
+        --------------------------------
+        LOGO CLICK
+        --------------------------------
+
+        At the beginning:
+        click logo -> enter website
+
+        After entering:
+        click logo -> return to top
+        */
+
+        function handleLogoClick() {
+
+            if (window.scrollY < 250) {
+
+                window.scrollTo({
+                    top: animationDistance,
+                    behavior: "smooth"
+                });
+
+            } else {
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+        }
+
+
+        logo.addEventListener(
+            "click",
+            handleLogoClick
+        );
+
+
+        /*
+        Keyboard accessibility:
+        Enter or Space also activates logo
+        */
+
+        logo.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                ) {
+
+                    event.preventDefault();
+
+                    handleLogoClick();
+                }
+            }
+        );
+
+
+        /*
+        --------------------------------
+        SCROLL ANIMATION
+        --------------------------------
+        */
+
         function updatePage() {
 
             const scrollY =
@@ -800,7 +871,7 @@
 
                 /*
                 Starting position:
-                centred on screen
+                centre of screen
                 */
 
                 const startLeft =
@@ -829,7 +900,7 @@
 
                 /*
                 Move diagonally from centre
-                to left-aligned final position
+                to final left position
                 */
 
                 const currentLeftEdge =
