@@ -67,10 +67,13 @@
             position: fixed;
             left: 6.2%;
             top: 12%;
+
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+
             gap: 4px;
+
             z-index: 100;
         }
 
@@ -92,7 +95,9 @@
             position: fixed;
             right: 5.8%;
             top: 75px;
+
             transform: translateY(-50%);
+
             z-index: 100;
             line-height: 0;
         }
@@ -108,6 +113,7 @@
 
         .privacy-window {
             position: fixed;
+
             left: 50%;
             transform: translateX(-50%);
 
@@ -122,6 +128,7 @@
             scrollbar-width: thin;
 
             font-family: "Barlow", sans-serif;
+
             font-size: 16px;
             font-weight: 400;
             line-height: 1.3;
@@ -131,15 +138,22 @@
             padding-right: 18px;
         }
 
+
         .privacy-content {
             width: 100%;
             padding-bottom: 100px;
         }
 
+
+        /* PRIVACY TITLE */
+
         .privacy-title {
             font-weight: 500;
             margin: 0;
         }
+
+
+        /* SECTIONS */
 
         .privacy-section {
             margin: 0;
@@ -159,6 +173,9 @@
             margin: 0;
         }
 
+
+        /* LINKS */
+
         .privacy-section a {
             color: inherit;
             text-decoration: none;
@@ -173,6 +190,9 @@
 
         @media (max-width: 700px) {
 
+
+            /* NAME */
+
             .name-logo {
                 top: 55px;
             }
@@ -180,6 +200,9 @@
             .name-logo img {
                 width: 160px;
             }
+
+
+            /* NAVIGATION */
 
             .navigation {
                 left: 6%;
@@ -190,13 +213,19 @@
             .navigation a {
                 display: flex;
                 align-items: center;
+
                 min-height: 30px;
+
                 padding-right: 20px;
             }
 
             .navigation img {
                 height: 11px;
+                width: auto;
             }
+
+
+            /* INSTAGRAM */
 
             .instagram {
                 right: 6%;
@@ -206,6 +235,9 @@
             .instagram img {
                 width: 18px;
             }
+
+
+            /* PRIVACY */
 
             .privacy-window {
                 top: 220px;
@@ -230,10 +262,20 @@
 
 <body>
 
-    <!-- NAME / BACK TO HOME -->
 
-    <a class="name-logo" href="index.html" aria-label="Back to homepage">
-        <img src="images/logo_name.png" alt="Natascha Burk">
+    <!-- NAME / BACK TO HOMEPAGE -->
+
+    <a
+        class="name-logo"
+        href="index.html"
+        aria-label="Back to homepage"
+    >
+
+        <img
+            src="images/logo_name.png"
+            alt="Natascha Burk"
+        >
+
     </a>
 
 
@@ -242,19 +284,42 @@
     <nav class="navigation">
 
         <a href="index.html#work">
-            <img src="images/work.png" alt="Work">
+
+            <img
+                src="images/work.png"
+                alt="Work"
+            >
+
         </a>
+
 
         <a href="index.html#teaching">
-            <img src="images/teaching.png" alt="Teaching">
+
+            <img
+                src="images/teaching.png"
+                alt="Teaching"
+            >
+
         </a>
+
 
         <a href="index.html#about">
-            <img src="images/about.png" alt="About">
+
+            <img
+                src="images/about.png"
+                alt="About"
+            >
+
         </a>
 
+
         <a href="index.html#contact">
-            <img src="images/contact.png" alt="Contact">
+
+            <img
+                src="images/contact.png"
+                alt="Contact"
+            >
+
         </a>
 
     </nav>
@@ -269,7 +334,12 @@
         rel="noopener noreferrer"
         aria-label="Instagram von Natascha Burk"
     >
-        <img src="images/instagram.png" alt="Instagram">
+
+        <img
+            src="images/instagram.png"
+            alt="Instagram"
+        >
+
     </a>
 
 
@@ -279,12 +349,19 @@
 
         <div class="privacy-content">
 
-            <p class="privacy-title">PRIVACY POLICY</p>
 
+            <p class="privacy-title">
+                PRIVACY POLICY
+            </p>
+
+
+            <!-- 1 -->
 
             <section class="privacy-section">
 
-                <h2>1. Controller</h2>
+                <h2>
+                    1. Controller
+                </h2>
 
                 <p>
                     The controller responsible for the processing of personal data on this website is:
@@ -293,7 +370,8 @@
                 <p>
                     Natascha Burk<br>
                     Product Designer<br>
-                    [BUSINESS ADDRESS]<br>
+                    [STREET + HOUSE NUMBER]<br>
+                    [POSTCODE + CITY]<br>
                     Germany<br>
                     Email:
                     <a href="mailto:hello@nataschaburk.com">
@@ -304,9 +382,13 @@
             </section>
 
 
+            <!-- 2 -->
+
             <section class="privacy-section">
 
-                <h2>2. General Information</h2>
+                <h2>
+                    2. General Information
+                </h2>
 
                 <p>
                     The protection of your personal data is important to me.
@@ -323,9 +405,13 @@
             </section>
 
 
+            <!-- 3 -->
+
             <section class="privacy-section">
 
-                <h2>3. Hosting</h2>
+                <h2>
+                    3. Hosting
+                </h2>
 
                 <p>
                     This website is hosted using GitHub Pages, a service
@@ -353,9 +439,13 @@
             </section>
 
 
+            <!-- 4 -->
+
             <section class="privacy-section">
 
-                <h2>4. Contact by Email</h2>
+                <h2>
+                    4. Contact by Email
+                </h2>
 
                 <p>
                     If you contact me by email, the information you provide,
@@ -381,13 +471,17 @@
             </section>
 
 
+            <!-- 5 -->
+
             <section class="privacy-section">
 
-                <h2>5. Fonts</h2>
+                <h2>
+                    5. Fonts
+                </h2>
 
                 <p>
-                    This website uses the typeface Barlow. The font files are
-                    hosted locally on this website.
+                    This website uses the typeface Barlow.
+                    The font files are hosted locally on this website.
                 </p>
 
                 <p>
@@ -398,19 +492,23 @@
             </section>
 
 
+            <!-- 6 -->
+
             <section class="privacy-section">
 
-                <h2>6. Instagram</h2>
+                <h2>
+                    6. Instagram
+                </h2>
 
                 <p>
                     This website contains a link to my Instagram profile.
                 </p>
 
                 <p>
-                    The Instagram logo used on this website functions only as
-                    an external link. No Instagram feed, tracking pixel,
-                    social media plugin or other Instagram content is embedded
-                    into the website.
+                    The Instagram logo used on this website functions only
+                    as an external link. No Instagram feed, tracking pixel,
+                    social media plugin or other Instagram content is
+                    embedded into the website.
                 </p>
 
                 <p>
@@ -423,9 +521,13 @@
             </section>
 
 
+            <!-- 7 -->
+
             <section class="privacy-section">
 
-                <h2>7. Cookies and Analytics</h2>
+                <h2>
+                    7. Cookies and Analytics
+                </h2>
 
                 <p>
                     This website does not currently use analytics services,
@@ -438,16 +540,20 @@
                 </p>
 
                 <p>
-                    If this changes in the future, this Privacy Policy will be
-                    updated accordingly.
+                    If this changes in the future, this Privacy Policy will
+                    be updated accordingly.
                 </p>
 
             </section>
 
 
+            <!-- 8 -->
+
             <section class="privacy-section">
 
-                <h2>8. Your Rights</h2>
+                <h2>
+                    8. Your Rights
+                </h2>
 
                 <p>
                     Under the GDPR, you may have the right to request access
@@ -464,13 +570,18 @@
             </section>
 
 
+            <!-- 9 -->
+
             <section class="privacy-section">
 
-                <h2>9. Changes to this Privacy Policy</h2>
+                <h2>
+                    9. Changes to this Privacy Policy
+                </h2>
 
                 <p>
-                    This Privacy Policy may be updated if the website, the
-                    services used, or applicable legal requirements change.
+                    This Privacy Policy may be updated if the website,
+                    the services used, or applicable legal requirements
+                    change.
                 </p>
 
                 <p>
@@ -479,9 +590,11 @@
 
             </section>
 
+
         </div>
 
     </main>
+
 
 </body>
 
