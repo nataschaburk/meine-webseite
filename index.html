@@ -47,7 +47,9 @@
         }
 
 
-        /* INTRO */
+        /* ==================================
+           INTRO
+           ================================== */
 
         .intro {
             width: 100%;
@@ -55,7 +57,9 @@
         }
 
 
-        /* NAME LOGO */
+        /* ==================================
+           NAME LOGO
+           ================================== */
 
         #logo {
             position: fixed;
@@ -78,7 +82,9 @@
         }
 
 
-        /* NAVIGATION */
+        /* ==================================
+           NAVIGATION
+           ================================== */
 
         .navigation {
             position: fixed;
@@ -112,7 +118,9 @@
         }
 
 
-        /* INSTAGRAM */
+        /* ==================================
+           INSTAGRAM
+           ================================== */
 
         .instagram {
             position: fixed;
@@ -137,30 +145,27 @@
         }
 
 
-        /* CONTENT */
+        /* ==================================
+           CONTENT
+           ================================== */
 
         .content {
             width: 100%;
         }
 
 
-        /* --------------------------------
+        /* ==================================
            WORK
-           -------------------------------- */
+           ================================== */
 
         .work-section {
             position: relative;
             width: 100%;
         }
 
-
         /*
-        The height is calculated by JavaScript.
-
-        This creates a long vertical scroll area.
-        While scrolling through it, the actual
-        BLOOM composition stays fixed on screen
-        and moves horizontally.
+        The WORK composition stays fixed while
+        vertical scrolling moves the strip horizontally.
         */
 
         .work-sticky {
@@ -171,22 +176,25 @@
             height: 100vh;
 
             overflow: hidden;
-
-            display: flex;
-            align-items: center;
         }
 
-
         /*
-        Long horizontal strip:
+        Horizontal BLOOM strip:
         image 01 | image 02 | image 03 | text
+
+        Its left edge is positioned by JavaScript
+        so that it lines up with the final logo position.
         */
 
         .work-track {
-            display: flex;
-            align-items: center;
+            position: absolute;
 
-            height: 100vh;
+            top: 145px;
+            left: 0;
+
+            display: flex;
+            align-items: flex-start;
+
             width: max-content;
 
             will-change: transform;
@@ -198,7 +206,9 @@
         .work-image {
             display: block;
 
-            height: 72vh;
+            height: calc(100vh - 145px);
+            max-height: 768px;
+
             width: auto;
 
             flex: 0 0 auto;
@@ -206,25 +216,17 @@
             object-fit: contain;
         }
 
-
-        /*
-        No gap between images:
-        they touch directly, exactly as
-        in the InDesign composition.
-        */
-
         .work-image + .work-image {
             margin-left: 0;
         }
 
 
-        /* BLOOM TEXT PANEL */
+        /* BLOOM TEXT */
 
         .work-info {
             flex: 0 0 auto;
 
             width: 540px;
-            height: 72vh;
 
             padding-left: 50px;
             padding-right: 50px;
@@ -251,14 +253,18 @@
         }
 
 
-        /* TEACHING PLACEHOLDER */
+        /* ==================================
+           TEACHING
+           ================================== */
 
         #teaching {
             width: 100%;
         }
 
 
-        /* ABOUT */
+        /* ==================================
+           ABOUT
+           ================================== */
 
         .about-section {
             width: 100%;
@@ -292,7 +298,6 @@
             font-size: 28px;
             font-weight: 400;
             line-height: 1.17;
-
             letter-spacing: 0;
 
             color: #000;
@@ -317,7 +322,9 @@
         }
 
 
-        /* CONTACT */
+        /* ==================================
+           CONTACT
+           ================================== */
 
         .contact-section {
             width: 100%;
@@ -365,7 +372,9 @@
         }
 
 
-        /* LEGAL LINKS */
+        /* ==================================
+           LEGAL LINKS
+           ================================== */
 
         .legal-links {
             position: fixed;
@@ -405,12 +414,11 @@
         }
 
 
-        /* --------------------------------
+        /* ==================================
            MOBILE
-           -------------------------------- */
+           ================================== */
 
         @media (max-width: 700px) {
-
 
             /* NAME */
 
@@ -486,7 +494,6 @@
                 display: block;
 
                 -webkit-overflow-scrolling: touch;
-
                 scrollbar-width: none;
             }
 
@@ -495,6 +502,11 @@
             }
 
             .work-track {
+                position: relative;
+
+                top: auto;
+                left: auto;
+
                 transform: none !important;
 
                 height: auto;
@@ -503,6 +515,8 @@
                 align-items: flex-start;
 
                 width: max-content;
+
+                padding-left: 6vw;
             }
 
             .work-image {
@@ -777,7 +791,9 @@
         </section>
 
 
-        <!-- TEACHING -->
+        <!-- ==================================
+             TEACHING
+             ================================== -->
 
         <section id="teaching">
 
@@ -786,7 +802,9 @@
         </section>
 
 
-        <!-- ABOUT -->
+        <!-- ==================================
+             ABOUT
+             ================================== -->
 
         <section
             id="about"
@@ -866,7 +884,9 @@
         </section>
 
 
-        <!-- CONTACT -->
+        <!-- ==================================
+             CONTACT
+             ================================== -->
 
         <section
             id="contact"
@@ -1008,53 +1028,92 @@
                 ) {
 
                     event.preventDefault();
-
                     handleLogoClick();
+
                 }
             }
         );
 
 
         /* ==================================
-           BLOOM WORK SIZE
+           DESKTOP CONTENT LEFT EDGE
            ================================== */
 
-        function setWorkHeight() {
+        function getContentLeft() {
+
+            if (window.innerWidth <= 700) {
+                return window.innerWidth * 0.06;
+            }
+
+            /*
+            ABOUT already defines the central content grid.
+            Using its left edge means that the BLOOM images
+            line up exactly with the final small name logo.
+            */
+
+            const aboutRect =
+                aboutInner.getBoundingClientRect();
+
+            return aboutRect.left;
+        }
+
+
+        /* ==================================
+           WORK LAYOUT
+           ================================== */
+
+        function setWorkLayout() {
 
             const isMobile =
                 window.innerWidth <= 700;
 
             if (isMobile) {
 
-                workSection.style.height =
-                    "auto";
+                workSection.style.height = "auto";
+
+                workTrack.style.left = "";
 
                 return;
             }
 
 
-            /*
-            Maximum horizontal movement.
+            const contentLeft =
+                getContentLeft();
 
-            Track width minus viewport width
-            gives us the exact amount that
-            has to move horizontally.
+            /*
+            Start BLOOM on exactly the same vertical
+            line as the small NATASCHA BURK logo.
             */
+
+            workTrack.style.left =
+                `${contentLeft}px`;
+
+
+            /*
+            At the end we want the text panel to be
+            visible inside the usable content area.
+
+            Because the track begins at contentLeft,
+            the usable width is the viewport width
+            minus that starting margin.
+            */
+
+            const availableWidth =
+                window.innerWidth - contentLeft;
+
 
             const horizontalDistance =
                 Math.max(
                     0,
                     workTrack.scrollWidth -
-                    window.innerWidth
+                    availableWidth
                 );
 
 
             /*
-            100vh keeps the composition on screen.
-
-            horizontalDistance supplies exactly
-            enough additional vertical scrolling
-            to move through the entire strip.
+            One viewport keeps the composition pinned.
+            The additional height supplies exactly the
+            vertical distance needed for horizontal travel.
             */
 
             workSection.style.height =
@@ -1081,17 +1140,33 @@
                 workSection.getBoundingClientRect();
 
 
+            const contentLeft =
+                getContentLeft();
+
+            const availableWidth =
+                window.innerWidth - contentLeft;
+
+
             const horizontalDistance =
                 Math.max(
                     0,
                     workTrack.scrollWidth -
-                    window.innerWidth
+                    availableWidth
                 );
 
 
+            if (horizontalDistance === 0) {
+
+                workTrack.style.transform =
+                    "translate3d(0, 0, 0)";
+
+                return;
+            }
+
+
             /*
-            How far we have travelled through
-            the vertical WORK section.
+            Convert vertical scrolling continuously
+            into horizontal movement.
             */
 
             let progress =
@@ -1108,12 +1183,6 @@
                     )
                 );
 
-
-            /*
-            Move the entire BLOOM strip
-            continuously from right to left.
-            No snapping.
-            */
 
             const translateX =
                 horizontalDistance *
@@ -1188,6 +1257,7 @@
 
                 logo.style.transform =
                     `translate(-50%, -50%) scale(${scale})`;
+
             }
 
 
@@ -1204,11 +1274,8 @@
                 const endTop = 75;
 
 
-                const aboutRect =
-                    aboutInner.getBoundingClientRect();
-
                 const finalLeft =
-                    aboutRect.left;
+                    getContentLeft();
 
 
                 const startLeft =
@@ -1264,6 +1331,7 @@
 
                 logo.dataset.currentScale =
                     scale;
+
             }
 
 
@@ -1301,6 +1369,7 @@
 
                 instagram.style.pointerEvents =
                     "none";
+
             }
 
 
@@ -1325,34 +1394,35 @@
             "resize",
             function() {
 
-                setWorkHeight();
+                setWorkLayout();
                 updatePage();
+
             }
         );
 
 
         /*
-        Images affect the width of the track,
-        so calculate everything again after
-        all images have loaded.
+        The images determine the total width of
+        the BLOOM strip. Recalculate after all
+        images and fonts are loaded.
         */
 
         window.addEventListener(
             "load",
             function() {
 
-                setWorkHeight();
+                setWorkLayout();
                 updatePage();
+
             }
         );
 
 
-        setWorkHeight();
+        setWorkLayout();
         updatePage();
 
     </script>
 
 
 </body>
-
 </html>
