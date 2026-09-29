@@ -163,9 +163,10 @@
             width: 100%;
         }
 
+
         /*
-        The WORK composition stays fixed while
-        vertical scrolling moves the strip horizontally.
+        WORK stays fixed while vertical scrolling
+        moves the BLOOM strip horizontally.
         */
 
         .work-sticky {
@@ -178,12 +179,10 @@
             overflow: hidden;
         }
 
+
         /*
         Horizontal BLOOM strip:
         image 01 | image 02 | image 03 | text
-
-        Its left edge is positioned by JavaScript
-        so that it lines up with the final logo position.
         */
 
         .work-track {
@@ -196,6 +195,8 @@
             align-items: flex-start;
 
             width: max-content;
+
+            z-index: 1;
 
             will-change: transform;
         }
@@ -250,6 +251,33 @@
         .work-info .work-year {
             margin-top: 1.2em;
             margin-bottom: 0;
+        }
+
+
+        /*
+        WHITE MASK
+
+        This covers everything that moves to the
+        left of the NATASCHA BURK content line.
+
+        The width is calculated automatically
+        in JavaScript.
+        */
+
+        .work-left-mask {
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 0;
+            height: 100%;
+
+            background: white;
+
+            z-index: 10;
+
+            pointer-events: none;
         }
 
 
@@ -420,6 +448,7 @@
 
         @media (max-width: 700px) {
 
+
             /* NAME */
 
             #logo {
@@ -498,6 +527,10 @@
             }
 
             .work-sticky::-webkit-scrollbar {
+                display: none;
+            }
+
+            .work-left-mask {
                 display: none;
             }
 
@@ -721,6 +754,18 @@
         >
 
             <div class="work-sticky">
+
+
+                <!--
+                WHITE MASK:
+                everything moving behind this area
+                disappears.
+                -->
+
+                <div class="work-left-mask"></div>
+
+
+                <!-- HORIZONTAL STRIP -->
 
                 <div class="work-track">
 
@@ -985,6 +1030,9 @@
         const workTrack =
             document.querySelector(".work-track");
 
+        const workLeftMask =
+            document.querySelector(".work-left-mask");
+
         const animationDistance = 500;
 
 
@@ -1036,23 +1084,29 @@
 
 
         /* ==================================
-           DESKTOP CONTENT LEFT EDGE
+           CONTENT LEFT EDGE
            ================================== */
 
         function getContentLeft() {
 
             if (window.innerWidth <= 700) {
+
                 return window.innerWidth * 0.06;
+
             }
 
+
             /*
-            ABOUT already defines the central content grid.
-            Using its left edge means that the BLOOM images
-            line up exactly with the final small name logo.
+            ABOUT already defines the main content
+            grid of the website.
+
+            This is also the final left position
+            of the NATASCHA BURK logo.
             */
 
             const aboutRect =
                 aboutInner.getBoundingClientRect();
+
 
             return aboutRect.left;
         }
@@ -1067,11 +1121,17 @@
             const isMobile =
                 window.innerWidth <= 700;
 
+
             if (isMobile) {
 
-                workSection.style.height = "auto";
+                workSection.style.height =
+                    "auto";
 
-                workTrack.style.left = "";
+                workTrack.style.left =
+                    "";
+
+                workLeftMask.style.width =
+                    "0px";
 
                 return;
             }
@@ -1080,9 +1140,10 @@
             const contentLeft =
                 getContentLeft();
 
+
             /*
-            Start BLOOM on exactly the same vertical
-            line as the small NATASCHA BURK logo.
+            BLOOM starts exactly on the same
+            left line as NATASCHA BURK.
             */
 
             workTrack.style.left =
@@ -1090,17 +1151,30 @@
 
 
             /*
-            At the end we want the text panel to be
-            visible inside the usable content area.
+            White mask ends on exactly the same line.
 
-            Because the track begins at contentLeft,
-            the usable width is the viewport width
-            minus that starting margin.
+            Therefore everything moving further left
+            disappears behind white.
+            */
+
+            workLeftMask.style.width =
+                `${contentLeft}px`;
+
+
+            /*
+            Width available to the right of
+            the fixed content line.
             */
 
             const availableWidth =
-                window.innerWidth - contentLeft;
+                window.innerWidth -
+                contentLeft;
 
+
+            /*
+            Exact horizontal distance needed
+            to reach the final composition.
+            */
 
             const horizontalDistance =
                 Math.max(
@@ -1111,9 +1185,10 @@
 
 
             /*
-            One viewport keeps the composition pinned.
-            The additional height supplies exactly the
-            vertical distance needed for horizontal travel.
+            One viewport keeps WORK pinned.
+
+            The remaining height becomes the
+            horizontal scrolling distance.
             */
 
             workSection.style.height =
@@ -1143,8 +1218,10 @@
             const contentLeft =
                 getContentLeft();
 
+
             const availableWidth =
-                window.innerWidth - contentLeft;
+                window.innerWidth -
+                contentLeft;
 
 
             const horizontalDistance =
@@ -1165,8 +1242,8 @@
 
 
             /*
-            Convert vertical scrolling continuously
-            into horizontal movement.
+            Vertical scrolling becomes a
+            continuous horizontal movement.
             */
 
             let progress =
@@ -1203,12 +1280,14 @@
             const scrollY =
                 window.scrollY;
 
+
             const isMobile =
                 window.innerWidth <= 700;
 
 
             let progress =
-                scrollY / animationDistance;
+                scrollY /
+                animationDistance;
 
 
             progress =
@@ -1228,10 +1307,13 @@
                 const startScale = 1;
                 const endScale = 0.40;
 
+
                 const startTop =
                     window.innerHeight / 2;
 
-                const endTop = 55;
+
+                const endTop =
+                    55;
 
 
                 const scale =
@@ -1249,11 +1331,14 @@
                 logo.style.left =
                     "50%";
 
+
                 logo.style.top =
                     `${top}px`;
 
+
                 logo.style.transformOrigin =
                     "center center";
+
 
                 logo.style.transform =
                     `translate(-50%, -50%) scale(${scale})`;
@@ -1268,10 +1353,13 @@
                 const startScale = 1;
                 const endScale = 0.55;
 
+
                 const startTop =
                     window.innerHeight / 2;
 
-                const endTop = 75;
+
+                const endTop =
+                    75;
 
 
                 const finalLeft =
@@ -1319,11 +1407,14 @@
                 logo.style.left =
                     `${currentLeftEdge}px`;
 
+
                 logo.style.top =
                     `${top}px`;
 
+
                 logo.style.transformOrigin =
                     "left center";
+
 
                 logo.style.transform =
                     `translateY(-50%) scale(${scale})`;
@@ -1350,6 +1441,7 @@
             navigation.style.opacity =
                 navProgress;
 
+
             instagram.style.opacity =
                 navProgress;
 
@@ -1359,6 +1451,7 @@
                 navigation.style.pointerEvents =
                     "auto";
 
+
                 instagram.style.pointerEvents =
                     "auto";
 
@@ -1366,6 +1459,7 @@
 
                 navigation.style.pointerEvents =
                     "none";
+
 
                 instagram.style.pointerEvents =
                     "none";
@@ -1402,9 +1496,8 @@
 
 
         /*
-        The images determine the total width of
-        the BLOOM strip. Recalculate after all
-        images and fonts are loaded.
+        Images determine the total width
+        of the horizontal BLOOM strip.
         */
 
         window.addEventListener(
@@ -1425,4 +1518,5 @@
 
 
 </body>
+
 </html>
