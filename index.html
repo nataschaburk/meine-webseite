@@ -182,10 +182,10 @@
             position: absolute;
 
             /*
-            JavaScript places this exactly at the
-            upper edge of the WORK navigation item.
+            Wird zusätzlich per JavaScript exakt
+            auf die WORK-Oberkante gesetzt.
             */
-            top: 0;
+            top: 12vh;
             left: 0;
 
             display: flex;
@@ -206,11 +206,7 @@
         .work-image {
             display: block;
 
-            /*
-            JavaScript sets the exact height according
-            to the dynamically calculated WORK line.
-            */
-            height: auto;
+            height: 88vh;
             max-height: 768px;
 
             width: auto;
@@ -233,26 +229,22 @@
             flex: 0 0 auto;
 
             /*
-            Large white panel at the end of BLOOM.
+            Breite weiße Fläche am Ende des
+            Projekts – ungefähr Bildbreite.
             */
             width: 768px;
+            min-height: 88vh;
 
             /*
-            JavaScript sets the minimum height so
-            that it follows the image window.
-            */
-            min-height: 0;
-
-            /*
-            28 px gap between image 03 and text.
+            Etwas mehr Abstand zwischen dem
+            letzten Bild und dem Text.
             */
             padding-left: 28px;
 
             /*
-            Keeps the text column relatively narrow
-            and leaves generous white space on the right.
+            Viel Weißraum rechts vom Text.
             */
-            padding-right: 200px;
+            padding-right: 214px;
 
             display: flex;
             flex-direction: column;
@@ -261,10 +253,10 @@
             font-family: "Barlow", sans-serif;
 
             /*
-            Larger than before, but still clearly
-            smaller than ABOUT at 28 px.
+            Größer als vorher, aber weiterhin
+            kleiner als ABOUT.
             */
-            font-size: 23px;
+            font-size: 22px;
             font-weight: 400;
             line-height: 1.2;
 
@@ -296,7 +288,11 @@
 
             background: white;
 
-            z-index: 10;
+            /*
+            Über den bewegten Bildern,
+            unter Navigation und Logo.
+            */
+            z-index: 80;
 
             pointer-events: none;
         }
@@ -304,6 +300,13 @@
 
         /* ==================================
            TOP WHITE MASK
+           ==================================
+
+           Alles oberhalb der WORK-Linie
+           bleibt weiß.
+
+           Die Bilder bewegen sich dahinter,
+           sind dort aber nicht sichtbar.
            ================================== */
 
         .work-top-mask {
@@ -313,11 +316,22 @@
             left: 0;
 
             width: 100%;
-            height: 0;
+
+            /*
+            Wird von JavaScript exakt auf die
+            Oberkante von WORK gesetzt.
+            */
+            height: 12vh;
 
             background: white;
 
-            z-index: 10;
+            /*
+            Über Bildern (1),
+            unter Navigation (90),
+            Instagram (90)
+            und Logo (100).
+            */
+            z-index: 80;
 
             pointer-events: none;
         }
@@ -490,6 +504,9 @@
 
         @media (max-width: 700px) {
 
+
+            /* NAME */
+
             #logo {
                 width: 72%;
                 max-width: none;
@@ -497,6 +514,8 @@
                 transform-origin: center center;
             }
 
+
+            /* NAVIGATION */
 
             .navigation {
                 left: 6%;
@@ -521,6 +540,8 @@
                 width: auto;
             }
 
+
+            /* INSTAGRAM */
 
             .instagram {
                 right: 6%;
@@ -573,7 +594,7 @@
             .work-track {
                 position: relative;
 
-                top: auto !important;
+                top: auto;
                 left: auto;
 
                 transform: none !important;
@@ -589,7 +610,7 @@
             }
 
             .work-image {
-                height: 68vh !important;
+                height: 68vh;
                 max-height: 650px;
 
                 width: auto;
@@ -599,7 +620,7 @@
 
             .work-info {
                 width: 88vw;
-                min-height: 0 !important;
+                min-height: 0;
                 height: auto;
 
                 padding: 0 6vw 0 30px;
@@ -897,8 +918,12 @@
             <div class="about-inner">
 
 
+                <!-- ABOUT TEXT -->
+
                 <div class="about-text">
 
+
+                    <!-- DESKTOP TEXT -->
 
                     <div class="desktop-text">
 
@@ -921,6 +946,8 @@
 
                     </div>
 
+
+                    <!-- MOBILE TEXT -->
 
                     <div class="mobile-text">
 
@@ -946,6 +973,8 @@
 
                 </div>
 
+
+                <!-- PORTRAIT -->
 
                 <img
                     class="about-image"
@@ -994,6 +1023,9 @@
 
     <div class="legal-links">
 
+
+        <!-- PRIVACY POLICY -->
+
         <a
             href="privacy.html"
             aria-label="Privacy Policy"
@@ -1007,11 +1039,15 @@
         </a>
 
 
+        <!-- DIVIDER -->
+
         <span
             class="legal-divider"
             aria-hidden="true"
         ></span>
 
+
+        <!-- IMPRINT -->
 
         <a
             href="imprint.html"
@@ -1024,6 +1060,7 @@
             >
 
         </a>
+
 
     </div>
 
@@ -1040,9 +1077,6 @@
         const navigation =
             document.querySelector(".navigation");
 
-        const workLink =
-            navigation.querySelector('a[href="#work"]');
-
         const instagram =
             document.querySelector(".instagram");
 
@@ -1055,35 +1089,13 @@
         const workTrack =
             document.querySelector(".work-track");
 
-        const workImages =
-            document.querySelectorAll(".work-image");
-
-        const workInfo =
-            document.querySelector(".work-info");
-
         const workLeftMask =
             document.querySelector(".work-left-mask");
 
         const workTopMask =
             document.querySelector(".work-top-mask");
 
-
         const animationDistance = 500;
-
-
-        /*
-        Extra vertical distance after the horizontal
-        movement has finished.
-
-        During this distance BLOOM stays completely
-        still before the next section begins to rise.
-        */
-
-        function getWorkOutroDistance() {
-
-            return window.innerHeight * 0.35;
-
-        }
 
 
         /* ==================================
@@ -1126,6 +1138,7 @@
                 ) {
 
                     event.preventDefault();
+
                     handleLogoClick();
 
                 }
@@ -1155,7 +1168,17 @@
 
 
         /* ==================================
-           WORK TOP EDGE
+           FIXED WORK TOP LINE
+           ==================================
+
+           WORK sits at top: 12%.
+
+           We deliberately use the exact same
+           value for the BLOOM image edge and
+           for the white clipping mask.
+
+           This avoids any drift between
+           navigation and images.
            ================================== */
 
         function getWorkTop() {
@@ -1166,41 +1189,7 @@
 
             }
 
-
-            /*
-            Use the actual upper edge of the WORK
-            navigation image as the horizontal line
-            for the project window.
-            */
-
-            const workRect =
-                workLink.getBoundingClientRect();
-
-
-            return workRect.top;
-        }
-
-
-        /* ==================================
-           HORIZONTAL DISTANCE
-           ================================== */
-
-        function getHorizontalDistance() {
-
-            const contentLeft =
-                getContentLeft();
-
-
-            const availableWidth =
-                window.innerWidth -
-                contentLeft;
-
-
-            return Math.max(
-                0,
-                workTrack.scrollWidth -
-                availableWidth
-            );
+            return window.innerHeight * 0.12;
         }
 
 
@@ -1238,14 +1227,13 @@
             const contentLeft =
                 getContentLeft();
 
-
             const workTop =
                 getWorkTop();
 
 
             /*
-            BLOOM begins on the exact same vertical
-            axis as NATASCHA BURK.
+            BLOOM starts on the same vertical
+            line as NATASCHA BURK.
             */
 
             workTrack.style.left =
@@ -1253,8 +1241,8 @@
 
 
             /*
-            BLOOM also begins on the exact upper edge
-            of WORK.
+            BLOOM starts exactly at the
+            upper edge of WORK.
             */
 
             workTrack.style.top =
@@ -1262,9 +1250,8 @@
 
 
             /*
-            Left mask:
-            everything left of the content axis
-            remains permanently white.
+            Everything moving farther left
+            disappears behind white.
             */
 
             workLeftMask.style.width =
@@ -1272,12 +1259,11 @@
 
 
             /*
-            Top mask:
-            everything above the WORK line
-            remains permanently white.
+            Everything above WORK disappears
+            behind white.
 
-            This prevents photographs from ever
-            appearing behind the small logo.
+            This is what prevents BLOOM from
+            ever appearing behind the logo.
             */
 
             workTopMask.style.height =
@@ -1285,59 +1271,54 @@
 
 
             /*
-            Images fill the available height from
-            WORK downwards, but retain the previous
-            maximum size.
+            Image height now uses exactly the
+            remaining viewport underneath WORK.
             */
 
-            const imageHeight =
-                Math.min(
-                    768,
-                    window.innerHeight - workTop
+            const workImages =
+                document.querySelectorAll(".work-image");
+
+            workImages.forEach(function(image) {
+
+                image.style.height =
+                    `${window.innerHeight - workTop}px`;
+
+            });
+
+
+            /*
+            Match text panel to the same height.
+            */
+
+            const workInfo =
+                document.querySelector(".work-info");
+
+            workInfo.style.minHeight =
+                `${window.innerHeight - workTop}px`;
+
+
+            const availableWidth =
+                window.innerWidth -
+                contentLeft;
+
+
+            const horizontalDistance =
+                Math.max(
+                    0,
+                    workTrack.scrollWidth -
+                    availableWidth
                 );
 
 
-            workImages.forEach(
-                function(image) {
-
-                    image.style.height =
-                        `${imageHeight}px`;
-
-                }
-            );
-
-
-            workInfo.style.minHeight =
-                `${imageHeight}px`;
-
-
             /*
-            Recalculate after setting image sizes,
-            because image width changes with height.
-            */
+            One viewport keeps the project fixed.
 
-            const horizontalDistance =
-                getHorizontalDistance();
-
-
-            const outroDistance =
-                getWorkOutroDistance();
-
-
-            /*
-            Horizontal movement
-            +
-            one viewport for sticky positioning
-            +
-            calm outro distance.
+            The horizontal width creates the
+            additional vertical scrolling space.
             */
 
             workSection.style.height =
-                `${
-                    window.innerHeight +
-                    horizontalDistance +
-                    outroDistance
-                }px`;
+                `${window.innerHeight + horizontalDistance}px`;
         }
 
 
@@ -1360,8 +1341,21 @@
                 workSection.getBoundingClientRect();
 
 
+            const contentLeft =
+                getContentLeft();
+
+
+            const availableWidth =
+                window.innerWidth -
+                contentLeft;
+
+
             const horizontalDistance =
-                getHorizontalDistance();
+                Math.max(
+                    0,
+                    workTrack.scrollWidth -
+                    availableWidth
+                );
 
 
             if (horizontalDistance === 0) {
@@ -1374,26 +1368,32 @@
 
 
             /*
-            Only the first part of WORK controls
+            Vertical scrolling becomes continuous
             horizontal movement.
-
-            Once horizontalDistance has been reached,
-            the track simply remains at its final
-            position during the outro.
             */
 
-            const horizontalScroll =
+            let progress =
+                -rect.top /
+                horizontalDistance;
+
+
+            progress =
                 Math.max(
                     0,
                     Math.min(
-                        horizontalDistance,
-                        -rect.top
+                        1,
+                        progress
                     )
                 );
 
 
+            const translateX =
+                horizontalDistance *
+                progress;
+
+
             workTrack.style.transform =
-                `translate3d(${-horizontalScroll}px, 0, 0)`;
+                `translate3d(${-translateX}px, 0, 0)`;
         }
 
 
@@ -1548,7 +1548,6 @@
 
                 logo.dataset.currentScale =
                     scale;
-
             }
 
 
@@ -1577,7 +1576,6 @@
                 navigation.style.pointerEvents =
                     "auto";
 
-
                 instagram.style.pointerEvents =
                     "auto";
 
@@ -1586,12 +1584,12 @@
                 navigation.style.pointerEvents =
                     "none";
 
-
                 instagram.style.pointerEvents =
                     "none";
-
             }
 
+
+            /* WORK */
 
             updateWork();
         }
@@ -1637,5 +1635,4 @@
 
 
 </body>
-
 </html>
