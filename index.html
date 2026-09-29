@@ -144,6 +144,120 @@
         }
 
 
+        /* --------------------------------
+           WORK
+           -------------------------------- */
+
+        .work-section {
+            position: relative;
+            width: 100%;
+        }
+
+
+        /*
+        The height is calculated by JavaScript.
+
+        This creates a long vertical scroll area.
+        While scrolling through it, the actual
+        BLOOM composition stays fixed on screen
+        and moves horizontally.
+        */
+
+        .work-sticky {
+            position: sticky;
+            top: 0;
+
+            width: 100%;
+            height: 100vh;
+
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+        }
+
+
+        /*
+        Long horizontal strip:
+        image 01 | image 02 | image 03 | text
+        */
+
+        .work-track {
+            display: flex;
+            align-items: center;
+
+            height: 100vh;
+            width: max-content;
+
+            will-change: transform;
+        }
+
+
+        /* BLOOM IMAGES */
+
+        .work-image {
+            display: block;
+
+            height: 72vh;
+            width: auto;
+
+            flex: 0 0 auto;
+
+            object-fit: contain;
+        }
+
+
+        /*
+        No gap between images:
+        they touch directly, exactly as
+        in the InDesign composition.
+        */
+
+        .work-image + .work-image {
+            margin-left: 0;
+        }
+
+
+        /* BLOOM TEXT PANEL */
+
+        .work-info {
+            flex: 0 0 auto;
+
+            width: 540px;
+            height: 72vh;
+
+            padding-left: 50px;
+            padding-right: 50px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            font-family: "Barlow", sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.2;
+
+            color: #000;
+        }
+
+        .work-info p {
+            margin: 0 0 1.2em 0;
+        }
+
+        .work-info .work-year {
+            margin-top: 1.2em;
+            margin-bottom: 0;
+        }
+
+
+        /* TEACHING PLACEHOLDER */
+
+        #teaching {
+            width: 100%;
+        }
+
+
         /* ABOUT */
 
         .about-section {
@@ -291,7 +405,9 @@
         }
 
 
-        /* MOBILE */
+        /* --------------------------------
+           MOBILE
+           -------------------------------- */
 
         @media (max-width: 700px) {
 
@@ -341,6 +457,71 @@
 
             .instagram img {
                 width: 18px;
+            }
+
+
+            /* WORK MOBILE */
+
+            .work-section {
+                height: auto !important;
+
+                width: 100%;
+
+                padding-top: 130px;
+                padding-bottom: 100px;
+
+                overflow: hidden;
+            }
+
+            .work-sticky {
+                position: relative;
+                top: auto;
+
+                width: 100%;
+                height: auto;
+
+                overflow-x: auto;
+                overflow-y: hidden;
+
+                display: block;
+
+                -webkit-overflow-scrolling: touch;
+
+                scrollbar-width: none;
+            }
+
+            .work-sticky::-webkit-scrollbar {
+                display: none;
+            }
+
+            .work-track {
+                transform: none !important;
+
+                height: auto;
+
+                display: flex;
+                align-items: flex-start;
+
+                width: max-content;
+            }
+
+            .work-image {
+                height: 68vh;
+                max-height: 650px;
+
+                width: auto;
+
+                object-fit: contain;
+            }
+
+            .work-info {
+                width: 88vw;
+                height: auto;
+
+                padding: 0 6vw 0 30px;
+
+                font-size: 16px;
+                line-height: 1.25;
             }
 
 
@@ -516,11 +697,82 @@
     <main class="content">
 
 
-        <!-- WORK -->
+        <!-- ==================================
+             WORK / BLOOM
+             ================================== -->
 
-        <section id="work">
+        <section
+            id="work"
+            class="work-section"
+        >
 
-            <!-- WORK CONTENT -->
+            <div class="work-sticky">
+
+                <div class="work-track">
+
+
+                    <!-- BLOOM 01 -->
+
+                    <img
+                        class="work-image"
+                        src="images/work/bloom/natascha-burk-bloom-table-01.jpg"
+                        alt="Detail of the BLOOM table by Natascha Burk"
+                    >
+
+
+                    <!-- BLOOM 02 -->
+
+                    <img
+                        class="work-image"
+                        src="images/work/bloom/natascha-burk-bloom-table-02.jpg"
+                        alt="BLOOM table by product designer Natascha Burk"
+                    >
+
+
+                    <!-- BLOOM 03 -->
+
+                    <img
+                        class="work-image"
+                        src="images/work/bloom/natascha-burk-bloom-table-03.jpg"
+                        alt="Components of the BLOOM table by Natascha Burk"
+                    >
+
+
+                    <!-- BLOOM INFORMATION -->
+
+                    <div class="work-info">
+
+                        <p>
+                            BLOOM is a table whose central structural
+                            element is a worktop connector, typically
+                            used to create concealed joints between
+                            kitchen worktops.
+                        </p>
+
+                        <p>
+                            Here, the connector holds eight aluminum
+                            tubes under tension around a central
+                            aluminum component. Arranged concentrically,
+                            the tubes form the base that supports the
+                            glass tabletop.
+                        </p>
+
+                        <p>
+                            All connections are detachable, allowing
+                            the table to be disassembled into components
+                            made from single materials.
+                        </p>
+
+                        <p class="work-year">
+                            Year 2025
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
 
         </section>
 
@@ -689,9 +941,11 @@
     </div>
 
 
-    <!-- SCROLL ANIMATION -->
-
     <script>
+
+        /* ==================================
+           ELEMENTS
+           ================================== */
 
         const logo =
             document.getElementById("logo");
@@ -705,20 +959,18 @@
         const aboutInner =
             document.querySelector(".about-inner");
 
+        const workSection =
+            document.querySelector(".work-section");
+
+        const workTrack =
+            document.querySelector(".work-track");
+
         const animationDistance = 500;
 
 
-        /*
-        --------------------------------
-        LOGO CLICK
-        --------------------------------
-
-        At the beginning:
-        click logo -> enter website
-
-        After entering:
-        click logo -> return to top
-        */
+        /* ==================================
+           LOGO CLICK
+           ================================== */
 
         function handleLogoClick() {
 
@@ -746,11 +998,6 @@
         );
 
 
-        /*
-        Keyboard accessibility:
-        Enter or Space also activates logo
-        */
-
         logo.addEventListener(
             "keydown",
             function(event) {
@@ -768,11 +1015,119 @@
         );
 
 
-        /*
-        --------------------------------
-        SCROLL ANIMATION
-        --------------------------------
-        */
+        /* ==================================
+           BLOOM WORK SIZE
+           ================================== */
+
+        function setWorkHeight() {
+
+            const isMobile =
+                window.innerWidth <= 700;
+
+            if (isMobile) {
+
+                workSection.style.height =
+                    "auto";
+
+                return;
+            }
+
+
+            /*
+            Maximum horizontal movement.
+
+            Track width minus viewport width
+            gives us the exact amount that
+            has to move horizontally.
+            */
+
+            const horizontalDistance =
+                Math.max(
+                    0,
+                    workTrack.scrollWidth -
+                    window.innerWidth
+                );
+
+
+            /*
+            100vh keeps the composition on screen.
+
+            horizontalDistance supplies exactly
+            enough additional vertical scrolling
+            to move through the entire strip.
+            */
+
+            workSection.style.height =
+                `${window.innerHeight + horizontalDistance}px`;
+        }
+
+
+        /* ==================================
+           BLOOM HORIZONTAL MOVEMENT
+           ================================== */
+
+        function updateWork() {
+
+            if (window.innerWidth <= 700) {
+
+                workTrack.style.transform =
+                    "none";
+
+                return;
+            }
+
+
+            const rect =
+                workSection.getBoundingClientRect();
+
+
+            const horizontalDistance =
+                Math.max(
+                    0,
+                    workTrack.scrollWidth -
+                    window.innerWidth
+                );
+
+
+            /*
+            How far we have travelled through
+            the vertical WORK section.
+            */
+
+            let progress =
+                -rect.top /
+                horizontalDistance;
+
+
+            progress =
+                Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        progress
+                    )
+                );
+
+
+            /*
+            Move the entire BLOOM strip
+            continuously from right to left.
+            No snapping.
+            */
+
+            const translateX =
+                horizontalDistance *
+                progress;
+
+
+            workTrack.style.transform =
+                `translate3d(${-translateX}px, 0, 0)`;
+        }
+
+
+        /* ==================================
+           LOGO + NAVIGATION ANIMATION
+           ================================== */
 
         function updatePage() {
 
@@ -797,11 +1152,7 @@
                 );
 
 
-            /*
-            --------------------------------
-            MOBILE
-            --------------------------------
-            */
+            /* MOBILE */
 
             if (isMobile) {
 
@@ -840,11 +1191,7 @@
             }
 
 
-            /*
-            --------------------------------
-            DESKTOP
-            --------------------------------
-            */
+            /* DESKTOP */
 
             else {
 
@@ -857,11 +1204,6 @@
                 const endTop = 75;
 
 
-                /*
-                Final position:
-                left edge of ABOUT container
-                */
-
                 const aboutRect =
                     aboutInner.getBoundingClientRect();
 
@@ -869,18 +1211,9 @@
                     aboutRect.left;
 
 
-                /*
-                Starting position:
-                centre of screen
-                */
-
                 const startLeft =
                     window.innerWidth / 2;
 
-
-                /*
-                Determine natural logo width
-                */
 
                 const currentScale =
                     parseFloat(
@@ -897,11 +1230,6 @@
                     startLeft -
                     logoNaturalWidth / 2;
 
-
-                /*
-                Move diagonally from centre
-                to final left position
-                */
 
                 const currentLeftEdge =
                     startLogoLeftEdge +
@@ -939,11 +1267,7 @@
             }
 
 
-            /*
-            --------------------------------
-            NAVIGATION + INSTAGRAM
-            --------------------------------
-            */
+            /* NAVIGATION + INSTAGRAM */
 
             const navProgress =
                 Math.max(
@@ -978,8 +1302,17 @@
                 instagram.style.pointerEvents =
                     "none";
             }
+
+
+            /* WORK */
+
+            updateWork();
         }
 
+
+        /* ==================================
+           EVENTS
+           ================================== */
 
         window.addEventListener(
             "scroll",
@@ -990,10 +1323,31 @@
 
         window.addEventListener(
             "resize",
-            updatePage
+            function() {
+
+                setWorkHeight();
+                updatePage();
+            }
         );
 
 
+        /*
+        Images affect the width of the track,
+        so calculate everything again after
+        all images have loaded.
+        */
+
+        window.addEventListener(
+            "load",
+            function() {
+
+                setWorkHeight();
+                updatePage();
+            }
+        );
+
+
+        setWorkHeight();
         updatePage();
 
     </script>
