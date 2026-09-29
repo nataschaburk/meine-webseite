@@ -163,12 +163,6 @@
             width: 100%;
         }
 
-
-        /*
-        WORK stays fixed while vertical scrolling
-        moves the BLOOM strip horizontally.
-        */
-
         .work-sticky {
             position: sticky;
             top: 0;
@@ -178,12 +172,6 @@
 
             overflow: hidden;
         }
-
-
-        /*
-        Horizontal BLOOM strip:
-        image 01 | image 02 | image 03 | text
-        */
 
         .work-track {
             position: absolute;
@@ -222,15 +210,32 @@
         }
 
 
-        /* BLOOM TEXT */
+        /* ==================================
+           BLOOM TEXT + WHITE SPACE
+           ================================== */
 
         .work-info {
             flex: 0 0 auto;
 
-            width: 540px;
+            /*
+            The whole white panel is deliberately
+            wider than the actual text.
+            This creates the long, calm white area
+            at the end of the BLOOM project.
+            */
+            width: 768px;
+            min-height: calc(100vh - 145px);
 
-            padding-left: 50px;
-            padding-right: 50px;
+            /*
+            Small gap between image 03 and text.
+            */
+            padding-left: 14px;
+
+            /*
+            Keeps the actual text column narrow while
+            creating generous white space on the right.
+            */
+            padding-right: 228px;
 
             display: flex;
             flex-direction: column;
@@ -254,15 +259,9 @@
         }
 
 
-        /*
-        WHITE MASK
-
-        This covers everything that moves to the
-        left of the NATASCHA BURK content line.
-
-        The width is calculated automatically
-        in JavaScript.
-        */
+        /* ==================================
+           WHITE MASK
+           ================================== */
 
         .work-left-mask {
             position: absolute;
@@ -561,8 +560,15 @@
                 object-fit: contain;
             }
 
+            /*
+            MOBILE stays exactly as before.
+            The large desktop white area does not
+            affect the mobile layout.
+            */
+
             .work-info {
                 width: 88vw;
+                min-height: 0;
                 height: auto;
 
                 padding: 0 6vw 0 30px;
@@ -756,11 +762,7 @@
             <div class="work-sticky">
 
 
-                <!--
-                WHITE MASK:
-                everything moving behind this area
-                disappears.
-                -->
+                <!-- WHITE MASK -->
 
                 <div class="work-left-mask"></div>
 
@@ -1096,14 +1098,6 @@
             }
 
 
-            /*
-            ABOUT already defines the main content
-            grid of the website.
-
-            This is also the final left position
-            of the NATASCHA BURK logo.
-            */
-
             const aboutRect =
                 aboutInner.getBoundingClientRect();
 
@@ -1151,20 +1145,13 @@
 
 
             /*
-            White mask ends on exactly the same line.
-
-            Therefore everything moving further left
-            disappears behind white.
+            Everything that moves beyond this
+            line disappears behind white.
             */
 
             workLeftMask.style.width =
                 `${contentLeft}px`;
 
-
-            /*
-            Width available to the right of
-            the fixed content line.
-            */
 
             const availableWidth =
                 window.innerWidth -
@@ -1172,8 +1159,10 @@
 
 
             /*
-            Exact horizontal distance needed
-            to reach the final composition.
+            Because the wider text panel is part
+            of workTrack.scrollWidth, the extra
+            white space automatically creates a
+            longer horizontal scroll at the end.
             */
 
             const horizontalDistance =
@@ -1183,13 +1172,6 @@
                     availableWidth
                 );
 
-
-            /*
-            One viewport keeps WORK pinned.
-
-            The remaining height becomes the
-            horizontal scrolling distance.
-            */
 
             workSection.style.height =
                 `${window.innerHeight + horizontalDistance}px`;
@@ -1240,11 +1222,6 @@
                 return;
             }
 
-
-            /*
-            Vertical scrolling becomes a
-            continuous horizontal movement.
-            */
 
             let progress =
                 -rect.top /
@@ -1494,11 +1471,6 @@
             }
         );
 
-
-        /*
-        Images determine the total width
-        of the horizontal BLOOM strip.
-        */
 
         window.addEventListener(
             "load",
