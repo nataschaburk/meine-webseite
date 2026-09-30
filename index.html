@@ -247,19 +247,10 @@
             margin: 0 0 1.2em 0;
         }
 
-        /*
-        PROJECT META INFORMATION
 
-        BLOOM:
-        Year 2025
-
-        MOTUS:
-        Graduation Project
-        Year 2021
-
-        The block stays aligned with the
-        bottom edge of the adjacent image.
-        */
+        /* ==================================
+           PROJECT META INFORMATION
+           ================================== */
 
         .work-info .work-year {
             margin-top: auto;
@@ -267,6 +258,15 @@
 
             font-size: 13px;
             line-height: 1.15;
+        }
+
+        .work-info .work-year a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .work-info .work-year a:hover {
+            text-decoration: underline;
         }
 
 
@@ -946,6 +946,100 @@
 
 
         <!-- ==================================
+             WORK / TOPO
+             ================================== -->
+
+        <section class="work-section">
+
+            <div class="work-sticky">
+
+                <div class="work-left-mask"></div>
+                <div class="work-top-mask"></div>
+
+                <div class="work-track">
+
+
+                    <!-- TOPO 01 -->
+
+                    <img
+                        class="work-image"
+                        src="images/work/topo/natascha-burk-topo-01.jpg"
+                        alt="TOPO bottle opener by Natascha Burk"
+                    >
+
+
+                    <!-- TOPO 02 -->
+
+                    <img
+                        class="work-image"
+                        src="images/work/topo/natascha-burk-topo-02.jpg"
+                        alt="TOPO handheld mirror by Natascha Burk"
+                    >
+
+
+                    <!-- TOPO 03 -->
+
+                    <img
+                        class="work-image"
+                        src="images/work/topo/natascha-burk-topo-03.jpg"
+                        alt="TOPO candle holder by Natascha Burk"
+                    >
+
+
+                    <!-- TOPO 04 -->
+
+                    <img
+                        class="work-image"
+                        src="images/work/topo/natascha-burk-topo-04.jpg"
+                        alt="TOPO objects and production process by Natascha Burk"
+                    >
+
+
+                    <!-- TOPO TEXT -->
+
+                    <div class="work-info">
+
+                        <p>
+                            TOPO is a project comprising a bottle opener,
+                            a candle holder and a handheld mirror, designed
+                            for production in a workshop for people with
+                            mental health conditions.
+                        </p>
+
+                        <p>
+                            The aim was to develop products that could be
+                            made independently using the resources available
+                            on site, strengthening the makers’ sense of
+                            self-efficacy through a production process they
+                            could carry out from start to finish.
+                        </p>
+
+                        <p>
+                            The design is based on the principle of layering,
+                            inspired by the topography of a landscape.
+                        </p>
+
+                        <p class="work-year">
+                            For Holzwerkstatt d. St. Elisabeth-Verein e.V. Marburg<br>
+                            Available at
+                            <a
+                                href="https://hierundholzig.de/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >hierundholzig.de</a><br>
+                            Year 2023
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
              TEACHING
              ================================== -->
 
@@ -1342,10 +1436,8 @@
 
 
                 /*
-                IMPORTANT:
-
                 The project text panel uses the
-                ACTUAL rendered image height.
+                actual rendered image height.
 
                 Therefore Year / Graduation Project
                 aligns with the real lower edge
