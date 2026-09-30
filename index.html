@@ -1315,13 +1315,19 @@
                 });
 
 
+                const referenceImage =
+                    workSection.querySelector(".work-image");
+
+                const actualImageHeight =
+                    referenceImage.getBoundingClientRect().height;
+
                 workInfos.forEach(function(info) {
 
-                    info.style.minHeight =
-                        `${panelHeight}px`;
-
                     info.style.height =
-                        `${panelHeight}px`;
+                        `${actualImageHeight}px`;
+
+                    info.style.minHeight =
+                        `${actualImageHeight}px`;
 
                 });
 
