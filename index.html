@@ -795,17 +795,11 @@
 
                 <div class="work-track">
 
-
-                    <!-- BLOOM 01 -->
-
                     <img
                         class="work-image"
                         src="images/work/bloom/natascha-burk-bloom-table-01.jpg"
                         alt="Detail of the BLOOM table by Natascha Burk"
                     >
-
-
-                    <!-- BLOOM 02 -->
 
                     <img
                         class="work-image"
@@ -813,17 +807,11 @@
                         alt="BLOOM table by product designer Natascha Burk"
                     >
 
-
-                    <!-- BLOOM 03 -->
-
                     <img
                         class="work-image"
                         src="images/work/bloom/natascha-burk-bloom-table-03.jpg"
                         alt="Components of the BLOOM table by Natascha Burk"
                     >
-
-
-                    <!-- BLOOM TEXT -->
 
                     <div class="work-info">
 
@@ -874,17 +862,11 @@
 
                 <div class="work-track">
 
-
-                    <!-- MOTUS 01 -->
-
                     <img
                         class="work-image"
                         src="images/work/motus/natascha-burk-bloom-motus-01.jpg"
                         alt="MOTUS electric kettle by Natascha Burk"
                     >
-
-
-                    <!-- MOTUS 02 -->
 
                     <img
                         class="work-image"
@@ -892,26 +874,17 @@
                         alt="Detail of the MOTUS electric kettle by Natascha Burk"
                     >
 
-
-                    <!-- MOTUS 03 -->
-
                     <img
                         class="work-image"
                         src="images/work/motus/natascha-burk-bloom-motus-03.jpg"
                         alt="MOTUS electric kettle by product designer Natascha Burk"
                     >
 
-
-                    <!-- MOTUS 04 -->
-
                     <img
                         class="work-image"
                         src="images/work/motus/natascha-burk-bloom-motus-04.jpg"
                         alt="Detail of the MOTUS kettle by Natascha Burk"
                     >
-
-
-                    <!-- MOTUS TEXT -->
 
                     <div class="work-info">
 
@@ -968,21 +941,21 @@
                     >
 
 
-                    <!-- TOPO 02 -->
-
-                    <img
-                        class="work-image"
-                        src="images/work/topo/natascha-burk-topo-02.jpg"
-                        alt="TOPO handheld mirror by Natascha Burk"
-                    >
-
-
                     <!-- TOPO 03 -->
 
                     <img
                         class="work-image"
                         src="images/work/topo/natascha-burk-topo-03.jpg"
                         alt="TOPO candle holder by Natascha Burk"
+                    >
+
+
+                    <!-- TOPO 02 -->
+
+                    <img
+                        class="work-image"
+                        src="images/work/topo/natascha-burk-topo-02.jpg"
+                        alt="TOPO handheld mirror by Natascha Burk"
                     >
 
 
@@ -1061,13 +1034,7 @@
 
             <div class="about-inner">
 
-
-                <!-- ABOUT TEXT -->
-
                 <div class="about-text">
-
-
-                    <!-- DESKTOP TEXT -->
 
                     <div class="desktop-text">
 
@@ -1090,8 +1057,6 @@
 
                     </div>
 
-
-                    <!-- MOBILE TEXT -->
 
                     <div class="mobile-text">
 
@@ -1116,8 +1081,6 @@
 
                 </div>
 
-
-                <!-- PORTRAIT -->
 
                 <img
                     class="about-image"
@@ -1389,43 +1352,21 @@
                     workTop;
 
 
-                /*
-                Start all project tracks on the
-                same left edge as the main content.
-                */
-
                 workTrack.style.left =
                     `${contentLeft}px`;
 
-
-                /*
-                Images begin exactly on the
-                upper WORK line.
-                */
 
                 workTrack.style.top =
                     `${workTop}px`;
 
 
-                /*
-                LEFT MASK
-                */
-
                 workLeftMask.style.width =
                     `${contentLeft}px`;
 
 
-                /*
-                TOP MASK
-                */
-
                 workTopMask.style.height =
                     `${workTop}px`;
 
-
-                /*
-                IMAGE HEIGHT
-                */
 
                 workImages.forEach(function(image) {
 
@@ -1438,10 +1379,6 @@
                 /*
                 The project text panel uses the
                 actual rendered image height.
-
-                Therefore Year / Graduation Project
-                aligns with the real lower edge
-                of the adjacent image.
                 */
 
                 const referenceImage =
@@ -1462,10 +1399,6 @@
                 });
 
 
-                /*
-                HORIZONTAL DISTANCE
-                */
-
                 const availableWidth =
                     window.innerWidth -
                     contentLeft;
@@ -1478,11 +1411,6 @@
                         availableWidth
                     );
 
-
-                /*
-                Vertical scroll distance required
-                for the horizontal project movement.
-                */
 
                 workSection.style.height =
                     `${window.innerHeight + horizontalDistance}px`;
@@ -1541,11 +1469,6 @@
                     return;
                 }
 
-
-                /*
-                Vertical scrolling becomes
-                horizontal movement.
-                */
 
                 let progress =
                     -rect.top /
@@ -1807,8 +1730,6 @@
 
         /*
         Recalculate once all images are loaded.
-        This keeps the text bottom edge aligned
-        with the actual rendered image height.
         */
 
         document
