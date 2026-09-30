@@ -256,7 +256,7 @@
             Größer als vorher, aber weiterhin
             kleiner als ABOUT.
             */
-            font-size: 22px;
+            font-size: 19px;
             font-weight: 400;
             line-height: 1.2;
 
@@ -268,7 +268,7 @@
         }
 
         .work-info .work-year {
-            margin-top: 1.2em;
+            margin-top: auto;
             margin-bottom: 0;
         }
 
@@ -806,30 +806,14 @@
              WORK / BLOOM
              ================================== -->
 
-        <section
-            id="work"
-            class="work-section"
-        >
+        <section id="work" class="work-section">
 
             <div class="work-sticky">
 
-
-                <!-- LEFT WHITE MASK -->
-
                 <div class="work-left-mask"></div>
-
-
-                <!-- TOP WHITE MASK -->
-
                 <div class="work-top-mask"></div>
 
-
-                <!-- HORIZONTAL STRIP -->
-
                 <div class="work-track">
-
-
-                    <!-- BLOOM 01 -->
 
                     <img
                         class="work-image"
@@ -837,26 +821,17 @@
                         alt="Detail of the BLOOM table by Natascha Burk"
                     >
 
-
-                    <!-- BLOOM 02 -->
-
                     <img
                         class="work-image"
                         src="images/work/bloom/natascha-burk-bloom-table-02.jpg"
                         alt="BLOOM table by product designer Natascha Burk"
                     >
 
-
-                    <!-- BLOOM 03 -->
-
                     <img
                         class="work-image"
                         src="images/work/bloom/natascha-burk-bloom-table-03.jpg"
                         alt="Components of the BLOOM table by Natascha Burk"
                     >
-
-
-                    <!-- BLOOM INFORMATION -->
 
                     <div class="work-info">
 
@@ -881,12 +856,78 @@
                             made from single materials.
                         </p>
 
-                        <p class="work-year">
-                            Year 2025
-                        </p>
+                        <p class="work-year">Year 2025</p>
 
                     </div>
 
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             WORK / MOTUS
+             ================================== -->
+
+        <section class="work-section">
+
+            <div class="work-sticky">
+
+                <div class="work-left-mask"></div>
+                <div class="work-top-mask"></div>
+
+                <div class="work-track">
+
+                    <img
+                        class="work-image"
+                        src="images/work/motus/natascha-burk-bloom-motus-01.jpg"
+                        alt="MOTUS electric kettle by Natascha Burk"
+                    >
+
+                    <img
+                        class="work-image"
+                        src="images/work/motus/natascha-burk-bloom-motus-02.jpg"
+                        alt="Detail of the MOTUS electric kettle by Natascha Burk"
+                    >
+
+                    <img
+                        class="work-image"
+                        src="images/work/motus/natascha-burk-bloom-motus-03.jpg"
+                        alt="MOTUS electric kettle by product designer Natascha Burk"
+                    >
+
+                    <img
+                        class="work-image"
+                        src="images/work/motus/natascha-burk-bloom-motus-04.jpg"
+                        alt="Detail of the MOTUS kettle by Natascha Burk"
+                    >
+
+                    <div class="work-info">
+
+                        <p>
+                            MOTUS is an electric kettle that uses a form analogy
+                            to make the process of boiling water visible.
+                            Bimetallic springs inside the lid expand in response
+                            to rising steam, gently lifting its circular surface.
+                            As the water cools, the surface settles back into the lid.
+                        </p>
+
+                        <p>
+                            The funnel-shaped spout allows the kettle to be filled
+                            directly under the tap. All electrical components,
+                            including the heating element, are easily accessible
+                            and replaceable, extending the product’s service life
+                            and facilitating recycling.
+                        </p>
+
+                        <p class="work-year">
+                            Graduation Project<br>
+                            Year 2021
+                        </p>
+
+                    </div>
 
                 </div>
 
@@ -1083,17 +1124,8 @@
         const aboutInner =
             document.querySelector(".about-inner");
 
-        const workSection =
-            document.querySelector(".work-section");
-
-        const workTrack =
-            document.querySelector(".work-track");
-
-        const workLeftMask =
-            document.querySelector(".work-left-mask");
-
-        const workTopMask =
-            document.querySelector(".work-top-mask");
+        const workSections =
+            document.querySelectorAll(".work-section");
 
         const animationDistance = 500;
 
@@ -1203,122 +1235,114 @@
                 window.innerWidth <= 700;
 
 
-            if (isMobile) {
+            workSections.forEach(function(workSection) {
 
-                workSection.style.height =
-                    "auto";
+                const workTrack =
+                    workSection.querySelector(".work-track");
+
+                const workLeftMask =
+                    workSection.querySelector(".work-left-mask");
+
+                const workTopMask =
+                    workSection.querySelector(".work-top-mask");
+
+                const workImages =
+                    workSection.querySelectorAll(".work-image");
+
+                const workInfos =
+                    workSection.querySelectorAll(".work-info");
+
+
+                if (isMobile) {
+
+                    workSection.style.height =
+                        "auto";
+
+                    workTrack.style.left =
+                        "";
+
+                    workTrack.style.top =
+                        "";
+
+                    workLeftMask.style.width =
+                        "0px";
+
+                    workTopMask.style.height =
+                        "0px";
+
+                    workImages.forEach(function(image) {
+                        image.style.height = "";
+                    });
+
+                    workInfos.forEach(function(info) {
+                        info.style.minHeight = "";
+                        info.style.height = "";
+                    });
+
+                    return;
+                }
+
+
+                const contentLeft =
+                    getContentLeft();
+
+                const workTop =
+                    getWorkTop();
+
+                const panelHeight =
+                    window.innerHeight -
+                    workTop;
+
 
                 workTrack.style.left =
-                    "";
+                    `${contentLeft}px`;
 
                 workTrack.style.top =
-                    "";
+                    `${workTop}px`;
 
                 workLeftMask.style.width =
-                    "0px";
+                    `${contentLeft}px`;
 
                 workTopMask.style.height =
-                    "0px";
-
-                return;
-            }
+                    `${workTop}px`;
 
 
-            const contentLeft =
-                getContentLeft();
+                workImages.forEach(function(image) {
 
-            const workTop =
-                getWorkTop();
+                    image.style.height =
+                        `${panelHeight}px`;
 
-
-            /*
-            BLOOM starts on the same vertical
-            line as NATASCHA BURK.
-            */
-
-            workTrack.style.left =
-                `${contentLeft}px`;
+                });
 
 
-            /*
-            BLOOM starts exactly at the
-            upper edge of WORK.
-            */
+                workInfos.forEach(function(info) {
 
-            workTrack.style.top =
-                `${workTop}px`;
+                    info.style.minHeight =
+                        `${panelHeight}px`;
 
+                    info.style.height =
+                        `${panelHeight}px`;
 
-            /*
-            Everything moving farther left
-            disappears behind white.
-            */
-
-            workLeftMask.style.width =
-                `${contentLeft}px`;
+                });
 
 
-            /*
-            Everything above WORK disappears
-            behind white.
-
-            This is what prevents BLOOM from
-            ever appearing behind the logo.
-            */
-
-            workTopMask.style.height =
-                `${workTop}px`;
+                const availableWidth =
+                    window.innerWidth -
+                    contentLeft;
 
 
-            /*
-            Image height now uses exactly the
-            remaining viewport underneath WORK.
-            */
+                const horizontalDistance =
+                    Math.max(
+                        0,
+                        workTrack.scrollWidth -
+                        availableWidth
+                    );
 
-            const workImages =
-                document.querySelectorAll(".work-image");
 
-            workImages.forEach(function(image) {
-
-                image.style.height =
-                    `${window.innerHeight - workTop}px`;
+                workSection.style.height =
+                    `${window.innerHeight + horizontalDistance}px`;
 
             });
-
-
-            /*
-            Match text panel to the same height.
-            */
-
-            const workInfo =
-                document.querySelector(".work-info");
-
-            workInfo.style.minHeight =
-                `${window.innerHeight - workTop}px`;
-
-
-            const availableWidth =
-                window.innerWidth -
-                contentLeft;
-
-
-            const horizontalDistance =
-                Math.max(
-                    0,
-                    workTrack.scrollWidth -
-                    availableWidth
-                );
-
-
-            /*
-            One viewport keeps the project fixed.
-
-            The horizontal width creates the
-            additional vertical scrolling space.
-            */
-
-            workSection.style.height =
-                `${window.innerHeight + horizontalDistance}px`;
         }
 
 
@@ -1328,72 +1352,75 @@
 
         function updateWork() {
 
-            if (window.innerWidth <= 700) {
+            workSections.forEach(function(workSection) {
+
+                const workTrack =
+                    workSection.querySelector(".work-track");
+
+
+                if (window.innerWidth <= 700) {
+
+                    workTrack.style.transform =
+                        "none";
+
+                    return;
+                }
+
+
+                const rect =
+                    workSection.getBoundingClientRect();
+
+
+                const contentLeft =
+                    getContentLeft();
+
+
+                const availableWidth =
+                    window.innerWidth -
+                    contentLeft;
+
+
+                const horizontalDistance =
+                    Math.max(
+                        0,
+                        workTrack.scrollWidth -
+                        availableWidth
+                    );
+
+
+                if (horizontalDistance === 0) {
+
+                    workTrack.style.transform =
+                        "translate3d(0, 0, 0)";
+
+                    return;
+                }
+
+
+                let progress =
+                    -rect.top /
+                    horizontalDistance;
+
+
+                progress =
+                    Math.max(
+                        0,
+                        Math.min(
+                            1,
+                            progress
+                        )
+                    );
+
+
+                const translateX =
+                    horizontalDistance *
+                    progress;
+
 
                 workTrack.style.transform =
-                    "none";
+                    `translate3d(${-translateX}px, 0, 0)`;
 
-                return;
-            }
-
-
-            const rect =
-                workSection.getBoundingClientRect();
-
-
-            const contentLeft =
-                getContentLeft();
-
-
-            const availableWidth =
-                window.innerWidth -
-                contentLeft;
-
-
-            const horizontalDistance =
-                Math.max(
-                    0,
-                    workTrack.scrollWidth -
-                    availableWidth
-                );
-
-
-            if (horizontalDistance === 0) {
-
-                workTrack.style.transform =
-                    "translate3d(0, 0, 0)";
-
-                return;
-            }
-
-
-            /*
-            Vertical scrolling becomes continuous
-            horizontal movement.
-            */
-
-            let progress =
-                -rect.top /
-                horizontalDistance;
-
-
-            progress =
-                Math.max(
-                    0,
-                    Math.min(
-                        1,
-                        progress
-                    )
-                );
-
-
-            const translateX =
-                horizontalDistance *
-                progress;
-
-
-            workTrack.style.transform =
-                `translate3d(${-translateX}px, 0, 0)`;
+            });
         }
 
 
