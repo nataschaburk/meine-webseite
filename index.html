@@ -175,16 +175,12 @@
 
 
         /* ==================================
-           HORIZONTAL BLOOM TRACK
+           HORIZONTAL WORK TRACK
            ================================== */
 
         .work-track {
             position: absolute;
 
-            /*
-            Wird zusätzlich per JavaScript exakt
-            auf die WORK-Oberkante gesetzt.
-            */
             top: 12vh;
             left: 0;
 
@@ -200,7 +196,7 @@
 
 
         /* ==================================
-           BLOOM IMAGES
+           WORK IMAGES
            ================================== */
 
         .work-image {
@@ -222,28 +218,16 @@
 
 
         /* ==================================
-           BLOOM TEXT + WHITE SPACE
+           PROJECT TEXT + WHITE SPACE
            ================================== */
 
         .work-info {
             flex: 0 0 auto;
 
-            /*
-            Breite weiße Fläche am Ende des
-            Projekts – ungefähr Bildbreite.
-            */
             width: 768px;
             min-height: 88vh;
 
-            /*
-            Etwas mehr Abstand zwischen dem
-            letzten Bild und dem Text.
-            */
             padding-left: 28px;
-
-            /*
-            Viel Weißraum rechts vom Text.
-            */
             padding-right: 214px;
 
             display: flex;
@@ -252,10 +236,6 @@
 
             font-family: "Barlow", sans-serif;
 
-            /*
-            Größer als vorher, aber weiterhin
-            kleiner als ABOUT.
-            */
             font-size: 19px;
             font-weight: 400;
             line-height: 1.2;
@@ -267,9 +247,26 @@
             margin: 0 0 1.2em 0;
         }
 
+        /*
+        PROJECT META INFORMATION
+
+        BLOOM:
+        Year 2025
+
+        MOTUS:
+        Graduation Project
+        Year 2021
+
+        The block stays aligned with the
+        bottom edge of the adjacent image.
+        */
+
         .work-info .work-year {
             margin-top: auto;
             margin-bottom: 0;
+
+            font-size: 13px;
+            line-height: 1.15;
         }
 
 
@@ -288,10 +285,6 @@
 
             background: white;
 
-            /*
-            Über den bewegten Bildern,
-            unter Navigation und Logo.
-            */
             z-index: 80;
 
             pointer-events: none;
@@ -300,13 +293,6 @@
 
         /* ==================================
            TOP WHITE MASK
-           ==================================
-
-           Alles oberhalb der WORK-Linie
-           bleibt weiß.
-
-           Die Bilder bewegen sich dahinter,
-           sind dort aber nicht sichtbar.
            ================================== */
 
         .work-top-mask {
@@ -316,21 +302,10 @@
             left: 0;
 
             width: 100%;
-
-            /*
-            Wird von JavaScript exakt auf die
-            Oberkante von WORK gesetzt.
-            */
             height: 12vh;
 
             background: white;
 
-            /*
-            Über Bildern (1),
-            unter Navigation (90),
-            Instagram (90)
-            und Logo (100).
-            */
             z-index: 80;
 
             pointer-events: none;
@@ -629,6 +604,11 @@
                 line-height: 1.25;
             }
 
+            .work-info .work-year {
+                font-size: 12px;
+                line-height: 1.15;
+            }
+
 
             /* ABOUT */
 
@@ -815,11 +795,17 @@
 
                 <div class="work-track">
 
+
+                    <!-- BLOOM 01 -->
+
                     <img
                         class="work-image"
                         src="images/work/bloom/natascha-burk-bloom-table-01.jpg"
                         alt="Detail of the BLOOM table by Natascha Burk"
                     >
+
+
+                    <!-- BLOOM 02 -->
 
                     <img
                         class="work-image"
@@ -827,11 +813,17 @@
                         alt="BLOOM table by product designer Natascha Burk"
                     >
 
+
+                    <!-- BLOOM 03 -->
+
                     <img
                         class="work-image"
                         src="images/work/bloom/natascha-burk-bloom-table-03.jpg"
                         alt="Components of the BLOOM table by Natascha Burk"
                     >
+
+
+                    <!-- BLOOM TEXT -->
 
                     <div class="work-info">
 
@@ -856,7 +848,9 @@
                             made from single materials.
                         </p>
 
-                        <p class="work-year">Year 2025</p>
+                        <p class="work-year">
+                            Year 2025
+                        </p>
 
                     </div>
 
@@ -880,11 +874,17 @@
 
                 <div class="work-track">
 
+
+                    <!-- MOTUS 01 -->
+
                     <img
                         class="work-image"
                         src="images/work/motus/natascha-burk-bloom-motus-01.jpg"
                         alt="MOTUS electric kettle by Natascha Burk"
                     >
+
+
+                    <!-- MOTUS 02 -->
 
                     <img
                         class="work-image"
@@ -892,17 +892,26 @@
                         alt="Detail of the MOTUS electric kettle by Natascha Burk"
                     >
 
+
+                    <!-- MOTUS 03 -->
+
                     <img
                         class="work-image"
                         src="images/work/motus/natascha-burk-bloom-motus-03.jpg"
                         alt="MOTUS electric kettle by product designer Natascha Burk"
                     >
 
+
+                    <!-- MOTUS 04 -->
+
                     <img
                         class="work-image"
                         src="images/work/motus/natascha-burk-bloom-motus-04.jpg"
                         alt="Detail of the MOTUS kettle by Natascha Burk"
                     >
+
+
+                    <!-- MOTUS TEXT -->
 
                     <div class="work-info">
 
@@ -1011,7 +1020,6 @@
 
                     </div>
 
-
                 </div>
 
 
@@ -1022,7 +1030,6 @@
                     src="images/portrait_natascha.jpg"
                     alt="Portrait of Natascha Burk"
                 >
-
 
             </div>
 
@@ -1064,9 +1071,6 @@
 
     <div class="legal-links">
 
-
-        <!-- PRIVACY POLICY -->
-
         <a
             href="privacy.html"
             aria-label="Privacy Policy"
@@ -1080,15 +1084,11 @@
         </a>
 
 
-        <!-- DIVIDER -->
-
         <span
             class="legal-divider"
             aria-hidden="true"
         ></span>
 
-
-        <!-- IMPRINT -->
 
         <a
             href="imprint.html"
@@ -1101,7 +1101,6 @@
             >
 
         </a>
-
 
     </div>
 
@@ -1201,16 +1200,6 @@
 
         /* ==================================
            FIXED WORK TOP LINE
-           ==================================
-
-           WORK sits at top: 12%.
-
-           We deliberately use the exact same
-           value for the BLOOM image edge and
-           for the white clipping mask.
-
-           This avoids any drift between
-           navigation and images.
            ================================== */
 
         function getWorkTop() {
@@ -1253,6 +1242,8 @@
                     workSection.querySelectorAll(".work-info");
 
 
+                /* MOBILE */
+
                 if (isMobile) {
 
                     workSection.style.height =
@@ -1271,17 +1262,27 @@
                         "0px";
 
                     workImages.forEach(function(image) {
-                        image.style.height = "";
+
+                        image.style.height =
+                            "";
+
                     });
 
                     workInfos.forEach(function(info) {
-                        info.style.minHeight = "";
-                        info.style.height = "";
+
+                        info.style.minHeight =
+                            "";
+
+                        info.style.height =
+                            "";
+
                     });
 
                     return;
                 }
 
+
+                /* DESKTOP */
 
                 const contentLeft =
                     getContentLeft();
@@ -1294,18 +1295,43 @@
                     workTop;
 
 
+                /*
+                Start all project tracks on the
+                same left edge as the main content.
+                */
+
                 workTrack.style.left =
                     `${contentLeft}px`;
+
+
+                /*
+                Images begin exactly on the
+                upper WORK line.
+                */
 
                 workTrack.style.top =
                     `${workTop}px`;
 
+
+                /*
+                LEFT MASK
+                */
+
                 workLeftMask.style.width =
                     `${contentLeft}px`;
+
+
+                /*
+                TOP MASK
+                */
 
                 workTopMask.style.height =
                     `${workTop}px`;
 
+
+                /*
+                IMAGE HEIGHT
+                */
 
                 workImages.forEach(function(image) {
 
@@ -1315,11 +1341,23 @@
                 });
 
 
+                /*
+                IMPORTANT:
+
+                The project text panel uses the
+                ACTUAL rendered image height.
+
+                Therefore Year / Graduation Project
+                aligns with the real lower edge
+                of the adjacent image.
+                */
+
                 const referenceImage =
                     workSection.querySelector(".work-image");
 
                 const actualImageHeight =
                     referenceImage.getBoundingClientRect().height;
+
 
                 workInfos.forEach(function(info) {
 
@@ -1331,6 +1369,10 @@
 
                 });
 
+
+                /*
+                HORIZONTAL DISTANCE
+                */
 
                 const availableWidth =
                     window.innerWidth -
@@ -1345,6 +1387,11 @@
                     );
 
 
+                /*
+                Vertical scroll distance required
+                for the horizontal project movement.
+                */
+
                 workSection.style.height =
                     `${window.innerHeight + horizontalDistance}px`;
 
@@ -1353,7 +1400,7 @@
 
 
         /* ==================================
-           BLOOM HORIZONTAL MOVEMENT
+           HORIZONTAL PROJECT MOVEMENT
            ================================== */
 
         function updateWork() {
@@ -1402,6 +1449,11 @@
                     return;
                 }
 
+
+                /*
+                Vertical scrolling becomes
+                horizontal movement.
+                */
 
                 let progress =
                     -rect.top /
@@ -1659,6 +1711,31 @@
 
             }
         );
+
+
+        /*
+        Recalculate once all images are loaded.
+        This keeps the text bottom edge aligned
+        with the actual rendered image height.
+        */
+
+        document
+            .querySelectorAll(".work-image")
+            .forEach(function(image) {
+
+                if (!image.complete) {
+
+                    image.addEventListener(
+                        "load",
+                        function() {
+
+                            setWorkLayout();
+                            updatePage();
+
+                        }
+                    );
+                }
+            });
 
 
         setWorkLayout();
