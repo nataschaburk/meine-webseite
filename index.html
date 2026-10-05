@@ -479,6 +479,22 @@
 
         @media (max-width: 700px) {
 
+            /*
+            WHITE MASK AT TOP
+            Keeps logo + menu on white while content scrolls underneath.
+            */
+            body::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 118px;
+                background: white;
+                z-index: 85;
+                pointer-events: none;
+            }
+
 
             /* NAME */
 
@@ -486,7 +502,9 @@
                 width: 72%;
                 max-width: none;
 
-                transform-origin: center center;
+                transform-origin: left center;
+
+                z-index: 100;
             }
 
 
@@ -494,24 +512,35 @@
 
             .navigation {
                 left: 6%;
-                top: 92px;
+                right: 6%;
+                top: 80px;
+
+                width: 88%;
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
 
                 gap: 0;
+
+                z-index: 100;
             }
 
             .navigation a {
                 display: flex;
                 align-items: center;
+                justify-content: center;
 
-                min-height: 30px;
+                min-height: 20px;
 
-                padding-right: 20px;
+                padding: 0;
 
                 line-height: 0;
             }
 
             .navigation img {
-                height: 11px;
+                height: 10px;
                 width: auto;
             }
 
@@ -520,7 +549,9 @@
 
             .instagram {
                 right: 6%;
-                top: 55px;
+                top: 42px;
+
+                z-index: 100;
             }
 
             .instagram img {
@@ -535,8 +566,8 @@
 
                 width: 100%;
 
-                padding-top: 130px;
-                padding-bottom: 100px;
+                padding-top: 118px;
+                padding-bottom: 54px;
 
                 overflow: hidden;
             }
@@ -582,11 +613,12 @@
                 width: max-content;
 
                 padding-left: 6vw;
+                padding-right: 6vw;
             }
 
             .work-image {
-                height: 68vh;
-                max-height: 650px;
+                height: 55vh;
+                max-height: 520px;
 
                 width: auto;
 
@@ -615,8 +647,10 @@
             .about-section {
                 min-height: auto;
 
-                padding-top: 150px;
+                padding-top: 145px;
                 padding-bottom: 120px;
+
+                scroll-margin-top: 118px;
             }
 
             .about-inner {
@@ -662,8 +696,10 @@
             .contact-section {
                 min-height: 100vh;
 
-                padding-top: 150px;
+                padding-top: 145px;
                 padding-bottom: 120px;
+
+                scroll-margin-top: 118px;
             }
 
             .contact-inner {
@@ -683,11 +719,24 @@
             }
 
 
-            /* LEGAL LINKS */
+            /*
+            WHITE MASK AT BOTTOM
+            Keeps Privacy Policy / Imprint readable.
+            */
 
             .legal-links {
-                bottom: 18px;
+                bottom: 0;
+
+                width: 100%;
+                height: 48px;
+
+                padding-bottom: 16px;
+
                 gap: 7px;
+
+                background: white;
+
+                z-index: 150;
             }
 
             .legal-links img {
@@ -1160,9 +1209,7 @@
         </a>
 
     </div>
-
-
-    <script>
+        <script>
 
         /* ==================================
            ELEMENTS
@@ -1530,8 +1577,16 @@
 
             if (isMobile) {
 
+                /*
+                On the mobile intro the logo begins
+                large and centered.
+
+                While entering the site it moves
+                into the fixed white header.
+                */
+
                 const startScale = 1;
-                const endScale = 0.40;
+                const endScale = 0.50;
 
 
                 const startTop =
@@ -1539,7 +1594,15 @@
 
 
                 const endTop =
-                    55;
+                    42;
+
+
+                const startLeft =
+                    window.innerWidth / 2;
+
+
+                const finalLeft =
+                    window.innerWidth * 0.06;
 
 
                 const scale =
@@ -1554,8 +1617,30 @@
                     progress;
 
 
+                /*
+                Natural mobile logo width is 72vw.
+                At the final 0.50 scale this gives
+                a compact but slightly larger name
+                in the mobile header.
+                */
+
+                const naturalWidth =
+                    window.innerWidth * 0.72;
+
+
+                const startLeftEdge =
+                    startLeft -
+                    naturalWidth / 2;
+
+
+                const currentLeftEdge =
+                    startLeftEdge +
+                    (finalLeft - startLeftEdge) *
+                    progress;
+
+
                 logo.style.left =
-                    "50%";
+                    `${currentLeftEdge}px`;
 
 
                 logo.style.top =
@@ -1563,11 +1648,11 @@
 
 
                 logo.style.transformOrigin =
-                    "center center";
+                    "left center";
 
 
                 logo.style.transform =
-                    `translate(-50%, -50%) scale(${scale})`;
+                    `translateY(-50%) scale(${scale})`;
 
             }
 
