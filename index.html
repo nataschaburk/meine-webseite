@@ -479,404 +479,173 @@
 
         @media (max-width: 700px) {
 
-            /*
-            WICHTIG:
-            Der Intro-Bereich bleibt 100vh hoch.
-            Dadurch sieht man beim Start ausschließlich
-            das große NATASCHA-BURK-Logo.
-            */
-
-            .intro {
-                height: 100vh;
-            }
-
-
-            /* ==================================
-               WHITE HEADER MASK
-               ================================== */
-
+            /* Fixed white mobile header mask */
             body::before {
                 content: "";
-
                 position: fixed;
-
                 top: 0;
                 left: 0;
-
                 width: 100%;
-                height: 116px;
-
-                background: #fff;
-
+                height: 94px;
+                background: white;
                 z-index: 85;
-
                 pointer-events: none;
             }
 
-
-            /* ==================================
-               NAME LOGO
-               ================================== */
-
+            /* NAME */
             #logo {
                 width: 72%;
                 max-width: none;
-
                 transform-origin: left center;
-
                 z-index: 100;
             }
 
-
-            /* ==================================
-               NAVIGATION
-               ================================== */
-
+            /* NAVIGATION — one horizontal row */
             .navigation {
-                position: fixed;
-
                 left: 6%;
                 right: 6%;
-                top: 76px;
-
-                width: 88%;
-
-                display: flex;
+                top: 78px;
                 flex-direction: row;
                 align-items: center;
-                justify-content: space-between;
-
-                gap: 0;
-
+                justify-content: flex-start;
+                gap: 22px;
                 z-index: 100;
-
-                opacity: 0;
-                pointer-events: none;
             }
 
             .navigation a {
                 display: flex;
-
                 align-items: center;
-                justify-content: center;
-
+                min-height: 22px;
                 padding: 0;
-
                 line-height: 0;
             }
 
             .navigation img {
                 height: 10px;
                 width: auto;
-
-                display: block;
             }
 
-
-            /* ==================================
-               INSTAGRAM
-               ================================== */
-
+            /* INSTAGRAM */
             .instagram {
-                position: fixed;
-
                 right: 6%;
-                top: 35px;
-
-                transform: translateY(-50%);
-
+                top: 32px;
                 z-index: 100;
-
-                opacity: 0;
-                pointer-events: none;
             }
 
             .instagram img {
                 width: 19px;
-                height: auto;
-
-                display: block;
             }
 
-
-            /* ==================================
-               WORK
-               ================================== */
-
+            /* WORK MOBILE */
             .work-section {
-                position: relative;
-
-                width: 100%;
-
                 height: auto !important;
-
-                padding-top: 116px;
-                padding-bottom: 20px;
-
+                width: 100%;
+                padding-top: 126px;
+                padding-bottom: 24px;
                 overflow: hidden;
+            }
+
+            .work-section + .work-section {
+                padding-top: 0;
             }
 
             .work-sticky {
                 position: relative;
-
                 top: auto;
-
                 width: 100%;
                 height: auto;
-
                 overflow-x: auto;
                 overflow-y: hidden;
-
                 display: block;
-
                 -webkit-overflow-scrolling: touch;
-
                 scrollbar-width: none;
             }
 
-            .work-sticky::-webkit-scrollbar {
-                display: none;
-            }
+            .work-sticky::-webkit-scrollbar { display: none; }
 
             .work-left-mask,
-            .work-top-mask {
-                display: none;
-            }
-
-
-            /* ==================================
-               HORIZONTAL PROJECT TRACK
-               ================================== */
+            .work-top-mask { display: none; }
 
             .work-track {
                 position: relative;
-
                 top: auto;
                 left: auto;
-
                 transform: none !important;
-
+                height: auto;
                 display: flex;
                 align-items: flex-start;
-
                 width: max-content;
-                height: auto;
-
                 padding-left: 6vw;
                 padding-right: 6vw;
             }
 
-
-            /* ==================================
-               PROJECT IMAGES
-               ================================== */
-
+            /* Smaller, proportional project images */
             .work-image {
-                display: block;
-
-                height: 46vh;
-                max-height: 430px;
-
+                height: 55vh;
+                max-height: 520px;
                 width: auto;
-
-                flex: 0 0 auto;
-
                 object-fit: contain;
             }
 
-            .work-image + .work-image {
-                margin-left: 0;
-            }
-
-
-            /* ==================================
-               PROJECT TEXT
-               ================================== */
-
             .work-info {
-                flex: 0 0 auto;
-
                 width: 82vw;
-
-                min-height: 46vh;
-                height: 46vh;
-
-                padding-left: 24px;
-                padding-right: 8vw;
-
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-
-                font-size: 15px;
-                line-height: 1.22;
-            }
-
-            .work-info p {
-                margin: 0 0 1.1em 0;
+                min-height: 0;
+                height: auto;
+                padding: 0 6vw 0 24px;
+                font-size: 16px;
+                line-height: 1.25;
             }
 
             .work-info .work-year {
-                margin-top: auto;
-                margin-bottom: 0;
-
-                font-size: 11px;
+                font-size: 12px;
                 line-height: 1.15;
             }
 
-
-            /* ==================================
-               TEACHING
-               ================================== */
-
-            #teaching {
-                width: 100%;
-
-                scroll-margin-top: 116px;
-            }
-
-
-            /* ==================================
-               ABOUT
-               ================================== */
-
+            /* ABOUT */
             .about-section {
-                width: 100%;
-
                 min-height: auto;
-
-                display: flex;
-                justify-content: center;
-                align-items: flex-start;
-
-                padding-top: 140px;
+                padding-top: 135px;
                 padding-bottom: 100px;
-
-                scroll-margin-top: 116px;
+                scroll-margin-top: 118px;
             }
 
             .about-inner {
                 width: 88%;
-
                 display: flex;
                 flex-direction: column;
-
-                gap: 28px;
+                gap: 30px;
             }
 
-            .about-image {
-                order: 1;
+            .about-image { order: 1; width: 100%; height: auto; }
+            .about-text { order: 2; width: 100%; font-size: 20px; line-height: 1.2; }
+            .desktop-text { display: none; }
+            .mobile-text { display: block; }
+            .mobile-text p + p { margin-top: 1.2em; }
 
-                width: 100%;
-                height: auto;
-
-                display: block;
-            }
-
-            .about-text {
-                order: 2;
-
-                width: 100%;
-
-                font-size: 20px;
-                line-height: 1.2;
-            }
-
-            .desktop-text {
-                display: none;
-            }
-
-            .mobile-text {
-                display: block;
-            }
-
-            .mobile-text p + p {
-                margin-top: 1.2em;
-            }
-
-
-            /* ==================================
-               CONTACT
-               ================================== */
-
+            /* CONTACT */
             .contact-section {
-                width: 100%;
-
                 min-height: 100vh;
-
-                display: flex;
-                justify-content: center;
-                align-items: flex-start;
-
-                padding-top: 140px;
+                padding-top: 135px;
                 padding-bottom: 100px;
-
-                scroll-margin-top: 116px;
+                scroll-margin-top: 118px;
             }
 
-            .contact-inner {
-                width: 88%;
+            .contact-inner { width: 88%; font-size: 20px; line-height: 1.2; }
+            .contact-text { margin-bottom: 28px; }
+            .contact-email { font-size: 20px; line-height: 1.2; }
 
-                font-size: 20px;
-                line-height: 1.2;
-            }
-
-            .contact-text {
-                margin-bottom: 28px;
-            }
-
-            .contact-email {
-                font-size: 20px;
-                line-height: 1.2;
-            }
-
-
-            /* ==================================
-               PRIVACY / IMPRINT WHITE MASK
-               ================================== */
-
+            /* Fixed white bottom mask — legal links always readable */
             .legal-links {
-                position: fixed;
-
-                left: 0;
                 bottom: 0;
-
-                transform: none;
-
                 width: 100%;
-                height: 48px;
-
-                padding-bottom: 14px;
-
-                display: flex;
-                align-items: flex-end;
-                justify-content: center;
-
+                min-height: 46px;
                 gap: 7px;
-
-                background: #fff;
-
+                background: white;
                 z-index: 150;
             }
 
-            .legal-links img {
-                height: 8px;
-                width: auto;
-
-                display: block;
-            }
-
-            .legal-divider {
-                width: 1px;
-                height: 8px;
-
-                margin-bottom: 0;
-
-                background: #000;
-
-                flex: 0 0 auto;
-            }
-
+            .legal-links img { height: 8px; }
+            .legal-divider { width: 1px; height: 8px; }
         }
 
     </style>
@@ -1709,28 +1478,16 @@
 
             if (isMobile) {
 
-                /*
-                START:
-                großes Logo exakt in der Bildschirmmitte
-
-                ENDE:
-                kleines Logo links oben im weißen Header
-                */
-
                 const startScale = 1;
-                const endScale = 0.50;
+                const endScale = 0.48;
+
 
                 const startTop =
                     window.innerHeight / 2;
 
+
                 const endTop =
-                    35;
-
-                const startLeft =
-                    window.innerWidth / 2;
-
-                const finalLeft =
-                    window.innerWidth * 0.06;
+                    32;
 
 
                 const scale =
@@ -1745,44 +1502,17 @@
                     progress;
 
 
-                /*
-                Ausgangsbreite des Logos:
-                72 % der Bildschirmbreite.
-                */
-
-                const naturalWidth =
-                    window.innerWidth * 0.72;
-
-
-                /*
-                Linke Kante des mittig positionierten
-                Logos auf dem Startscreen.
-                */
-
-                const startLeftEdge =
-                    startLeft -
-                    naturalWidth / 2;
-
-
-                /*
-                Logo bewegt sich beim Scrollen
-                von der Mitte nach links oben.
-                */
-
-                const currentLeftEdge =
-                    startLeftEdge +
-                    (finalLeft - startLeftEdge) *
-                    progress;
-
-
                 logo.style.left =
-                    `${currentLeftEdge}px`;
+                    "6%";
+
 
                 logo.style.top =
                     `${top}px`;
 
+
                 logo.style.transformOrigin =
                     "left center";
+
 
                 logo.style.transform =
                     `translateY(-50%) scale(${scale})`;
@@ -1887,6 +1617,20 @@
 
             instagram.style.opacity =
                 navProgress;
+
+
+            const legalLinks =
+                document.querySelector(".legal-links");
+
+            if (isMobile) {
+                legalLinks.style.opacity =
+                    navProgress;
+                legalLinks.style.pointerEvents =
+                    navProgress > 0 ? "auto" : "none";
+            } else {
+                legalLinks.style.opacity = "";
+                legalLinks.style.pointerEvents = "";
+            }
 
 
             if (navProgress > 0) {
