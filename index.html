@@ -480,28 +480,43 @@
         @media (max-width: 700px) {
 
             /*
-            WHITE MASK AT TOP
-            Keeps logo + menu on white while content scrolls underneath.
+            WICHTIG:
+            Der Intro-Bereich bleibt 100vh hoch.
+            Dadurch sieht man beim Start ausschließlich
+            das große NATASCHA-BURK-Logo.
             */
+
+            .intro {
+                height: 100vh;
+            }
+
+
+            /* ==================================
+               WHITE HEADER MASK
+               ================================== */
+
             body::before {
                 content: "";
+
                 position: fixed;
+
                 top: 0;
                 left: 0;
+
                 width: 100%;
-                height: 105px;
-                background: white;
+                height: 116px;
+
+                background: #fff;
+
                 z-index: 85;
+
                 pointer-events: none;
             }
 
-            /* Shorter mobile intro so the first project arrives sooner. */
-            .intro {
-                height: 65vh;
-            }
 
-
-            /* NAME */
+            /* ==================================
+               NAME LOGO
+               ================================== */
 
             #logo {
                 width: 72%;
@@ -513,31 +528,37 @@
             }
 
 
-            /* NAVIGATION */
+            /* ==================================
+               NAVIGATION
+               ================================== */
 
             .navigation {
-                left: 6%;
-                right: auto;
-                top: 57px;
+                position: fixed;
 
-                width: auto;
+                left: 6%;
+                right: 6%;
+                top: 76px;
+
+                width: 88%;
 
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                justify-content: flex-start;
+                justify-content: space-between;
 
-                gap: 22px;
+                gap: 0;
 
                 z-index: 100;
+
+                opacity: 0;
+                pointer-events: none;
             }
 
             .navigation a {
                 display: flex;
+
                 align-items: center;
                 justify-content: center;
-
-                min-height: 20px;
 
                 padding: 0;
 
@@ -547,43 +568,57 @@
             .navigation img {
                 height: 10px;
                 width: auto;
+
+                display: block;
             }
 
 
-            /* INSTAGRAM */
+            /* ==================================
+               INSTAGRAM
+               ================================== */
 
             .instagram {
+                position: fixed;
+
                 right: 6%;
-                top: 42px;
+                top: 35px;
+
+                transform: translateY(-50%);
 
                 z-index: 100;
+
+                opacity: 0;
+                pointer-events: none;
             }
 
             .instagram img {
-                width: 18px;
+                width: 19px;
+                height: auto;
+
+                display: block;
             }
 
 
-            /* WORK MOBILE */
+            /* ==================================
+               WORK
+               ================================== */
 
             .work-section {
-                height: auto !important;
+                position: relative;
 
                 width: 100%;
 
-                padding-top: 0;
-                padding-bottom: 36px;
+                height: auto !important;
+
+                padding-top: 116px;
+                padding-bottom: 20px;
 
                 overflow: hidden;
             }
 
-            /* Only the first project needs room below the fixed mobile header. */
-            #work.work-section {
-                padding-top: 105px;
-            }
-
             .work-sticky {
                 position: relative;
+
                 top: auto;
 
                 width: 100%;
@@ -595,6 +630,7 @@
                 display: block;
 
                 -webkit-overflow-scrolling: touch;
+
                 scrollbar-width: none;
             }
 
@@ -607,6 +643,11 @@
                 display: none;
             }
 
+
+            /* ==================================
+               HORIZONTAL PROJECT TRACK
+               ================================== */
+
             .work-track {
                 position: relative;
 
@@ -615,52 +656,103 @@
 
                 transform: none !important;
 
-                height: auto;
-
                 display: flex;
                 align-items: flex-start;
 
                 width: max-content;
+                height: auto;
 
                 padding-left: 6vw;
                 padding-right: 6vw;
             }
 
+
+            /* ==================================
+               PROJECT IMAGES
+               ================================== */
+
             .work-image {
-                height: 55vh;
-                max-height: 520px;
+                display: block;
+
+                height: 46vh;
+                max-height: 430px;
 
                 width: auto;
+
+                flex: 0 0 auto;
 
                 object-fit: contain;
             }
 
+            .work-image + .work-image {
+                margin-left: 0;
+            }
+
+
+            /* ==================================
+               PROJECT TEXT
+               ================================== */
+
             .work-info {
-                width: 88vw;
-                min-height: 0;
-                height: auto;
+                flex: 0 0 auto;
 
-                padding: 0 6vw 0 30px;
+                width: 82vw;
 
-                font-size: 16px;
-                line-height: 1.25;
+                min-height: 46vh;
+                height: 46vh;
+
+                padding-left: 24px;
+                padding-right: 8vw;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+
+                font-size: 15px;
+                line-height: 1.22;
+            }
+
+            .work-info p {
+                margin: 0 0 1.1em 0;
             }
 
             .work-info .work-year {
-                font-size: 12px;
+                margin-top: auto;
+                margin-bottom: 0;
+
+                font-size: 11px;
                 line-height: 1.15;
             }
 
 
-            /* ABOUT */
+            /* ==================================
+               TEACHING
+               ================================== */
+
+            #teaching {
+                width: 100%;
+
+                scroll-margin-top: 116px;
+            }
+
+
+            /* ==================================
+               ABOUT
+               ================================== */
 
             .about-section {
+                width: 100%;
+
                 min-height: auto;
 
-                padding-top: 125px;
-                padding-bottom: 90px;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
 
-                scroll-margin-top: 105px;
+                padding-top: 140px;
+                padding-bottom: 100px;
+
+                scroll-margin-top: 116px;
             }
 
             .about-inner {
@@ -669,7 +761,7 @@
                 display: flex;
                 flex-direction: column;
 
-                gap: 30px;
+                gap: 28px;
             }
 
             .about-image {
@@ -677,6 +769,8 @@
 
                 width: 100%;
                 height: auto;
+
+                display: block;
             }
 
             .about-text {
@@ -701,15 +795,23 @@
             }
 
 
-            /* CONTACT */
+            /* ==================================
+               CONTACT
+               ================================== */
 
             .contact-section {
+                width: 100%;
+
                 min-height: 100vh;
 
-                padding-top: 125px;
-                padding-bottom: 90px;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
 
-                scroll-margin-top: 105px;
+                padding-top: 140px;
+                padding-bottom: 100px;
+
+                scroll-margin-top: 116px;
             }
 
             .contact-inner {
@@ -729,34 +831,52 @@
             }
 
 
-            /*
-            WHITE MASK AT BOTTOM
-            Keeps Privacy Policy / Imprint readable.
-            */
+            /* ==================================
+               PRIVACY / IMPRINT WHITE MASK
+               ================================== */
 
             .legal-links {
+                position: fixed;
+
+                left: 0;
                 bottom: 0;
+
+                transform: none;
 
                 width: 100%;
                 height: 48px;
 
-                padding-bottom: 16px;
+                padding-bottom: 14px;
+
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
 
                 gap: 7px;
 
-                background: white;
+                background: #fff;
 
                 z-index: 150;
             }
 
             .legal-links img {
                 height: 8px;
+                width: auto;
+
+                display: block;
             }
 
             .legal-divider {
                 width: 1px;
                 height: 8px;
+
+                margin-bottom: 0;
+
+                background: #000;
+
+                flex: 0 0 auto;
             }
+
         }
 
     </style>
@@ -1219,7 +1339,9 @@
         </a>
 
     </div>
-        <script>
+
+
+    <script>
 
         /* ==================================
            ELEMENTS
@@ -1588,28 +1710,24 @@
             if (isMobile) {
 
                 /*
-                On the mobile intro the logo begins
-                large and centered.
+                START:
+                großes Logo exakt in der Bildschirmmitte
 
-                While entering the site it moves
-                into the fixed white header.
+                ENDE:
+                kleines Logo links oben im weißen Header
                 */
 
                 const startScale = 1;
                 const endScale = 0.50;
 
-
                 const startTop =
                     window.innerHeight / 2;
 
-
                 const endTop =
-                    32;
-
+                    35;
 
                 const startLeft =
                     window.innerWidth / 2;
-
 
                 const finalLeft =
                     window.innerWidth * 0.06;
@@ -1628,20 +1746,28 @@
 
 
                 /*
-                Natural mobile logo width is 72vw.
-                At the final 0.50 scale this gives
-                a compact but slightly larger name
-                in the mobile header.
+                Ausgangsbreite des Logos:
+                72 % der Bildschirmbreite.
                 */
 
                 const naturalWidth =
                     window.innerWidth * 0.72;
 
 
+                /*
+                Linke Kante des mittig positionierten
+                Logos auf dem Startscreen.
+                */
+
                 const startLeftEdge =
                     startLeft -
                     naturalWidth / 2;
 
+
+                /*
+                Logo bewegt sich beim Scrollen
+                von der Mitte nach links oben.
+                */
 
                 const currentLeftEdge =
                     startLeftEdge +
@@ -1652,14 +1778,11 @@
                 logo.style.left =
                     `${currentLeftEdge}px`;
 
-
                 logo.style.top =
                     `${top}px`;
 
-
                 logo.style.transformOrigin =
                     "left center";
-
 
                 logo.style.transform =
                     `translateY(-50%) scale(${scale})`;
@@ -1748,27 +1871,14 @@
 
             /* NAVIGATION + INSTAGRAM */
 
-            /*
-            On mobile, reveal the navigation only when the logo
-            has essentially reached its final header position.
-            Desktop keeps the existing fade timing.
-            */
             const navProgress =
-                isMobile
-                    ? Math.max(
-                        0,
-                        Math.min(
-                            1,
-                            (progress - 0.92) / 0.08
-                        )
+                Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        (progress - 0.35) / 0.4
                     )
-                    : Math.max(
-                        0,
-                        Math.min(
-                            1,
-                            (progress - 0.35) / 0.4
-                        )
-                    );
+                );
 
 
             navigation.style.opacity =
