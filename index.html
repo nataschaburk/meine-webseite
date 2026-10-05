@@ -495,6 +495,11 @@
                 pointer-events: none;
             }
 
+            /* Shorter mobile intro so the first project arrives sooner. */
+            .intro {
+                height: 65vh;
+            }
+
 
             /* NAME */
 
@@ -513,7 +518,7 @@
             .navigation {
                 left: 6%;
                 right: auto;
-                top: 67px;
+                top: 57px;
 
                 width: auto;
 
@@ -567,7 +572,7 @@
                 width: 100%;
 
                 padding-top: 0;
-                padding-bottom: 12px;
+                padding-bottom: 36px;
 
                 overflow: hidden;
             }
@@ -1743,14 +1748,27 @@
 
             /* NAVIGATION + INSTAGRAM */
 
+            /*
+            On mobile, reveal the navigation only when the logo
+            has essentially reached its final header position.
+            Desktop keeps the existing fade timing.
+            */
             const navProgress =
-                Math.max(
-                    0,
-                    Math.min(
-                        1,
-                        (progress - 0.35) / 0.4
+                isMobile
+                    ? Math.max(
+                        0,
+                        Math.min(
+                            1,
+                            (progress - 0.92) / 0.08
+                        )
                     )
-                );
+                    : Math.max(
+                        0,
+                        Math.min(
+                            1,
+                            (progress - 0.35) / 0.4
+                        )
+                    );
 
 
             navigation.style.opacity =
