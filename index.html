@@ -601,6 +601,9 @@
                 line-height: 1.15;
             }
 
+            /* Mobile: CHIMAERA wraps naturally. */
+            .chimaera-desktop-break { display: none; }
+
             /* ABOUT */
             .about-section {
                 min-height: auto;
@@ -863,6 +866,37 @@
 
             </div>
 
+        </section>
+
+
+        <!-- ==================================
+             WORK / CHIMAERA
+             ================================== -->
+
+        <section class="work-section">
+            <div class="work-sticky">
+                <div class="work-left-mask"></div>
+                <div class="work-top-mask"></div>
+                <div class="work-track">
+                    <img class="work-image" src="images/work/chimaera/chimaera_1.jpg" alt="CHIMAERA by Natascha Burk, image 1">
+                    <img class="work-image" src="images/work/chimaera/chimaera_2.jpg" alt="CHIMAERA by Natascha Burk, image 2">
+                    <img class="work-image" src="images/work/chimaera/chimaera_3.jpg" alt="CHIMAERA by Natascha Burk, image 3">
+                    <div class="work-info">
+                        <p>
+                            CHIMAERA is a cutlery set exploring<br class="chimaera-desktop-break">
+                            material and imitation in the context of<br class="chimaera-desktop-break">
+                            nature. Found branches and handmade<br class="chimaera-desktop-break">
+                            components are brought together through<br class="chimaera-desktop-break">
+                            sand casting, creating unexpected forms<br class="chimaera-desktop-break">
+                            that could not have been made from wood<br class="chimaera-desktop-break">
+                            alone.
+                        </p>
+                        <p class="work-year">
+                            Year 2023
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
 
 
@@ -1502,53 +1536,15 @@
                     progress;
 
 
-                /*
-                Mobile:
-                Start exactly centered in the viewport.
-                During the intro animation, move smoothly to the
-                final left-aligned header position.
-                */
-                const startLeft =
-                    window.innerWidth / 2;
+                const startLeft = window.innerWidth / 2;
+                const finalLeft = window.innerWidth * 0.06;
+                const left = startLeft + (finalLeft - startLeft) * progress;
 
-                const finalLeft =
-                    window.innerWidth * 0.06;
-
-                const left =
-                    startLeft +
-                    (finalLeft - startLeft) *
-                    progress;
-
-
-                logo.style.left =
-                    `${left}px`;
-
-
-                logo.style.top =
-                    `${top}px`;
-
-
-                if (progress === 0) {
-
-                    logo.style.transformOrigin =
-                        "center center";
-
-                    logo.style.transform =
-                        "translate(-50%, -50%) scale(1)";
-
-                } else {
-
-                    logo.style.transformOrigin =
-                        "left center";
-
-                    /*
-                    The translateX is faded out together with the
-                    movement from the centered start position.
-                    */
-                    logo.style.transform =
-                        `translate(${-50 * (1 - progress)}%, -50%) scale(${scale})`;
-
-                }
+                logo.style.left = `${left}px`;
+                logo.style.top = `${top}px`;
+                logo.style.transformOrigin = progress === 0 ? "center center" : "left center";
+                logo.style.transform =
+                    `translate(${-50 * (1 - progress)}%, -50%) scale(${scale})`;
 
             }
 
