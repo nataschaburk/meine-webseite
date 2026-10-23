@@ -1853,6 +1853,50 @@
             });
 
 
+
+        /* ==================================
+           MOBILE: SUBTLE IMAGE TAP HINT
+           ================================== */
+
+        document.querySelectorAll(".work-section").forEach(function(section) {
+            const scroller = section.querySelector(".work-sticky");
+            const images = section.querySelectorAll(".work-image");
+            let touchStartX = null;
+            let touchStartY = null;
+            let wasSwipe = false;
+
+            images.forEach(function(image) {
+                image.addEventListener("touchstart", function(event) {
+                    if (event.touches.length !== 1) return;
+                    touchStartX = event.touches[0].clientX;
+                    touchStartY = event.touches[0].clientY;
+                    wasSwipe = false;
+                }, { passive: true });
+
+                image.addEventListener("touchmove", function(event) {
+                    if (touchStartX === null || event.touches.length !== 1) return;
+                    const dx = Math.abs(event.touches[0].clientX - touchStartX);
+                    const dy = Math.abs(event.touches[0].clientY - touchStartY);
+                    if (dx > 10 || dy > 10) wasSwipe = true;
+                }, { passive: true });
+
+                image.addEventListener("touchcancel", function() {
+                    wasSwipe = true;
+                }, { passive: true });
+
+                image.addEventListener("click", function() {
+                    if (window.innerWidth > 700 || wasSwipe) return;
+                    const remaining = scroller.scrollWidth - scroller.clientWidth - scroller.scrollLeft;
+                    if (remaining <= 1) return;
+                    scroller.scrollBy({
+                        left: Math.min(60, remaining),
+                        behavior: "smooth"
+                    });
+                });
+            });
+        });
+
+
         setWorkLayout();
         updatePage();
 
